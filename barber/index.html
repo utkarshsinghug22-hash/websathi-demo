@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Websathi — Sharp Cuts Barbershop, Kathmandu</title>
+<meta name="description" content="Haircuts, beard trims and hot-towel shaves in Kathmandu. Walk in, or book your chair on WhatsApp.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Websathi — Sharp Cuts Barbershop, Kathmandu">
+<meta property="og:description" content="Haircuts, beard trims and hot-towel shaves in Kathmandu. Walk in, or book your chair on WhatsApp.">
+<meta property="og:url" content="https://utkarshsinghug22-hash.github.io/websathi-demo/barber/">
+<meta property="og:locale" content="en_NP">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#14110F;
+    --ink-soft:#221D19;
+    --brass:#C8952F;
+    --brass-soft:#E8C87E;
+    --bone:#F4F0E9;
+    --bone-dim:#DED7CB;
+    --rust:#8A3B2A;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bone);color:var(--ink);font-family:'Inter',sans-serif;line-height:1.65;overflow-x:hidden;}
+  h1,h2,h3,.display{font-family:'Oswald',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.01em;line-height:1.08;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 24px;}
+  .eyebrow{font-size:.7rem;letter-spacing:.26em;text-transform:uppercase;color:var(--brass);font-weight:600;}
+
+  header{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(20,17,15,.94);backdrop-filter:blur(10px);}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:66px;}
+  .logo{font-family:'Oswald',sans-serif;font-size:1.3rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--bone);}
+  .logo span{color:var(--brass);}
+  .nav-links{display:flex;gap:28px;align-items:center;font-size:.82rem;font-weight:500;text-transform:uppercase;letter-spacing:.1em;}
+  .nav-links a:not(.btn){color:var(--bone-dim);transition:color .2s;}
+  .nav-links a:not(.btn):hover{color:var(--brass);}
+  .btn{display:inline-block;padding:13px 26px;font-family:'Oswald',sans-serif;font-weight:500;font-size:.84rem;text-transform:uppercase;letter-spacing:.1em;transition:transform .15s,box-shadow .2s;}
+  .btn-solid{background:var(--brass);color:var(--ink);}
+  .btn-solid:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(200,149,47,.32);}
+  .btn-ghost{border:1.5px solid var(--bone);color:var(--bone);}
+  .btn-ghost:hover{background:var(--bone);color:var(--ink);}
+  @media(max-width:820px){.nav-links a:not(.btn){display:none;}}
+
+  .hero{background:var(--ink);color:var(--bone);padding:150px 0 92px;position:relative;overflow:hidden;}
+  .hero:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(135deg,transparent 0 22px,rgba(200,149,47,.05) 22px 44px);}
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:52px;align-items:center;position:relative;}
+  .hero h1{font-size:clamp(2.8rem,6.4vw,5rem);margin:16px 0 20px;}
+  .hero h1 span{color:var(--brass);}
+  .hero p{font-size:1.05rem;color:var(--bone-dim);max-width:42ch;margin-bottom:30px;}
+  .hero-cta{display:flex;gap:13px;flex-wrap:wrap;}
+  /* width:100% + justify-self, never margin-left:auto — an auto margin cancels a
+     grid item's stretch, and an empty div then shrink-wraps to nothing. */
+  .pole{width:100%;max-width:210px;justify-self:end;aspect-ratio:1/1.5;border-radius:110px;border:5px solid var(--bone-dim);
+    background:repeating-linear-gradient(45deg,var(--rust) 0 22px,var(--bone) 22px 44px,var(--ink-soft) 44px 66px,var(--bone) 66px 88px);
+    box-shadow:0 22px 52px rgba(0,0,0,.5);}
+  @media(max-width:900px){.hero-grid{grid-template-columns:1fr;}.pole{justify-self:center;}}
+
+  .strip{background:var(--brass);color:var(--ink);padding:14px 0;overflow:hidden;white-space:nowrap;}
+  .strip-inner{display:inline-flex;gap:44px;animation:slide 24s linear infinite;font-family:'Oswald',sans-serif;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;font-weight:500;}
+  @keyframes slide{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+  section{padding:86px 0;}
+  .sec-head{max-width:52ch;margin-bottom:44px;}
+  .sec-head h2{font-size:clamp(2rem,4vw,3rem);margin:12px 0 12px;}
+  .sec-head p{opacity:.72;}
+
+  .cuts{display:grid;grid-template-columns:1fr 1fr;gap:0 56px;}
+  .cut{display:flex;justify-content:space-between;gap:18px;align-items:baseline;padding:18px 0;border-bottom:2px solid rgba(20,17,15,.1);}
+  .cut-name{font-family:'Oswald',sans-serif;font-size:1.05rem;text-transform:uppercase;letter-spacing:.03em;}
+  .cut-note{display:block;font-family:'Inter',sans-serif;font-size:.85rem;text-transform:none;letter-spacing:0;opacity:.6;margin-top:2px;}
+  .cut-price{font-family:'Oswald',sans-serif;font-size:1.1rem;color:var(--rust);white-space:nowrap;}
+  @media(max-width:820px){.cuts{grid-template-columns:1fr;}}
+
+  .info{background:var(--ink);color:var(--bone);}
+  .info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:28px;}
+  .icard{border-top:3px solid var(--brass);padding-top:20px;}
+  .icard h3{font-size:1.05rem;margin-bottom:8px;color:var(--brass-soft);}
+  .icard p{font-size:.92rem;color:var(--bone-dim);}
+
+  .quote{text-align:center;background:var(--bone-dim);}
+  .quote p{font-family:'Oswald',sans-serif;font-size:clamp(1.4rem,3.2vw,2.1rem);text-transform:uppercase;max-width:26ch;margin:0 auto 16px;line-height:1.25;}
+  .quote small{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;opacity:.62;}
+
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;}
+  .row{display:flex;gap:16px;padding:15px 0;border-bottom:1px solid rgba(20,17,15,.12);}
+  .row strong{min-width:84px;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;opacity:.55;padding-top:4px;}
+  .cta-card{background:var(--ink);color:var(--bone);padding:38px;}
+  .cta-card h3{font-size:1.6rem;margin-bottom:10px;color:var(--brass);}
+  .cta-card p{color:var(--bone-dim);font-size:.94rem;margin-bottom:24px;}
+  .btn-wa{background:#25D366;color:#06331A;}
+  .btn-wa:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(37,211,102,.3);}
+  @media(max-width:820px){.contact-grid{grid-template-columns:1fr;}}
+
+  footer{background:var(--ink);color:var(--bone-dim);padding:32px 0;font-size:.85rem;}
+  .foot{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;opacity:.72;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="logo">Sharp <span>Cuts</span></div>
+    <nav class="nav-links">
+      <a href="#cuts">Cuts</a>
+      <a href="#shop">The Shop</a>
+      <a href="#contact">Find Us</a>
+      <a href="#contact" class="btn btn-solid">Book a Chair</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Barbershop — Kathmandu</div>
+      <h1>Walk in scruffy.<br><span>Walk out sharp.</span></h1>
+      <p>Skin fades, beard shaping and hot-towel shaves. Four chairs, no appointment needed — but book one if you're in a hurry.</p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn btn-solid">Book a Chair →</a>
+        <a href="#cuts" class="btn btn-ghost">See Prices</a>
+      </div>
+    </div>
+    <div class="pole"></div>
+  </div>
+</div>
+
+<div class="strip">
+  <div class="strip-inner">
+    <span>SKIN FADE</span><span>BEARD SHAPING</span><span>HOT TOWEL SHAVE</span><span>KIDS CUTS</span><span>HAIR WASH</span><span>NO APPOINTMENT NEEDED</span>
+    <span>SKIN FADE</span><span>BEARD SHAPING</span><span>HOT TOWEL SHAVE</span><span>KIDS CUTS</span><span>HAIR WASH</span><span>NO APPOINTMENT NEEDED</span>
+  </div>
+</div>
+
+<section id="cuts">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">The List</div>
+      <h2>Cuts &amp; Prices</h2>
+      <p>Every cut finishes with a wash and a hot towel. No extra charge, no upsell at the chair.</p>
+    </div>
+    <div class="cuts">
+      <div class="cut"><div><span class="cut-name">Haircut</span><span class="cut-note">Scissor or machine, your call</span></div><div class="cut-price">Rs. 300</div></div>
+      <div class="cut"><div><span class="cut-name">Skin Fade</span><span class="cut-note">Low, mid or high</span></div><div class="cut-price">Rs. 450</div></div>
+      <div class="cut"><div><span class="cut-name">Haircut + Beard</span><span class="cut-note">The usual order</span></div><div class="cut-price">Rs. 550</div></div>
+      <div class="cut"><div><span class="cut-name">Beard Shaping</span><span class="cut-note">Line-up and trim</span></div><div class="cut-price">Rs. 250</div></div>
+      <div class="cut"><div><span class="cut-name">Hot Towel Shave</span><span class="cut-note">Straight razor, full service</span></div><div class="cut-price">Rs. 400</div></div>
+      <div class="cut"><div><span class="cut-name">Kids Cut</span><span class="cut-note">Under 12</span></div><div class="cut-price">Rs. 200</div></div>
+      <div class="cut"><div><span class="cut-name">Hair Colour</span><span class="cut-note">Black or brown, ammonia-free</span></div><div class="cut-price">from Rs. 800</div></div>
+      <div class="cut"><div><span class="cut-name">Head Massage</span><span class="cut-note">15 minutes, mustard or coconut</span></div><div class="cut-price">Rs. 300</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="info" id="shop">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">The Shop</div>
+      <h2>How it works</h2>
+    </div>
+    <div class="info-grid">
+      <div class="icard"><h3>Open daily</h3><p>9:00 AM – 8:00 PM<br>Busiest Friday and Saturday evening</p></div>
+      <div class="icard"><h3>Walk in</h3><p>Four chairs. Average wait is 10 minutes on a weekday.</p></div>
+      <div class="icard"><h3>Or book ahead</h3><p>Message us on WhatsApp and we'll hold a chair for your time.</p></div>
+      <div class="icard"><h3>Payment</h3><p>Cash, eSewa and Khalti all accepted.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="quote">
+  <div class="wrap">
+    <p>"Same fade every time. Now I just message and my chair's ready."</p>
+    <small>— A regular, Kathmandu</small>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Find Us</div>
+      <h2>Come get sharp.</h2>
+    </div>
+    <div class="contact-grid">
+      <div>
+        <div class="row"><strong>Address</strong><div>Jhamsikhel, near the chowk<br>Lalitpur 44700</div></div>
+        <div class="row"><strong>Hours</strong><div>9 AM – 8 PM, every day</div></div>
+        <div class="row"><strong>Phone</strong><div>+977 98X-XXXXXXX</div></div>
+        <div class="row"><strong>Parking</strong><div>Bike parking right outside</div></div>
+      </div>
+      <div class="cta-card">
+        <h3>Book on WhatsApp</h3>
+        <p>Send the time you want and which cut. We'll tell you if the chair is free or how long the wait is.</p>
+        <a href="#" class="btn btn-wa">Message on WhatsApp →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <div>Sharp Cuts Barbershop — Kathmandu</div>
+    <div>This is a demo — swap this name and content for your client's actual business.</div>
+  </div>
+</footer>
+
+</body>
+</html>
