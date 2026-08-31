@@ -117,9 +117,9 @@ header{
        box over the page — no layout shift, and it is interruptible. */
     clip-path:inset(0 0 100% 0);
     opacity:0;visibility:hidden;
-    transition:clip-path 240ms var(--ease-out),
-               opacity 180ms var(--ease-out),
-               visibility 0s linear 240ms;
+    transition:clip-path 180ms var(--ease-out),
+               opacity 140ms var(--ease-out),
+               visibility 0s linear 180ms;
   }
   .nav-links[data-open="true"]{
     clip-path:inset(0 0 0 0);
@@ -175,11 +175,15 @@ body{padding-bottom:52px;} /* keep the banner off the footer */
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto;}
   .strip-inner{animation:none;}
-  .js-reveal [data-reveal]{opacity:1;transform:none;transition:opacity 200ms ease;}
+  .js-reveal [data-reveal]{opacity:1;transform:none;transition:opacity 200ms var(--ease-out);}
   .btn:active{transform:none;}
-  .nav-links{transition:opacity 150ms ease,visibility 0s;}
-  *{transition-duration:.01ms !important;animation-duration:.01ms !important;}
-  .btn,.nav-links a:not(.btn){transition-duration:150ms !important;}
+  .nav-links{transition:opacity 150ms var(--ease-out),visibility 0s;}
+  /* No blanket reset here. A universal !important beat every rule above it,
+     including the opacity transitions this block exists to keep, so reduced
+     motion was silently getting no bridge at all on images and reveals —
+     the exact defect that was fixed for everyone else. Movement is named
+     and stopped individually instead. */
+  .hero-ring{animation:none;}
 }
 
 /* --- photography ------------------------------------------------------ */
@@ -202,5 +206,5 @@ body{padding-bottom:52px;} /* keep the banner off the footer */
 .no-js .ph img{opacity:1;}
 
 @media (prefers-reduced-motion:reduce){
-  .ph img{transition:opacity 200ms ease;}
+  .ph img{transition:opacity 200ms var(--ease-out);}
 }

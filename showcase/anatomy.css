@@ -59,7 +59,7 @@ h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:600;line-height:1.05
 .depth-type h1 em{font-style:italic;color:var(--sc-gold-soft);}
 .depth-type p{margin-top:18px;color:var(--sc-ink-soft);font-size:1.05rem;}
 
-@supports (animation-timeline: scroll()){
+@supports (animation-timeline: --x){
   @media (prefers-reduced-motion: no-preference){
     .plane-back{animation:drift-back linear both;animation-timeline:--hero;animation-range:exit 0% exit 100%;}
     .plane-mid {animation:drift-mid  linear both;animation-timeline:--hero;animation-range:exit 0% exit 100%;}
@@ -139,8 +139,8 @@ h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:600;line-height:1.05
   transform-style:preserve-3d;
   transform:translate3d(0,var(--y),0) rotateX(58deg) rotateZ(-38deg);
   transition:transform 900ms var(--ease-in-out),
-             border-color 200ms var(--ease-out),
-             background-color 200ms var(--ease-out);
+             border-color var(--dur-hover) var(--ease-out),
+             background-color var(--dur-hover) var(--ease-out);
   will-change:transform;
 }
 .layer b{font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--sc-gold-soft);white-space:nowrap;}
@@ -155,7 +155,14 @@ h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:600;line-height:1.05
 @media (hover:hover) and (pointer:fine){
   .layer:hover{border-color:var(--sc-gold);background:rgba(58,40,30,.96);}
 }
-.layer:active{transform:translate3d(0,var(--y),0) rotateX(58deg) rotateZ(-38deg) scale(.985);}
+/* The press is its own motion. Sharing the sheet's transform meant a tap
+   retargeted over 900ms — nearly a second of nothing. The inner wrapper
+   answers in 130ms while the sheet keeps its slow travel. */
+.layer > .lift{
+  display:flex;align-items:center;justify-content:space-between;gap:14px;width:100%;
+  transition:transform var(--dur-press) var(--ease-out);
+}
+.layer:active > .lift{transform:scale(.97);}
 .layer:focus-visible{outline:2px solid var(--sc-gold);outline-offset:3px;}
 
 .js-motion .stack:not(.is-open) .layer{transform:translate3d(0,0,0) rotateX(58deg) rotateZ(-38deg);}
@@ -244,7 +251,7 @@ h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:600;line-height:1.05
   .anatomy,.explode{padding:72px 0 84px;}
   .layer{transform:translate3d(0,var(--y),0) rotateX(52deg) rotateZ(-30deg);}
   .js-motion .stack:not(.is-open) .layer{transform:translate3d(0,0,0) rotateX(52deg) rotateZ(-30deg);}
-  .layer:active{transform:translate3d(0,var(--y),0) rotateX(52deg) rotateZ(-30deg) scale(.985);}
+  
 }
 
 /* ── reduced motion ─────────────────────────────────────────────────────
@@ -255,13 +262,13 @@ h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:600;line-height:1.05
   .plane-back,.plane-mid,.depth-type{animation:none;transform:none;}
   .plane-back{transform:scale(1.18);}
   .anatomy-svg line{transition:none;stroke-dashoffset:0;}
-  .anatomy-svg circle{transition:opacity 200ms ease;transform:scale(1);opacity:1;}
-  .hot-label{transition:opacity 200ms ease;transform:none;opacity:1;}
-  .layer{transition:border-color 150ms ease,background-color 150ms ease;
+  .anatomy-svg circle{transition:opacity 200ms var(--ease-out);transform:scale(1);opacity:1;}
+  .hot-label{transition:opacity 200ms var(--ease-out);transform:none;opacity:1;}
+  .layer{transition:border-color 150ms var(--ease-out),background-color 150ms var(--ease-out);
     transform:translate3d(0,var(--y),0) rotateX(58deg) rotateZ(-38deg);}
   /* The swap still happens — it is the answer to a tap — but it fades
      rather than scaling, and the blur goes. */
-  .js-stage .shot{transition:opacity 180ms ease;transform:none;filter:none;}
+  .js-stage .shot{transition:opacity 180ms var(--ease-out);transform:none;filter:none;}
   .tilt{transition:none;}
 }
 
@@ -303,7 +310,7 @@ h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:600;line-height:1.05
 
 /* The plane travels further than the sheets, so the gap between them opens as
    you scroll — that difference is the depth. Off the main thread. */
-@supports (animation-timeline: view()){
+@supports (animation-timeline: --x){
   @media (prefers-reduced-motion: no-preference){
     .bp-plane{animation:bp-drift linear both;animation-timeline:--strata;animation-range:entry 0% entry 100%;}
   }
