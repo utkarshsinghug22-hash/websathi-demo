@@ -50,8 +50,17 @@
   .tnum{font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1;}
 
   /* ── hero: the thesis is the price, not a stock smile ─────────────────── */
-  .hero{padding:clamp(120px,17vh,190px) 0 clamp(56px,8vh,90px);}
-  .hero h1{font-size:clamp(2.6rem,6.6vw,5.2rem);max-width:15ch;margin:18px 0 26px;}
+/* The photograph fills the half of the screen the copy does not use. Text
+     alone on white read as an empty page — the thesis still leads, it just
+     is not floating in nothing any more. */
+  .hero{position:relative;padding:clamp(120px,17vh,190px) 0 clamp(56px,8vh,90px);overflow:clip;}
+  .hero-media{position:absolute;right:0;top:0;bottom:0;width:46vw;overflow:hidden;}
+  .hero-media::after{content:'';position:absolute;inset:0;
+    background:linear-gradient(to right,var(--surface),rgba(246,249,249,.55) 22%,transparent 52%);}
+  .hero-media img{width:100%;height:100%;object-fit:cover;object-position:50% 42%;}
+  .hero .wrap{position:relative;z-index:2;}
+  .hero h1,.hero .lede,.headline-price{max-width:min(52ch,50vw);}
+  .hero h1{font-size:clamp(2.6rem,6.6vw,5.2rem);max-width:14ch;margin:18px 0 26px;}
   .hero h1 em{font-style:normal;color:var(--accent);}
   .hero .lede{font-size:1.1rem;max-width:46ch;margin-bottom:38px;}
   .hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:clamp(44px,7vh,72px);}
@@ -173,6 +182,16 @@
   .section-head .lede{font-size:1rem;max-width:48ch;}
 
   @media(max-width:900px){
+    /* No spare half on a phone: the photograph becomes a band under the copy. */
+    /* Order matters here: the media comes first in the DOM so it can be the
+       right-hand column on desktop, but on a phone that pushed the headline
+       and both buttons below the fold. Flex order puts the copy first. */
+    .hero{padding-top:104px;display:flex;flex-direction:column;}
+    .hero-media{order:2;position:relative;right:auto;width:100%;height:clamp(200px,32vh,300px);
+      margin:34px 0 0;border-radius:3px;}
+    .hero .wrap{order:1;}
+    .hero-media::after{background:linear-gradient(to top,rgba(246,249,249,.35),transparent 46%);}
+    .hero h1,.hero .lede,.headline-price{max-width:none;}
     .stages{grid-template-columns:1fr 1fr;}
     .room-grid,.book-grid{grid-template-columns:1fr;}
     .room-stack{grid-template-rows:auto auto;}
@@ -206,7 +225,15 @@
 </header>
 
 <section class="hero">
-  <div class="wrap">
+  <div class="hero-media ph" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABMNDhEODBMRDxEVFBMXHTAfHRoaHToqLCMwRT1JR0Q9Q0FMVm1dTFFoUkFDX4JgaHF1e3x7SlyGkIV3j214e3b/2wBDARQVFR0ZHTgfHzh2T0NPdnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnb/wAARCAAUAA8DASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDTm8q3BlnPA4G3vVP7RBLIEAGTyMiqF1NFLp/ls7O45Bqrb3UrxiIRIdvQvxxQA5htg4qp5riXcG+bHWiigD//2Q==)">
+    <picture>
+      <source type="image/webp" srcset="img/dc-hero-480.webp 480w, img/dc-hero-760.webp 760w, img/dc-hero-1040.webp 1040w" sizes="(max-width:900px) 100vw, 46vw">
+      <img src="img/dc-hero-760.jpg" srcset="img/dc-hero-480.jpg 480w, img/dc-hero-760.jpg 760w, img/dc-hero-1040.jpg 1040w" sizes="(max-width:900px) 100vw, 46vw"
+           width="1040" height="1387" fetchpriority="high"
+           alt="A dentist at work in a Putalisadak treatment room, with the chair, overhead light and delivery unit.">
+    </picture>
+  </div>
+  <div class="wrap hero-copy">
     <span class="eyebrow">Dental clinic — Putalisadak, Kathmandu</span>
     <h1>You'll know the cost <em>before</em> we start.</h1>
     <p class="lede">Check-ups, cleaning, fillings and root canal treatment — explained in plain language, priced in writing, and never begun until you've agreed to it.</p>

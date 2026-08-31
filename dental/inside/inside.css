@@ -24,9 +24,11 @@ h1,h2,h3{font-family:'Outfit',sans-serif;font-weight:600;letter-spacing:-.02em;l
 .plane{position:absolute;inset:0;will-change:transform;}
 .plane img{width:100%;height:100%;object-fit:cover;}
 .plane-back{filter:blur(16px) saturate(.75);transform:scale(1.16);opacity:.45;}
-.plane-mid{display:grid;place-items:center;align-content:start;padding-top:8vh;}
+.plane-mid{display:grid;place-items:center;align-content:start;padding-top:5vh;}
+/* 520px was a postcard floating in a dark screen. The frame now carries the
+   hero rather than decorating it. */
 .plane-mid .frame{
-  width:min(52vw,520px);aspect-ratio:16/9;border-radius:3px;overflow:hidden;
+  width:min(80vw,900px);aspect-ratio:16/9;border-radius:3px;overflow:hidden;
   box-shadow:0 48px 88px -30px rgba(0,0,0,.85);
   outline:1px solid rgba(47,163,150,.42);outline-offset:-12px;
 }
@@ -37,7 +39,7 @@ h1,h2,h3{font-family:'Outfit',sans-serif;font-weight:600;letter-spacing:-.02em;l
     radial-gradient(ellipse 74% 58% at 50% 34%,transparent 34%,rgba(10,21,23,.62) 100%);
 }
 .depth-copy{position:relative;z-index:4;grid-row:2;text-align:center;padding:0 24px;}
-.depth-copy h1{font-size:clamp(2.4rem,6.4vw,4.8rem);max-width:18ch;margin:16px auto 18px;}
+.depth-copy h1{font-size:clamp(2.5rem,6.8vw,5.2rem);max-width:17ch;margin:16px auto 18px;}
 .depth-copy p{color:var(--in-ink-soft);max-width:52ch;margin:0 auto;}
 
 @supports (animation-timeline: --x){
@@ -114,7 +116,7 @@ h1,h2,h3{font-family:'Outfit',sans-serif;font-weight:600;letter-spacing:-.02em;l
 @media(max-width:860px){
   .tray-grid{grid-template-columns:1fr;}
   .readout{position:static;min-height:0;}
-  .plane-mid .frame{width:86vw;}
+  .plane-mid .frame{width:92vw;}
 }
 
 /* ── header & shared section furniture ───────────────────────────────── */
