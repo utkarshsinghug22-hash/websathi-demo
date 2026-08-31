@@ -157,13 +157,31 @@ header{
 .js-reveal [data-reveal].is-in{opacity:1;transform:none;}
 
 /* --- demo banner ------------------------------------------------------ */
+/* The banner is a statement about the page rather than part of it, so it
+   names its own three colours instead of inverting --ink/--surface.
+
+   Inverting only ever produced a readable bar on the light-surfaced sites.
+   Where --surface is dark, --ink IS the near-white text colour, so the bar
+   came out cream — and --accent-soft, a gold picked to glow on near-black,
+   landed on that cream at 1.37:1. The words that disappeared were the ones
+   that matter most: "This is a demo." The barbershop had already noticed and
+   patched around it locally; the bridal site, which is the URL in every
+   outreach message, had not.
+
+   The fallbacks are a dark bar that stays legible on any palette, so a site
+   that never sets these is merely off-tone instead of unreadable. */
 .demo-banner{
   position:fixed;bottom:0;left:0;right:0;z-index:60;
-  background:var(--ink);color:var(--surface);
+  background:var(--banner-bg,#0D0B0A);
+  color:var(--banner-ink,#CFC7BE);
+  /* On a dark site the bar and the page are within 1.05:1 of each other, so
+     the fill cannot separate them — this line does. On a light site the
+     luminance already separates them and the line is simply invisible. */
+  border-top:1px solid var(--hairline);
   padding:11px 20px;text-align:center;
   font-size:.78rem;line-height:1.45;
 }
-.demo-banner strong{color:var(--accent-soft);}
+.demo-banner strong{color:var(--banner-accent,#E8C87E);}
 body{padding-bottom:52px;} /* keep the banner off the footer */
 @media(max-width:520px){body{padding-bottom:66px;}}
 
@@ -182,8 +200,9 @@ body{padding-bottom:52px;} /* keep the banner off the footer */
      including the opacity transitions this block exists to keep, so reduced
      motion was silently getting no bridge at all on images and reveals —
      the exact defect that was fixed for everyone else. Movement is named
-     and stopped individually instead. */
-  .hero-ring{animation:none;}
+     and stopped individually instead — which is every rule in this block.
+     (`.hero-ring` was named here too, and no page has carried that element
+     for some time; a dead selector reads as coverage that does not exist.) */
 }
 
 /* --- photography ------------------------------------------------------ */
@@ -202,7 +221,13 @@ body{padding-bottom:52px;} /* keep the banner off the footer */
   transition:opacity 500ms var(--ease-out);
 }
 .ph img.is-loaded{opacity:1;}
-/* Without JS the image simply shows; the blur-up is an enhancement, not a gate. */
+/* Without JS the image simply shows; the blur-up is an enhancement, not a gate.
+   This rule existed for a long time without ever firing: nothing set `no-js`,
+   so the hidden state above was applied by CSS alone and every photograph on
+   every page depended on a script to become visible at all. Each page now
+   ships `<html class="no-js">` and drops it from an inline script in the head,
+   which runs before first paint — so a blocked or 404'd websathi.js costs the
+   fade, not the photograph. Same rule the reveal block states two blocks up. */
 .no-js .ph img{opacity:1;}
 
 @media (prefers-reduced-motion:reduce){

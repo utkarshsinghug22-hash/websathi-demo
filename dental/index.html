@@ -1,7 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
 <meta charset="UTF-8">
+<script>/* Photographs must not depend on a script. Two ways they can:
+   JS off entirely — the class below stays and the stylesheet shows them;
+   or websathi.js alone fails to run, which the class cannot see, so the
+   load handler reveals anything it never got round to marking. */
+document.documentElement.classList.remove('no-js');
+addEventListener('load',function(){if(window.__wsReady)return;
+document.querySelectorAll('.ph img').forEach(function(i){i.classList.add('is-loaded')})});</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Websathi — Smile Dental Care, Kathmandu</title>
 <meta name="description" content="A Kathmandu dental clinic that tells you the cost before it starts. Check-ups, cleaning, fillings and root canal treatment. Book on WhatsApp.">
@@ -22,7 +29,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/websathi.css?v=8ab105ce">
+<link rel="stylesheet" href="../assets/websathi.css?v=b79a6d49">
 <style>
   :root{
     /* Cool paper, not cream. Every clinic reaches for the same pale blue, and
@@ -40,6 +47,11 @@
     --ink-soft:#4C6165;        /* 6.9:1 on paper */
     --hairline:rgba(14,27,29,.12);
     --hairline-strong:rgba(14,27,29,.34);
+    /* Banner: --accent-soft measured 4.03:1 here, under AA for 12px bold.
+       This is the teal the inside page already runs on. */
+    --banner-bg:#0E1B1D;
+    --banner-ink:#F6F9F9;
+    --banner-accent:#2FA396;   /* 5.70:1 */
   }
   body{background:var(--surface);color:var(--ink);font-family:'Outfit',sans-serif;}
   h1,h2,h3{font-family:'Outfit',sans-serif;font-weight:600;letter-spacing:-.018em;line-height:1.04;}
@@ -265,7 +277,8 @@
   <picture>
             <source type="image/webp" srcset="img/dc-wide-900.webp 900w, img/dc-wide-1400.webp 1400w, img/dc-wide-1800.webp 1800w" sizes="100vw">
             <img src="img/dc-wide-1400.jpg" srcset="img/dc-wide-900.jpg 900w, img/dc-wide-1400.jpg 1400w, img/dc-wide-1800.jpg 1800w" sizes="100vw"
-                 width="1800" height="1013" alt="Two dentists showing a patient her panoramic X-ray on a monitor beside the chair.">
+                 width="1800" height="1013" loading="lazy" decoding="async"
+                 alt="Two dentists showing a patient her panoramic X-ray on a monitor beside the chair.">
           </picture>
   <div class="band-note"><span class="wrap">You see the X-ray we see, and the price, before anything begins.</span></div>
 </section>
@@ -436,6 +449,6 @@
   <strong>This is a demo.</strong> Your site would carry your own name, treatments and prices.
 </div>
 
-<script src="../assets/websathi.js?v=97309f32" defer></script>
+<script src="../assets/websathi.js?v=8cb24769" defer></script>
 </body>
 </html>

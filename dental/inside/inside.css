@@ -9,6 +9,34 @@
   --in-teal:#2FA396;
   --in-teal-soft:#8FD3C9;
   --in-clay:#D3765A;
+
+  /* This page pulls header, buttons and the demo banner out of the shared
+     sheet, and that sheet is written against a palette contract: --surface,
+     --ink, --accent-deep, --hairline and the rest. Naming only --in-* left
+     every one of them undefined, and an undefined custom property does not
+     fall back — it invalidates the whole declaration. So `.btn-solid` on
+     "Book a time" resolved to background:transparent, and `.btn-ghost` on
+     "Back to the clinic" lost `border:1.5px solid var(--hairline-strong)`
+     outright: both rendered as bare text in a page that has no other styling
+     for them. The banner lost its background and floated over the content it
+     is supposed to sit on top of.
+
+     The palette above is the source of truth; this block is the adapter. */
+  --surface:var(--in-bg);
+  --surface-warm:var(--in-bg-2);
+  --surface-blur:rgba(10,21,23,.88);
+  --ink:var(--in-ink);
+  --ink-soft:var(--in-ink-soft);
+  --accent:var(--in-teal);
+  --accent-soft:var(--in-teal-soft);
+  --accent-deep:var(--in-teal);      /* 6.00:1 either way against --surface */
+  --accent-deepest:#2B968B;          /* 5.15:1 — hover darkens and still holds AA */
+  --hairline:rgba(238,246,245,.13);
+  --hairline-strong:rgba(238,246,245,.42);
+
+  --banner-bg:#060F10;               /* under --in-bg, as on the other sites */
+  --banner-ink:#9FB3B3;              /* 8.83:1 */
+  --banner-accent:#8FD3C9;           /* 11.38:1 */
 }
 body{background:var(--in-bg);color:var(--in-ink);font-family:'Outfit',sans-serif;}
 h1,h2,h3{font-family:'Outfit',sans-serif;font-weight:600;letter-spacing:-.02em;line-height:1.04;}

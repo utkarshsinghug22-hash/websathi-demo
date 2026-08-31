@@ -1,7 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
 <meta charset="UTF-8">
+<script>/* Photographs must not depend on a script. Two ways they can:
+   JS off entirely — the class below stays and the stylesheet shows them;
+   or websathi.js alone fails to run, which the class cannot see, so the
+   load handler reveals anything it never got round to marking. */
+document.documentElement.classList.remove('no-js');
+addEventListener('load',function(){if(window.__wsReady)return;
+document.querySelectorAll('.ph img').forEach(function(i){i.classList.add('is-loaded')})});</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Websathi — Thakali Kitchen, Kathmandu</title>
 <meta name="description" content="Thakali and Newari plates cooked to order in Kathmandu. See the menu and book a table on WhatsApp.">
@@ -22,7 +29,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/websathi.css?v=8ab105ce">
+<link rel="stylesheet" href="../assets/websathi.css?v=b79a6d49">
 <style>
   :root{
     --accent:#D98324;
@@ -37,6 +44,9 @@
     --moss:#4A5D3A;
     --hairline:rgba(36,26,21,.1);
     --hairline-strong:rgba(36,26,21,.34);
+    --banner-bg:#241A15;
+    --banner-ink:#FDF6EC;
+    --banner-accent:#F2C078;   /* 10.20:1 */
   }
   body{background:var(--surface);color:var(--ink);font-family:'DM Sans',sans-serif;}
   h1,h2,h3{font-family:'Fraunces',serif;font-weight:600;line-height:1.15;}
@@ -225,6 +235,6 @@
   <strong>This is a demo.</strong> Your site would carry your own name, menu and prices.
 </div>
 
-<script src="../assets/websathi.js?v=97309f32" defer></script>
+<script src="../assets/websathi.js?v=8cb24769" defer></script>
 </body>
 </html>

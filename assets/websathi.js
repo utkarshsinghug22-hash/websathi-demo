@@ -5,6 +5,13 @@
 (function () {
   'use strict';
 
+  /* Tells the inline head script to stand down. Without it that script would
+     reveal every photograph on window load, which for the lazy ones below the
+     fold means opacity 1 before they hold any pixels — they would pop in over
+     the placeholder instead of fading. Set first, so a throw further down
+     still counts as "this file ran". */
+  window.__wsReady = true;
+
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ---- mobile navigation ------------------------------------------- */

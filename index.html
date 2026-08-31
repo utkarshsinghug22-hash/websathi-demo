@@ -1,7 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
 <meta charset="UTF-8">
+<script>/* Photographs must not depend on a script. Two ways they can:
+   JS off entirely — the class below stays and the stylesheet shows them;
+   or websathi.js alone fails to run, which the class cannot see, so the
+   load handler reveals anything it never got round to marking. */
+document.documentElement.classList.remove('no-js');
+addEventListener('load',function(){if(window.__wsReady)return;
+document.querySelectorAll('.ph img').forEach(function(i){i.classList.add('is-loaded')})});</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Websathi — Bridal &amp; Beauty, Kathmandu</title>
 <meta name="description" content="Bridal makeup, hair and skin prep in Kathmandu. Book a free consultation on WhatsApp.">
@@ -22,7 +29,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/websathi.css?v=8ab105ce">
+<link rel="stylesheet" href="assets/websathi.css?v=b79a6d49">
 <style>
   :root{
     /* Warm near-black, not neutral. Gold and red silk go flat on cream and
@@ -39,6 +46,11 @@
     --ink-soft:#B3A499;          /* 7.4:1 on --surface */
     --hairline:rgba(246,239,230,.13);
     --hairline-strong:rgba(246,239,230,.42);
+    /* The demo banner keeps this site's own near-black rather than
+       inverting to cream, where the gold went to 1.37:1. */
+    --banner-bg:#0E0908;       /* under --surface, not inverted from it */
+    --banner-ink:#B3A499;      /* 8.19:1 */
+    --banner-accent:#E4CE86;   /* 12.69:1 */
   }
   body{background:var(--surface);color:var(--ink);font-family:'Jost',sans-serif;}
   h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:500;letter-spacing:.005em;line-height:1.02;}
@@ -388,6 +400,6 @@
   <strong>This is a demo.</strong> Your site would carry your own name, photos and prices.
 </div>
 
-<script src="assets/websathi.js?v=97309f32" defer></script>
+<script src="assets/websathi.js?v=8cb24769" defer></script>
 </body>
 </html>

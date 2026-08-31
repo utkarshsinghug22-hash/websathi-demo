@@ -1,7 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
 <meta charset="UTF-8">
+<script>/* Photographs must not depend on a script. Two ways they can:
+   JS off entirely — the class below stays and the stylesheet shows them;
+   or websathi.js alone fails to run, which the class cannot see, so the
+   load handler reveals anything it never got round to marking. */
+document.documentElement.classList.remove('no-js');
+addEventListener('load',function(){if(window.__wsReady)return;
+document.querySelectorAll('.ph img').forEach(function(i){i.classList.add('is-loaded')})});</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Websathi — Inside a Bridal Look</title>
 <meta name="description" content="A bridal look, shown detail by detail. Built by Websathi.">
@@ -19,7 +26,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/websathi.css?v=8ab105ce">
+<link rel="stylesheet" href="../assets/websathi.css?v=b79a6d49">
 <link rel="stylesheet" href="anatomy.css?v=79fa80b8">
 </head>
 <body>
@@ -28,7 +35,7 @@
   <div class="plane plane-back ph" aria-hidden="true" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABMNDhEODBMRDxEVFBMXHTAfHRoaHToqLCMwRT1JR0Q9Q0FMVm1dTFFoUkFDX4JgaHF1e3x7SlyGkIV3j214e3b/2wBDARQVFR0ZHTgfHzh2T0NPdnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnb/wAARCAANABQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDI8vyHILhl9hUzoHsmKLvctg+1R24SSJt65I6HNN1H/RrURxk/M2Sc+1NU21zDc0nYqNDIzE7WPPpRVUSOBwxH40VNmPQ//9k=)">
     <picture>
       <source type="image/webp" srcset="../assets/img/bride-wide-900.webp 900w, ../assets/img/bride-wide-1400.webp 1400w, ../assets/img/bride-wide-1800.webp 1800w" sizes="100vw">
-      <img src="../assets/img/bride-wide-900.jpg" width="1800" height="1200" alt="" width="1800" height="1200">
+      <img src="../assets/img/bride-wide-900.jpg" width="1800" height="1200" alt="">
     </picture>
   </div>
   <div class="plane plane-mid">
@@ -125,7 +132,7 @@
             <source type="image/webp" srcset="../assets/img/st-dupatta-360.webp 360w, ../assets/img/st-dupatta-640.webp 640w" sizes="(max-width:860px) 92vw, 420px">
             <img src="../assets/img/st-dupatta-640.jpg" srcset="../assets/img/st-dupatta-360.jpg 360w, ../assets/img/st-dupatta-640.jpg 640w"
                  sizes="(max-width:860px) 92vw, 420px" loading="lazy" decoding="async"
-                 width="640" height="640" alt="Dupatta — Last. Pinned once, and nothing moves after.">
+                 width="640" height="640" alt="A black net dupatta edged in gold embroidery and sequins, draped past the bride's ear and kundan earring against a teal damask wall.">
           </picture>
           <figcaption><b>Dupatta</b><span>Last. Pinned once, and nothing moves after.</span></figcaption>
         </figure>
@@ -134,7 +141,7 @@
             <source type="image/webp" srcset="../assets/img/st-jewellery-360.webp 360w, ../assets/img/st-jewellery-640.webp 640w" sizes="(max-width:860px) 92vw, 420px">
             <img src="../assets/img/st-jewellery-640.jpg" srcset="../assets/img/st-jewellery-360.jpg 360w, ../assets/img/st-jewellery-640.jpg 640w"
                  sizes="(max-width:860px) 92vw, 420px" loading="lazy" decoding="async"
-                 width="640" height="640" alt="Jewellery — Choker, tikka, jhumka — weight checked before it goes on.">
+                 width="640" height="640" alt="A layered gold kundan choker strung with green bead drops, close on the bride's neck and collarbone.">
           </picture>
           <figcaption><b>Jewellery</b><span>Choker, tikka, jhumka — weight checked before it goes on.</span></figcaption>
         </figure>
@@ -143,7 +150,7 @@
             <source type="image/webp" srcset="../assets/img/st-eyes-360.webp 360w, ../assets/img/st-eyes-640.webp 640w" sizes="(max-width:860px) 92vw, 420px">
             <img src="../assets/img/st-eyes-640.jpg" srcset="../assets/img/st-eyes-360.jpg 360w, ../assets/img/st-eyes-640.jpg 640w"
                  sizes="(max-width:860px) 92vw, 420px" loading="lazy" decoding="async"
-                 width="640" height="640" alt="Eyes — Built in daylight. It has to read at noon and under a mandap.">
+                 width="640" height="640" alt="A closed eye worked in bronze and black smoky shadow with winged liner, beneath a kundan and emerald maang tikka.">
           </picture>
           <figcaption><b>Eyes</b><span>Built in daylight. It has to read at noon and under a mandap.</span></figcaption>
         </figure>
@@ -152,7 +159,7 @@
             <source type="image/webp" srcset="../assets/img/st-base-360.webp 360w, ../assets/img/st-base-640.webp 640w" sizes="(max-width:860px) 92vw, 420px">
             <img src="../assets/img/st-base-640.jpg" srcset="../assets/img/st-base-360.jpg 360w, ../assets/img/st-base-640.jpg 640w"
                  sizes="(max-width:860px) 92vw, 420px" loading="lazy" decoding="async"
-                 width="640" height="640" alt="Base — Matched at the jaw, never on the back of the hand.">
+                 width="640" height="640" alt="The bride's cheek, jaw and neck in evenly matched base, with a kundan stud earring and the choker below.">
           </picture>
           <figcaption><b>Base</b><span>Matched at the jaw, never on the back of the hand.</span></figcaption>
         </figure>
@@ -176,7 +183,7 @@
   </div>
 </div>
 
-<script src="../assets/websathi.js?v=97309f32" defer></script>
-<script src="anatomy.js?v=92a13330" defer></script>
+<script src="../assets/websathi.js?v=8cb24769" defer></script>
+<script src="anatomy.js?v=4b2fd26b" defer></script>
 </body>
 </html>

@@ -84,8 +84,25 @@
         if (l.dataset.stage === key) l.setAttribute('aria-current', 'true');
         else l.removeAttribute('aria-current');
       });
-      shots.forEach(function (s) { s.classList.toggle('is-active', s.dataset.stage === key); });
+      shots.forEach(function (s) {
+        var on = s.dataset.stage === key;
+        s.classList.toggle('is-active', on);
+        /* The three that are not showing are hidden with opacity alone, which
+           leaves them in the accessibility tree: all four captions read in a
+           row, with nothing to say that three of them are invisible. It also
+           made the aria-live region inert — swapping a class changes no text
+           inside it, so the announcement it promises never fired. Removing
+           them from the tree fixes both at once. */
+        if (on) s.removeAttribute('aria-hidden');
+        else s.setAttribute('aria-hidden', 'true');
+      });
     };
+
+    /* Adopt whatever the markup marked active. Without this script all four
+       are a visible grid and all four belong in the tree, so the hiding has
+       to start here rather than in the HTML. */
+    var first = grid.querySelector('.shot.is-active') || shots[0];
+    show(first.dataset.stage);
 
     layers.forEach(function (l) {
       var key = l.dataset.stage;

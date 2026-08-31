@@ -1,7 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
 <meta charset="UTF-8">
+<script>/* Photographs must not depend on a script. Two ways they can:
+   JS off entirely — the class below stays and the stylesheet shows them;
+   or websathi.js alone fails to run, which the class cannot see, so the
+   load handler reveals anything it never got round to marking. */
+document.documentElement.classList.remove('no-js');
+addEventListener('load',function(){if(window.__wsReady)return;
+document.querySelectorAll('.ph img').forEach(function(i){i.classList.add('is-loaded')})});</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Websathi — Sharp Cuts Barbershop, Kathmandu</title>
 <meta name="description" content="Skin fades, beard shaping and hot-towel shaves in Lalitpur. Walk in or book a chair on WhatsApp.">
@@ -22,7 +29,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/websathi.css?v=8ab105ce">
+<link rel="stylesheet" href="../assets/websathi.css?v=b79a6d49">
 <style>
   :root{
     /* A dark shop. The shared sheet is written semantically, so "surface" is
@@ -38,6 +45,11 @@
     --rust:#8A3B2A;
     --ink:#F4F0E9;
     --ink-soft:#B6ACA0;   /* 7.3:1 on #14110F */
+    /* This shop worked around the inverted banner before the shared sheet
+       had tokens for it; these are the same colours, now named. */
+    --banner-bg:#0D0B0A;
+    --banner-ink:#B6ACA0;      /* 8.79:1 */
+    --banner-accent:#E8C87E;   /* 12.15:1 */
     --hairline:rgba(244,240,233,.13);
     --hairline-strong:rgba(244,240,233,.4);
   }
@@ -100,10 +112,6 @@
 
   footer{background:#0D0B0A;color:var(--ink-soft);padding:34px 0;font-size:.86rem;}
   .foot{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;}
-
-  /* Keep the banner reading as part of this shop rather than inverting it. */
-  .demo-banner{background:#0D0B0A;color:var(--ink-soft);border-top:1px solid var(--hairline);}
-  .demo-banner strong{color:var(--accent-soft);}
 
   @media(max-width:900px){
     .hero{padding:100px 0 52px;}
@@ -235,6 +243,6 @@
   <strong>This is a demo.</strong> Your site would carry your own name, cut list and prices.
 </div>
 
-<script src="../assets/websathi.js?v=97309f32" defer></script>
+<script src="../assets/websathi.js?v=8cb24769" defer></script>
 </body>
 </html>
