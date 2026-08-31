@@ -195,3 +195,58 @@ h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:600;line-height:1.05
   .layer{transition:none;transform:translate3d(0,var(--y),0);}
   .tilt{transition:none;}
 }
+
+/* ── blueprint plane ────────────────────────────────────────────────────
+   A technical drawing sitting behind the strata: it gives the section a real
+   third plane rather than a flat backdrop.
+
+   It is held deliberately faint and slightly blurred. The source is a spec
+   card and still carries file text — "1200 x 1200 px", "JPG (sRGB)" — which
+   is about the asset, not about bridal work. At this treatment it reads as
+   draughting texture; at any opacity where that text is legible it would be
+   telling a salon owner they are looking at a production sheet. */
+.explode{position:relative;isolation:isolate;overflow:hidden;}
+.bp-plane{
+  position:absolute;left:50%;top:50%;
+  width:min(150%,1500px);margin-left:calc(min(150%,1500px) / -2);
+  transform:translateY(-50%);
+  z-index:0;pointer-events:none;
+  opacity:.17;filter:blur(1.4px) saturate(.7);
+  /* Fades to nothing at every edge so it never reads as a pasted rectangle. */
+  -webkit-mask-image:radial-gradient(ellipse 62% 58% at 50% 50%,#000 18%,transparent 78%);
+          mask-image:radial-gradient(ellipse 62% 58% at 50% 50%,#000 18%,transparent 78%);
+  will-change:transform;
+}
+.bp-plane img{width:100%;height:auto;display:block;}
+
+/* A drafting grid over the plane, tying it to the sheets in front. */
+.explode::before{
+  content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(201,162,39,.05) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(201,162,39,.05) 1px,transparent 1px);
+  background-size:64px 64px;
+  -webkit-mask-image:radial-gradient(ellipse 70% 66% at 50% 50%,#000 10%,transparent 82%);
+          mask-image:radial-gradient(ellipse 70% 66% at 50% 50%,#000 10%,transparent 82%);
+}
+.explode > .sc-wrap{position:relative;z-index:2;}
+
+/* The plane travels further than the sheets, so the gap between them opens as
+   you scroll — that difference is the depth. Off the main thread. */
+@supports (animation-timeline: view()){
+  @media (prefers-reduced-motion: no-preference){
+    .bp-plane{animation:bp-drift linear both;animation-timeline:view();animation-range:entry 0% exit 100%;}
+  }
+}
+@keyframes bp-drift{
+  from{transform:translateY(-50%) translateY(9%)  scale(1.06);}
+  to  {transform:translateY(-50%) translateY(-9%) scale(1.12);}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .bp-plane{animation:none;transform:translateY(-50%);}
+}
+@media(max-width:720px){
+  .bp-plane{opacity:.13;width:min(230%,1100px);margin-left:calc(min(230%,1100px) / -2);}
+  .explode::before{background-size:44px 44px;}
+}

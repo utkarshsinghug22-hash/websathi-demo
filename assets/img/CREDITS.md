@@ -12,6 +12,13 @@ build should ship with the client's own photographs.
 `g-jewellery` and `g-palette` are crops of `slot-02`, framed to hold the
 gallery to a single session.
 
+`blueprint` is the /blueprint card, cropped hard to the drawing and its
+dimension rules. Everything around it — the spec column, the composition
+notes, the crop previews — is prose about the *file* ("1200 x 1200 px",
+"JPG (sRGB)"), and a salon owner reading that is being shown a production
+sheet. It runs at 17% behind the exploded stack, where it is draughting
+texture rather than something to read.
+
 ## Held back
 
 - `slot-07` — black and white. One monochrome tile among four warm ones reads
