@@ -4,14 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Websathi — Inside the Room</title>
-<meta name="description" content="Every instrument on a dental tray, and which of them will actually come near you at a check-up.">
+<meta name="description" content="A dental room and tray, part by part: what every piece of equipment does, which instruments a check-up actually uses, and what happens in each of the thirty minutes.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Inside the Room">
-<meta property="og:description" content="Every instrument on the tray, and which ones a check-up actually uses.">
+<meta property="og:description" content="What every piece of equipment does, and which instruments a check-up actually uses.">
 <meta property="og:url" content="https://utkarshsinghug22-hash.github.io/websathi-demo/dental/inside/">
 <meta property="og:image" content="https://utkarshsinghug22-hash.github.io/websathi-demo/dental/preview.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://utkarshsinghug22-hash.github.io/websathi-demo/dental/preview.png">
 <meta name="theme-color" content="#0A1517">
@@ -20,127 +19,225 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/websathi.css?v=8ab105ce">
-<link rel="stylesheet" href="inside.css?v=f6bab1f8">
+<link rel="stylesheet" href="inside.css?v=d225fa14">
 </head>
 <body>
 
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="../">Smile <span>Dental Care</span></a>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
+      <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <nav class="nav-links" id="nav-links">
+      <a href="#room">The room</a>
+      <a href="#tray">The tray</a>
+      <a href="#minutes">Thirty minutes</a>
+      <a href="../#book" class="btn btn-solid">Book a time</a>
+    </nav>
+  </div>
+</header>
+
 <section class="depth">
   <div class="plane plane-back ph" aria-hidden="true" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABMNDhEODBMRDxEVFBMXHTAfHRoaHToqLCMwRT1JR0Q9Q0FMVm1dTFFoUkFDX4JgaHF1e3x7SlyGkIV3j214e3b/2wBDARQVFR0ZHTgfHzh2T0NPdnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnb/wAARCAALABQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDWtbC302aSdWO6Q5O48E1ZW6Mr7H2bGGDjNYHi5mxEu4gBSQAe9aFrcSnRIHLksUGSapLoK5Sn0AtKTaXHlRn+GitOIkryaKkZ/9k=)">
-    <picture>
-      <source type="image/webp" srcset="../img/dc-wide-900.webp 900w, ../img/dc-wide-1400.webp 1400w, ../img/dc-wide-1800.webp 1800w" sizes="100vw">
-      <img src="../img/dc-wide-1400.jpg" width="1800" height="1013" alt="">
-    </picture>
+    <picture><source type="image/webp" srcset="../img/dc-wide-900.webp 900w, ../img/dc-wide-1400.webp 1400w, ../img/dc-wide-1800.webp 1800w" sizes="100vw">
+      <img src="../img/dc-wide-1400.jpg" width="1800" height="1013" alt=""></picture>
   </div>
   <div class="plane plane-mid">
     <div class="frame ph" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABMNDhEODBMRDxEVFBMXHTAfHRoaHToqLCMwRT1JR0Q9Q0FMVm1dTFFoUkFDX4JgaHF1e3x7SlyGkIV3j214e3b/2wBDARQVFR0ZHTgfHzh2T0NPdnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnb/wAARCAALABQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDXENlpbNMAkbSH7xPU1YSaVmBk3GNhz8mBiqGt20Nxbu0yBiiErk9Kis5ZP7Eg+dvuDvVJCGXOg21zMZEkaMHsBRVy0JeHLHJzRUobP//Z)">
-      <picture>
-        <source type="image/webp" srcset="../img/dc-xray-420.webp 420w, ../img/dc-xray-640.webp 640w, ../img/dc-xray-900.webp 900w" sizes="(max-width:860px) 86vw, 520px">
+      <picture><source type="image/webp" srcset="../img/dc-xray-420.webp 420w, ../img/dc-xray-640.webp 640w, ../img/dc-xray-900.webp 900w" sizes="(max-width:860px) 86vw, 520px">
         <img src="../img/dc-xray-640.jpg" srcset="../img/dc-xray-420.jpg 420w, ../img/dc-xray-640.jpg 640w, ../img/dc-xray-900.jpg 900w" sizes="(max-width:860px) 86vw, 520px"
-             width="900" height="506" alt="Two dentists reviewing a panoramic X-ray on a monitor.">
-      </picture>
+             width="900" height="506" alt="Two dentists reviewing a panoramic X-ray on a monitor."></picture>
     </div>
   </div>
   <div class="depth-copy">
     <span class="in-eyebrow">Smile Dental Care — inside the room</span>
-    <h1>The tray looks worse than the appointment.</h1>
-    <p>Everything laid out for a procedure, and which of it a check-up actually touches. Take any instrument.</p>
+    <h1>The room looks worse than the appointment.</h1>
+    <p>Every machine, every instrument, and every one of the thirty minutes — explained before you sit down.</p>
+    <p class="scroll-hint" id="scroll-hint">Scroll</p>
   </div>
 </section>
 
-<section class="tray">
+<section class="probe-sec" id="room">
   <div class="in-wrap">
-    <div class="tray-head">
+    <div class="sec-head" data-reveal>
+      <span class="in-eyebrow">The room</span>
+      <h2>Six machines, and what each one is for</h2>
+      <p>None of it is there to be alarming. Take any part.</p>
+    </div>
+    <div class="wide-stage-wrap">
+      <div class="wide-stage ph" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABMNDhEODBMRDxEVFBMXHTAfHRoaHToqLCMwRT1JR0Q9Q0FMVm1dTFFoUkFDX4JgaHF1e3x7SlyGkIV3j214e3b/2wBDARQVFR0ZHTgfHzh2T0NPdnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnb/wAARCAAPABQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwC3dXtvAiuP3nmHaDT7KeMiQyqUb+H3rBnkeS1VHYBR6DpTbIQykLI7hgeuTzSQM7canbqAG4OKK465gtTMcrK3vuopgf/Z)">
+        <picture><source type="image/webp" srcset="../img/dc-room-560.webp 560w, ../img/dc-room-900.webp 900w, ../img/dc-room-1400.webp 1400w" sizes="(max-width:1100px) 92vw, 1000px">
+          <img src="../img/dc-room-900.jpg" srcset="../img/dc-room-560.jpg 560w, ../img/dc-room-900.jpg 900w, ../img/dc-room-1400.jpg 1400w" sizes="(max-width:1100px) 92vw, 1000px"
+               width="1400" height="1050" loading="lazy" decoding="async"
+               alt="A dental treatment room: chair, overhead light, delivery unit, stool and foot pedal."></picture>
+          <button class="pin" type="button" data-part="light" aria-controls="part-readout"
+                  style="left:44%;top:9%" aria-label="The overhead light"></button>
+          <button class="pin" type="button" data-part="unit" aria-controls="part-readout"
+                  style="left:55%;top:22%" aria-label="The delivery unit"></button>
+          <button class="pin" type="button" data-part="chair" aria-controls="part-readout"
+                  style="left:35%;top:52%" aria-label="The chair"></button>
+          <button class="pin" type="button" data-part="suction" aria-controls="part-readout"
+                  style="left:70%;top:38%" aria-label="Suction and water"></button>
+          <button class="pin" type="button" data-part="stool" aria-controls="part-readout"
+                  style="left:22%;top:62%" aria-label="The stool"></button>
+          <button class="pin" type="button" data-part="pedal" aria-controls="part-readout"
+                  style="left:43%;top:88%" aria-label="The foot pedal"></button>
+      </div>
+      <div class="readout readout-wide" id="part-readout" aria-live="polite">
+          <div class="readout-item is-on" data-part="light">
+            <h3>The overhead light</h3><p>Aimed at your mouth, never at your eyes. If it catches you, say so — it moves.</p>
+          </div>
+          <div class="readout-item" data-part="unit">
+            <h3>The delivery unit</h3><p>Every instrument hangs within the dentist's reach, so nobody walks away mid-treatment.</p>
+          </div>
+          <div class="readout-item" data-part="chair">
+            <h3>The chair</h3><p>Reclines slowly, and stops wherever you are comfortable. You can ask it to sit you up at any point.</p>
+          </div>
+          <div class="readout-item" data-part="suction">
+            <h3>Suction and water</h3><p>The two hoses that make the noise. Water rinses, suction clears — neither touches a nerve.</p>
+          </div>
+          <div class="readout-item" data-part="stool">
+            <h3>The stool</h3><p>Rolls, so the dentist moves instead of leaning over you.</p>
+          </div>
+          <div class="readout-item" data-part="pedal">
+            <h3>The foot pedal</h3><p>Controls the drill and the chair by foot, which is why gloved hands never leave your mouth to reach for a switch.</p>
+          </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tray" id="tray">
+  <div class="in-wrap">
+    <div class="sec-head" data-reveal>
       <span class="in-eyebrow">The tray</span>
       <h2>Eight instruments. Three of them see you.</h2>
       <p>A full tray is set out because it has to be sterile before anyone knows what is needed. Most of it goes back untouched.</p>
     </div>
     <div class="tray-grid">
       <div class="tray-stage ph" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABMNDhEODBMRDxEVFBMXHTAfHRoaHToqLCMwRT1JR0Q9Q0FMVm1dTFFoUkFDX4JgaHF1e3x7SlyGkIV3j214e3b/2wBDARQVFR0ZHTgfHzh2T0NPdnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnb/wAARCAAUABQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDoY0woU84prgjeRyWOAPSnq21uvTrRK4c8cA8cdaozEBRRhmGfeiolaMDBhfPuuaKAHydAKROVGfSiihbsBUYkUUUUxH//2Q==)">
-        <picture>
-          <source type="image/webp" srcset="../img/dc-tray-520.webp 520w, ../img/dc-tray-820.webp 820w, ../img/dc-tray-1200.webp 1200w" sizes="(max-width:860px) 92vw, 620px">
+        <picture><source type="image/webp" srcset="../img/dc-tray-520.webp 520w, ../img/dc-tray-820.webp 820w, ../img/dc-tray-1200.webp 1200w" sizes="(max-width:860px) 92vw, 620px">
           <img src="../img/dc-tray-820.jpg" srcset="../img/dc-tray-520.jpg 520w, ../img/dc-tray-820.jpg 820w, ../img/dc-tray-1200.jpg 1200w" sizes="(max-width:860px) 92vw, 620px"
                width="1200" height="1200" loading="lazy" decoding="async"
-               alt="A sterile dental tray with forceps, elevators, scissors, a mirror, a probe, a scalpel handle and gauze.">
-        </picture>
-        <button class="pin" type="button" data-tool="mirror" aria-controls="readout"
-                style="left:66%;top:78%" aria-label="Mouth mirror"></button>
-        <button class="pin" type="button" data-tool="probe" aria-controls="readout"
-                style="left:26%;top:88%" aria-label="Dental probe"></button>
-        <button class="pin" type="button" data-tool="gauze" aria-controls="readout"
-                style="left:42%;top:45%" aria-label="Gauze"></button>
-        <button class="pin" type="button" data-tool="scissors" aria-controls="readout"
-                style="left:18%;top:60%" aria-label="Scissors"></button>
-        <button class="pin" type="button" data-tool="forceps" aria-controls="readout"
-                style="left:50%;top:18%" aria-label="Extraction forceps"></button>
-        <button class="pin" type="button" data-tool="elevator" aria-controls="readout"
-                style="left:12%;top:22%" aria-label="Elevator"></button>
-        <button class="pin" type="button" data-tool="suction" aria-controls="readout"
-                style="left:88%;top:68%" aria-label="Suction tip"></button>
-        <button class="pin" type="button" data-tool="scalpel" aria-controls="readout"
-                style="left:43%;top:90%" aria-label="Scalpel handle"></button>
+               alt="A sterile dental tray with forceps, elevators, scissors, a mirror, a probe, a scalpel handle and gauze."></picture>
+          <button class="pin" type="button" data-tool="mirror" aria-controls="tool-readout"
+                  style="left:66%;top:78%" aria-label="Mouth mirror"></button>
+          <button class="pin" type="button" data-tool="probe" aria-controls="tool-readout"
+                  style="left:26%;top:88%" aria-label="Dental probe"></button>
+          <button class="pin" type="button" data-tool="gauze" aria-controls="tool-readout"
+                  style="left:42%;top:45%" aria-label="Gauze"></button>
+          <button class="pin" type="button" data-tool="scissors" aria-controls="tool-readout"
+                  style="left:18%;top:60%" aria-label="Scissors"></button>
+          <button class="pin" type="button" data-tool="forceps" aria-controls="tool-readout"
+                  style="left:50%;top:18%" aria-label="Extraction forceps"></button>
+          <button class="pin" type="button" data-tool="elevator" aria-controls="tool-readout"
+                  style="left:12%;top:22%" aria-label="Elevator"></button>
+          <button class="pin" type="button" data-tool="suction2" aria-controls="tool-readout"
+                  style="left:88%;top:68%" aria-label="Suction tip"></button>
+          <button class="pin" type="button" data-tool="scalpel" aria-controls="tool-readout"
+                  style="left:43%;top:90%" aria-label="Scalpel handle"></button>
       </div>
-      <div class="readout" id="readout" aria-live="polite">
-        <div class="readout-item is-on" data-tool="mirror">
-          <p class="kicker">Used at a check-up</p>
-          <h3>Mouth mirror</h3>
-          <p>The first thing that goes in, and for a check-up often the only thing. It reflects light onto the back teeth and lets us see behind them.</p>
-          <span class="used used-yes">Yes — every visit</span>
-        </div>
-        <div class="readout-item" data-tool="probe">
-          <p class="kicker">Used at a check-up</p>
-          <h3>Dental probe</h3>
-          <p>Runs along each tooth feeling for soft spots, and measures the gap between tooth and gum. It touches enamel, not nerve.</p>
-          <span class="used used-yes">Yes — every visit</span>
-        </div>
-        <div class="readout-item" data-tool="gauze">
-          <p class="kicker">Used at a check-up</p>
-          <h3>Gauze</h3>
-          <p>Keeps a tooth dry while a filling sets. Nothing sticks to a wet tooth.</p>
-          <span class="used used-yes">Yes — every visit</span>
-        </div>
-        <div class="readout-item" data-tool="scissors">
-          <p class="kicker">Rarely, and never unannounced</p>
-          <h3>Scissors</h3>
-          <p>For sutures and gauze after surgery. Not part of a check-up.</p>
-          <span class="used used-no">No — not at a check-up</span>
-        </div>
-        <div class="readout-item" data-tool="forceps">
-          <p class="kicker">Rarely, and never unannounced</p>
-          <h3>Extraction forceps</h3>
-          <p>Three shapes for three parts of the mouth. Only ever used on a tooth that is coming out, and only under anaesthetic.</p>
-          <span class="used used-no">No — not at a check-up</span>
-        </div>
-        <div class="readout-item" data-tool="elevator">
-          <p class="kicker">Rarely, and never unannounced</p>
-          <h3>Elevator</h3>
-          <p>Loosens a tooth before it is removed. Sits in the same category as the forceps.</p>
-          <span class="used used-no">No — not at a check-up</span>
-        </div>
-        <div class="readout-item" data-tool="suction">
-          <p class="kicker">Used at a check-up</p>
-          <h3>Suction tip</h3>
-          <p>Keeps the working area clear. It is the noise most people remember and it does nothing but move air and water.</p>
-          <span class="used used-yes">Yes — every visit</span>
-        </div>
-        <div class="readout-item" data-tool="scalpel">
-          <p class="kicker">Rarely, and never unannounced</p>
-          <h3>Scalpel handle</h3>
-          <p>Holds a disposable blade for gum surgery. Reserved for procedures we would discuss with you first.</p>
-          <span class="used used-no">No — not at a check-up</span>
-        </div>
+      <div class="readout" id="tool-readout" aria-live="polite">
+          <div class="readout-item is-on" data-tool="mirror">
+            <p class="kicker">Used at a check-up</p>
+            <h3>Mouth mirror</h3><p>The first thing that goes in, and for a check-up often the only thing. It reflects light onto the back teeth and lets us see behind them.</p>
+            <span class="used used-yes">Yes — every visit</span>
+          </div>
+          <div class="readout-item" data-tool="probe">
+            <p class="kicker">Used at a check-up</p>
+            <h3>Dental probe</h3><p>Runs along each tooth feeling for soft spots, and measures the gap between tooth and gum. It touches enamel, not nerve.</p>
+            <span class="used used-yes">Yes — every visit</span>
+          </div>
+          <div class="readout-item" data-tool="gauze">
+            <p class="kicker">Used at a check-up</p>
+            <h3>Gauze</h3><p>Keeps a tooth dry while a filling sets. Nothing sticks to a wet tooth.</p>
+            <span class="used used-yes">Yes — every visit</span>
+          </div>
+          <div class="readout-item" data-tool="scissors">
+            <p class="kicker">Rarely, and never unannounced</p>
+            <h3>Scissors</h3><p>For sutures and gauze after surgery. Not part of a check-up.</p>
+            <span class="used used-no">No — not at a check-up</span>
+          </div>
+          <div class="readout-item" data-tool="forceps">
+            <p class="kicker">Rarely, and never unannounced</p>
+            <h3>Extraction forceps</h3><p>Three shapes for three parts of the mouth. Only ever used on a tooth that is coming out, and only under anaesthetic.</p>
+            <span class="used used-no">No — not at a check-up</span>
+          </div>
+          <div class="readout-item" data-tool="elevator">
+            <p class="kicker">Rarely, and never unannounced</p>
+            <h3>Elevator</h3><p>Loosens a tooth before it is removed. Sits in the same category as the forceps.</p>
+            <span class="used used-no">No — not at a check-up</span>
+          </div>
+          <div class="readout-item" data-tool="suction2">
+            <p class="kicker">Used at a check-up</p>
+            <h3>Suction tip</h3><p>Keeps the working area clear. It is the noise most people remember and it does nothing but move air and water.</p>
+            <span class="used used-yes">Yes — every visit</span>
+          </div>
+          <div class="readout-item" data-tool="scalpel">
+            <p class="kicker">Rarely, and never unannounced</p>
+            <h3>Scalpel handle</h3><p>Holds a disposable blade for gum surgery. Reserved for procedures we would discuss with you first.</p>
+            <span class="used used-no">No — not at a check-up</span>
+          </div>
       </div>
     </div>
     <p class="tray-foot">At a routine check-up we use <b>a mirror, a probe and suction</b>. The rest is there because sterilising after the fact is not an option — not because we plan to use it.</p>
   </div>
 </section>
 
-<div class="in-foot">
+<section class="minutes" id="minutes">
   <div class="in-wrap">
-    Built by <strong>Websathi</strong><br>
-    <a href="../">Back to Smile Dental Care →</a>
+    <div class="sec-head" data-reveal>
+      <span class="in-eyebrow">Thirty minutes</span>
+      <h2>What happens, and when</h2>
+      <p>A first visit runs about half an hour. Nothing is done to your teeth without telling you the cost first.</p>
+    </div>
+    <div class="minute-grid">
+        <div class="minute" data-reveal>
+          <p class="min-when">0–5<span> min</span></p>
+          <h3>You sit down</h3><p>We ask what brought you in and whether anything hurts. Nothing goes near your mouth yet.</p>
+        </div>
+        <div class="minute" data-reveal>
+          <p class="min-when">5–15<span> min</span></p>
+          <h3>We look</h3><p>Mirror and probe, tooth by tooth, and the gum line. You will hear numbers called out — they are gum measurements, not a score.</p>
+        </div>
+        <div class="minute" data-reveal>
+          <p class="min-when">15–20<span> min</span></p>
+          <h3>X-ray, only if needed</h3><p>One image, a few seconds, and you see it on the screen at the same moment we do.</p>
+        </div>
+        <div class="minute" data-reveal>
+          <p class="min-when">20–30<span> min</span></p>
+          <h3>The plan and the price</h3><p>What needs doing, what can wait, what each part costs. In writing, before you agree to anything.</p>
+        </div>
+    </div>
   </div>
+</section>
+
+<section class="close">
+  <div class="in-wrap" data-reveal>
+    <h2>Still want to ask something first?</h2>
+    <p>Message the clinic before you book. Questions cost nothing.</p>
+    <div class="close-cta">
+      <a class="btn btn-wa" target="_blank" rel="noopener"
+         href="https://wa.me/9779863336100?text=Hi%20Websathi%20%E2%80%94%20I%20saw%20the%20dental%20demo%20site%20and%20I%27d%20like%20one%20for%20my%20clinic.">Message on WhatsApp</a>
+      <a href="../" class="btn btn-ghost">Back to the clinic</a>
+    </div>
+  </div>
+</section>
+
+<footer class="in-foot">
+  <div class="in-wrap">
+    <div>Smile Dental Care — Kathmandu</div>
+    <div><a href="../">Home</a> · <a href="../#prices">Prices</a> · <a href="../#book">Book</a></div>
+  </div>
+</footer>
+
+<div class="demo-banner">
+  <strong>This is a demo.</strong> Your site would carry your own name, room and prices.
 </div>
 
-<script src="inside.js?v=47285329" defer></script>
+<script src="../../assets/websathi.js?v=97309f32" defer></script>
+<script src="inside.js?v=c5f26e5f" defer></script>
 </body>
 </html>
