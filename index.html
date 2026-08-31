@@ -17,169 +17,153 @@
 <meta name="twitter:title" content="Websathi — Bridal &amp; Beauty, Kathmandu">
 <meta name="twitter:description" content="Bridal makeup, hair and skin prep in Kathmandu. Book a free consultation on WhatsApp.">
 <meta name="twitter:image" content="https://utkarshsinghug22-hash.github.io/websathi-demo/preview.jpg">
-<meta name="theme-color" content="#6B1E28">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%236B1E28'/><text x='16' y='23' font-size='19' font-family='Georgia,serif' fill='%23C9A227' text-anchor='middle'>W</text></svg>">
+<meta name="theme-color" content="#17100F">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%2317100F'/><text x='16' y='23' font-size='19' font-family='Georgia,serif' fill='%23C9A227' text-anchor='middle'>W</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/websathi.css?v=8ab105ce">
 <style>
   :root{
-    /* Palette — wine and gold, the colours of a Nepali wedding invitation. */
+    /* Warm near-black, not neutral. Gold and red silk go flat on cream and
+       glow against this — and the photographs are the product here. */
+    --surface:#17100F;
+    --surface-warm:#221817;
+    --surface-blur:rgba(23,16,15,.88);
     --accent:#C9A227;
-    /* Same gold, dark enough to read at 15px. The bright gold measured
-       2.25:1 on ivory — fine as a 1px rule, not as text. */
-    --accent-text:#7A5E10;
     --accent-soft:#E4CE86;
-    --accent-deep:#6B1E28;
-    --accent-deepest:#4A121A;
-    --surface:#FBF6EE;
-    --surface-warm:#F3E9DA;
-    --surface-blur:rgba(251,246,238,.9);
-    --blush:#EFD9D3;
-    --ink:#2A211C;
-    /* Was opacity on --ink, which dropped body copy under 4.5:1.
-       A real colour keeps the tone and passes contrast. */
-    --ink-soft:#57463D;
-    --hairline:rgba(107,30,40,.12);
-    --hairline-strong:rgba(42,33,28,.34);
+    --accent-deep:#C9A227;
+    --accent-deepest:#A9861A;
+    --wine:#6B1E28;
+    --ink:#F6EFE6;
+    --ink-soft:#B3A499;          /* 7.4:1 on --surface */
+    --hairline:rgba(246,239,230,.13);
+    --hairline-strong:rgba(246,239,230,.42);
   }
   body{background:var(--surface);color:var(--ink);font-family:'Jost',sans-serif;}
-  h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:600;letter-spacing:.01em;}
-  .logo{font-family:'Cormorant Garamond',serif;font-size:1.45rem;font-weight:600;color:var(--accent-deep);}
+  h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:500;letter-spacing:.005em;line-height:1.02;}
+  .logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--ink);}
   .logo span{color:var(--accent);}
+  .btn-solid{color:#17100F;}
+  .lede{color:var(--ink-soft);}
 
-  .hero{
-    position:relative;display:flex;align-items:center;
-    min-height:100svh;               /* svh, not vh — vh is wrong under the iOS address bar */
-    padding:112px 0 72px;overflow:hidden;
+  /* Section heads carried no size rule after the rewrite, so every h2 fell to
+     the 24px UA default while the hero sat at 107px — the scale collapsed the
+     moment you left the first screen. */
+  .section-head{max-width:34ch;margin-bottom:clamp(38px,5vw,62px);}
+  .section-head h2{font-size:clamp(2.1rem,4.6vw,3.4rem);margin:14px 0 16px;}
+  .section-head .lede{font-size:1rem;max-width:46ch;}
+
+  /* ── hero: the photograph is the page ────────────────────────────────── */
+  .hero{position:relative;min-height:100svh;display:grid;align-items:end;overflow:clip;}
+  .hero-media{position:absolute;inset:0;z-index:0;}
+  .hero-media img{width:100%;height:100%;object-fit:cover;object-position:62% 30%;}
+  .hero::after{
+    content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
     background:
-      radial-gradient(ellipse 80% 60% at 85% 15%, rgba(201,162,39,.14), transparent 60%),
-      radial-gradient(ellipse 60% 50% at 10% 90%, rgba(107,30,40,.08), transparent 60%),
-      var(--surface);
+      linear-gradient(to top,var(--surface) 4%,rgba(23,16,15,.86) 30%,rgba(23,16,15,.15) 62%,rgba(23,16,15,.45)),
+      linear-gradient(to right,rgba(23,16,15,.8),transparent 58%);
   }
-  .hero-ring{
-    position:absolute;width:640px;height:640px;
-    border:1px solid rgba(201,162,39,.35);border-radius:50%;
-    right:-220px;top:50%;transform:translateY(-50%) scale(.9);
-    opacity:0;animation:ringIn 1.2s var(--ease-out) .2s forwards;
+  .hero-copy{position:relative;z-index:2;padding-bottom:clamp(48px,9vh,110px);}
+  .hero h1{
+    font-size:clamp(3rem,8.4vw,7rem);
+    margin:.28em 0 .34em;max-width:14ch;
   }
-  .hero-ring.small{width:420px;height:420px;right:-120px;
-    border-color:rgba(107,30,40,.18);animation-delay:.35s;}
-  @keyframes ringIn{to{opacity:1;transform:translateY(-50%) scale(1);}}
+  .hero h1 em{font-style:italic;color:var(--accent-soft);}
+  .hero .lede{font-size:1.05rem;max-width:44ch;margin-bottom:34px;}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;}
 
-  .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;position:relative;z-index:2;}
-  .hero h1{font-size:clamp(2.5rem,5.2vw,4.4rem);line-height:1.05;color:var(--accent-deep);margin:18px 0 22px;}
-  .hero h1 em{font-style:italic;color:var(--accent);}
-  .lede{font-size:1.08rem;color:var(--ink-soft);max-width:46ch;margin-bottom:34px;}
-
-  /* The placeholder earns its space by suggesting a portrait rather than
-     sitting empty — a blank rectangle is the weakest possible answer to
-     "would my salon look good on this?". */
-  .hero-visual{
-    position:relative;aspect-ratio:3/4;border-radius:3px;overflow:hidden;
-    box-shadow:0 30px 60px -20px rgba(107,30,40,.25);
-    margin:0;
+  /* ── the run-up: real intervals, each with a photograph ──────────────── */
+  /* The content was always a sequence. 01/02/03/04 was decoration laid over
+     it; the intervals themselves are the information. */
+  .run{padding:clamp(72px,11vh,128px) 0;}
+  .run-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:34px;}
+  .run-media{aspect-ratio:3/4;overflow:hidden;border-radius:2px;margin-bottom:20px;}
+  .run-media img{width:100%;height:100%;object-fit:cover;}
+  .run-when{
+    font-family:'Jost',sans-serif;font-size:.68rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:10px;
   }
-  /* Inset rule and caption scrim sit above the photograph. */
-  .hero-visual::before{content:'';position:absolute;inset:14px;border:1px solid rgba(251,246,238,.4);z-index:3;pointer-events:none;}
-  .hero-visual::after{content:'';position:absolute;left:0;right:0;bottom:0;height:52%;z-index:2;
-    background:linear-gradient(to top,rgba(42,33,28,.82),rgba(42,33,28,.25) 55%,transparent);}
-  .hero-visual-caption{
-    position:absolute;left:0;right:0;bottom:0;z-index:4;
-    font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.08rem;
-    color:#FBF6EE;padding:26px 24px;text-align:center;text-shadow:0 1px 12px rgba(0,0,0,.4);
+  .run-step h3{font-size:1.6rem;margin-bottom:10px;}
+  .run-body{font-size:.9rem;color:var(--ink-soft);line-height:1.65;}
+
+  /* ── prices: an editorial list, not three boxes ──────────────────────── */
+  .prices{background:var(--surface-warm);padding:clamp(72px,11vh,128px) 0;}
+  .price-row{
+    display:grid;grid-template-columns:1fr auto;gap:26px;align-items:baseline;
+    padding:30px 0;border-bottom:1px solid var(--hairline);
   }
-  @media(min-width:861px){.hero-visual{aspect-ratio:3/2;}}
-
-  .strip{background:var(--accent-deep);color:var(--surface-warm);}
-  .strip-inner span{opacity:.88;}
-  .strip-inner span::after{content:'✦';margin-left:46px;color:var(--accent);}
-
-  .section-head{max-width:60ch;margin-bottom:56px;}
-  .section-head h2{font-size:clamp(2rem,3.6vw,2.9rem);color:var(--accent-deep);margin-top:12px;}
-  .section-head p{color:var(--ink-soft);margin-top:16px;}
-
-  .timeline{position:relative;display:grid;grid-template-columns:repeat(4,1fr);}
-  .timeline::before{content:'';position:absolute;top:22px;left:0;right:0;height:1px;
-    background:linear-gradient(90deg,transparent,var(--accent) 8%,var(--accent) 92%,transparent);}
-  .tl-item{position:relative;padding-right:20px;}
-  .tl-dot{width:11px;height:11px;border-radius:50%;background:var(--surface);
-    border:2px solid var(--accent);position:relative;z-index:2;margin-bottom:26px;}
-  .tl-item:first-child .tl-dot{background:var(--accent);}
-  .tl-num{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--accent-text);font-size:.95rem;}
-  .tl-item h3{font-size:1.35rem;color:var(--accent-deep);margin:8px 0 10px;}
-  .tl-item p{font-size:.9rem;color:var(--ink-soft);}
-
-  .services{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
-    background:var(--hairline);border:1px solid var(--hairline);}
-  .service-card{background:var(--surface);padding:40px 32px;
-    transition:background-color var(--dur-hover) var(--ease-out);}
-  @media (hover:hover) and (pointer:fine){.service-card:hover{background:var(--surface-warm);}}
-  .service-card .eyebrow{margin-bottom:16px;display:block;}
-  .service-card h3{font-size:1.5rem;color:var(--accent-deep);margin-bottom:12px;}
-  .service-card p{font-size:.9rem;color:var(--ink-soft);margin-bottom:18px;}
-  .service-price{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--accent-text);font-style:italic;}
-
-  .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
-  .g-block{
-    position:relative;margin:0;aspect-ratio:1;border-radius:3px;overflow:hidden;
+  .price-row:first-of-type{border-top:1px solid var(--hairline);}
+  .price-row h3{font-size:1.75rem;margin-bottom:8px;}
+  .price-row > div p{font-size:.92rem;color:var(--ink-soft);max-width:52ch;}
+  .price-fig{
+    font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);
+    color:var(--accent-soft);white-space:nowrap;line-height:1;
   }
-  .g-block figcaption{
-    position:absolute;left:0;right:0;bottom:0;z-index:2;
-    padding:26px 14px 12px;
-    font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.9rem;
-    color:#FBF6EE;
-    background:linear-gradient(to top,rgba(42,33,28,.86),transparent);
+  .price-fig span{
+    display:block;font-family:'Jost',sans-serif;font-size:.62rem;letter-spacing:.24em;
+    text-transform:uppercase;color:var(--ink-soft);margin-bottom:8px;
   }
-  /* The first tile earns more room — it is the finished look, which is what a
-     bride is actually shopping for. */
-  .g-block:first-child{grid-column:span 2;grid-row:span 2;aspect-ratio:auto;}
-  .g-block:first-child figcaption{font-size:1.05rem;padding:34px 20px 18px;}
+  .is-lead h3{color:var(--accent-soft);}
+
+  /* ── gallery: photographs at scale ───────────────────────────────────── */
+  .work{padding:clamp(72px,11vh,128px) 0;}
+  .frames{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+  .frame{position:relative;margin:0;aspect-ratio:4/5;overflow:hidden;border-radius:2px;}
+  .frame:nth-child(2),.frame:nth-child(3){margin-top:clamp(20px,5vw,64px);}
+  .frame img{width:100%;height:100%;object-fit:cover;}
+  .frame figcaption{
+    position:absolute;left:0;right:0;bottom:0;padding:44px 18px 16px;
+    font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;color:var(--ink);
+    background:linear-gradient(to top,rgba(10,7,6,.9),transparent);
+  }
   @media (hover:hover) and (pointer:fine){
-    .g-block img{transition:transform 500ms var(--ease-out);}
-    .g-block:hover img{transform:scale(1.04);}
+    .frame img{transition:transform 600ms var(--ease-out);}
+    .frame:hover img{transform:scale(1.03);}
   }
-  @media (prefers-reduced-motion:reduce){.g-block:hover img{transform:none;}}
 
-  .testimonial{background:var(--accent-deep);color:var(--surface-warm);padding:96px 0;text-align:center;position:relative;}
-  .testimonial::before{content:'"';font-family:'Cormorant Garamond',serif;font-size:8rem;
-    color:var(--accent);opacity:.3;position:absolute;top:16px;left:50%;transform:translateX(-50%);line-height:1;}
-  .testimonial blockquote{font-family:'Cormorant Garamond',serif;font-style:italic;
-    font-size:clamp(1.4rem,2.6vw,2rem);max-width:34ch;margin:0 auto 24px;position:relative;z-index:2;}
-  .testimonial cite{font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;opacity:.85;font-style:normal;}
-
-  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
-  .contact-info h2{color:var(--accent-deep);font-size:clamp(2rem,3.4vw,2.7rem);margin:12px 0 20px;}
-  .contact-info p{color:var(--ink-soft);margin-bottom:28px;max-width:44ch;}
-  .info-line{display:flex;gap:14px;margin-bottom:16px;font-size:.95rem;}
-  .info-line .lbl{color:var(--accent-text);font-weight:500;min-width:82px;}
-  .contact-card{background:var(--surface-warm);border:1px solid rgba(201,162,39,.3);padding:44px;border-radius:3px;}
-  .contact-card h3{color:var(--accent-deep);font-size:1.6rem;margin-bottom:10px;}
-  .contact-card p{color:var(--ink-soft);font-size:.92rem;margin-bottom:26px;}
-
-  footer{background:var(--accent-deepest);color:rgba(251,246,238,.75);padding:36px 0;text-align:center;font-size:.82rem;}
-  footer strong{color:var(--accent-soft);}
-
-  @media(max-width:860px){
-    /* The headline leads on mobile. Previously the visual was order:-1, so a
-       phone opened on an empty decorative panel with the h1 below the fold —
-       and a phone is where every one of these links is opened. */
-    .hero{min-height:auto;padding:104px 0 56px;}
-    .hero-grid{grid-template-columns:1fr;gap:36px;}
-    .hero-visual{max-width:320px;margin:0;}
-    .hero-ring{display:none;}
-    .timeline{grid-template-columns:1fr 1fr;row-gap:36px;}
-    .timeline::before{display:none;}
-    .services{grid-template-columns:1fr;}
-    .gallery{grid-template-columns:repeat(2,1fr);}
-    .g-block:first-child{grid-column:span 2;grid-row:auto;aspect-ratio:4/3;}
-    .contact-grid{grid-template-columns:1fr;gap:40px;}
-    .contact-card{padding:32px;}
+  /* ── said: no decorative quote mark ──────────────────────────────────── */
+  .said{padding:clamp(64px,9vh,110px) 0;border-top:1px solid var(--hairline);}
+  .said blockquote{
+    font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;
+    font-size:clamp(1.5rem,3.6vw,2.7rem);line-height:1.28;max-width:22ch;
   }
-  @media (prefers-reduced-motion:reduce){
-    /* Without this the rings stay at opacity:0 forever. */
-    .hero-ring{animation:none;opacity:1;transform:translateY(-50%) scale(1);}
+  .said cite{
+    display:block;margin-top:26px;font-style:normal;font-size:.68rem;
+    letter-spacing:.24em;text-transform:uppercase;color:var(--ink-soft);
+  }
+
+  /* ── book ────────────────────────────────────────────────────────────── */
+  .book{padding:clamp(72px,11vh,128px) 0;background:var(--surface-warm);}
+  .book-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(40px,6vw,90px);align-items:start;}
+  .book h2{font-size:clamp(2.2rem,5vw,3.6rem);margin-bottom:18px;}
+  .book p.lede{margin-bottom:34px;max-width:40ch;}
+  .facts{border-top:1px solid var(--hairline);}
+  .fact{display:grid;grid-template-columns:88px 1fr;gap:18px;padding:16px 0;border-bottom:1px solid var(--hairline);font-size:.92rem;}
+  .fact dt{font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft);padding-top:4px;}
+  .fact dd{margin:0;}
+  .book-cta{position:sticky;top:100px;}
+  .book-cta h3{font-size:1.7rem;margin-bottom:12px;}
+  .book-cta p{font-size:.92rem;color:var(--ink-soft);margin-bottom:26px;}
+
+  footer{padding:34px 0;border-top:1px solid var(--hairline);color:var(--ink-soft);font-size:.82rem;}
+  .foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+  .foot strong{color:var(--accent-soft);font-weight:500;}
+
+  @media(max-width:900px){
+    .run-grid{grid-template-columns:1fr 1fr;gap:28px;}
+    .book-grid{grid-template-columns:1fr;gap:40px;}
+    .book-cta{position:static;}
+  }
+  @media(max-width:640px){
+    .hero-media img{object-position:64% 26%;}
+    .run-grid{grid-template-columns:1fr;gap:34px;}
+    .run-media{aspect-ratio:16/10;}
+    .frames{grid-template-columns:1fr;gap:12px;}
+    .frame:nth-child(2),.frame:nth-child(3){margin-top:0;}
+    .price-row{grid-template-columns:1fr;gap:12px;}
+    .price-fig{text-align:left;}
+    .price-fig span{display:inline;margin:0 6px 0 0;}
   }
 </style>
 </head>
@@ -193,168 +177,211 @@
       <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
     </button>
     <nav class="nav-links" id="nav-links">
-      <a href="#bridal-day">Bridal Day</a>
-      <a href="#services">Services</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#contact">Contact</a>
-      <a href="#contact" class="btn btn-solid">Book a Visit</a>
+      <a href="#run">The run-up</a>
+      <a href="#prices">Prices</a>
+      <a href="#work">Work</a>
+      <a href="#book" class="btn btn-solid">Book a visit</a>
     </nav>
   </div>
 </header>
 
 <section class="hero">
-  <div class="hero-ring"></div>
-  <div class="hero-ring small"></div>
-  <div class="wrap hero-grid">
-    <div>
-      <span class="eyebrow">Bridal &amp; Beauty Studio — Kathmandu</span>
-      <h1>Every bride has <em>one</em> morning like this.</h1>
-      <p class="lede">From haldi to the final touch of sindoor, Websathi walks with you through every stage of your wedding day — skin, hair, and makeup, done by hands that know Nepali bridal tradition.</p>
-      <div style="display:flex;gap:14px;flex-wrap:wrap;">
-        <a href="#contact" class="btn btn-solid">Book a Consultation →</a>
-        <a href="#services" class="btn btn-ghost">View Packages</a>
-        <a href="showcase/" class="btn btn-ghost">See a look, close up →</a>
-      </div>
+  <div class="hero-media ph" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABMNDhEODBMRDxEVFBMXHTAfHRoaHToqLCMwRT1JR0Q9Q0FMVm1dTFFoUkFDX4JgaHF1e3x7SlyGkIV3j214e3b/2wBDARQVFR0ZHTgfHzh2T0NPdnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnb/wAARCAAbABQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDLAxU9tAZsk/cX7x9KqrKCACfmq/ps2Unh4BaMnP0qC7a6mfdWivMWjkCqegJopk1jJG+Nx5GeaKdx2XYlltJrdA2FJY4HNWNNjkhWaWVSrAY5pwG+aLdz81LqLsHnAOBx/Ouv2ai7o5nNy0ZjT3bNKxGQM9M0VVb7x+tFYNmqP//Z)">
+    <picture>
+      <source media="(min-width:760px)" type="image/webp" srcset="assets/img/bride-wide-900.webp 900w, assets/img/bride-wide-1400.webp 1400w, assets/img/bride-wide-1800.webp 1800w" sizes="100vw">
+      <source media="(min-width:760px)" srcset="assets/img/bride-wide-900.jpg 900w, assets/img/bride-wide-1400.jpg 1400w, assets/img/bride-wide-1800.jpg 1800w" sizes="100vw">
+      <source type="image/webp" srcset="assets/img/bride-portrait-480.webp 480w, assets/img/bride-portrait-720.webp 720w, assets/img/bride-portrait-960.webp 960w" sizes="78vw">
+      <img src="assets/img/bride-portrait-720.jpg" srcset="assets/img/bride-portrait-480.jpg 480w, assets/img/bride-portrait-720.jpg 720w, assets/img/bride-portrait-960.jpg 960w" sizes="78vw"
+           width="1200" height="1600" fetchpriority="high"
+           alt="A bride having bridal eye makeup applied, wearing kundan jewellery and a maang tikka.">
+    </picture>
+  </div>
+  <div class="wrap hero-copy">
+    <span class="eyebrow">Bridal &amp; beauty studio — Kathmandu</span>
+    <h1>Every bride has <em>one</em> morning like this.</h1>
+    <p class="lede">From haldi to the last touch of sindoor, we work the whole run-up — skin, hair, makeup and draping — by hands that know Nepali bridal tradition.</p>
+    <div class="hero-cta">
+      <a href="#book" class="btn btn-solid">Book a consultation</a>
+      <a href="#prices" class="btn btn-ghost">See prices</a>
     </div>
-    <figure class="hero-visual ph" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABMNDhEODBMRDxEVFBMXHTAfHRoaHToqLCMwRT1JR0Q9Q0FMVm1dTFFoUkFDX4JgaHF1e3x7SlyGkIV3j214e3b/2wBDARQVFR0ZHTgfHzh2T0NPdnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnb/wAARCAAbABQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDLAxU9tAZsk/cX7x9KqrKCACfmq/ps2Unh4BaMnP0qC7a6mfdWivMWjkCqegJopk1jJG+Nx5GeaKdx2XYlltJrdA2FJY4HNWNNjkhWaWVSrAY5pwG+aLdz81LqLsHnAOBx/Ouv2ai7o5nNy0ZjT3bNKxGQM9M0VVb7x+tFYNmqP//Z)">
-      <picture>
-        <source media="(min-width:861px)" type="image/webp" srcset="assets/img/bride-wide-900.webp 900w, assets/img/bride-wide-1400.webp 1400w, assets/img/bride-wide-1800.webp 1800w" sizes="46vw">
-        <source media="(min-width:861px)" srcset="assets/img/bride-wide-900.jpg 900w, assets/img/bride-wide-1400.jpg 1400w, assets/img/bride-wide-1800.jpg 1800w" sizes="46vw">
-        <source type="image/webp" srcset="assets/img/bride-portrait-480.webp 480w, assets/img/bride-portrait-720.webp 720w, assets/img/bride-portrait-960.webp 960w" sizes="(max-width:520px) 92vw, 340px">
-        <img src="assets/img/bride-portrait-720.jpg"
-             srcset="assets/img/bride-portrait-480.jpg 480w, assets/img/bride-portrait-720.jpg 720w, assets/img/bride-portrait-960.jpg 960w"
-             sizes="(max-width:520px) 92vw, 340px"
-             width="1200" height="1600"
-             alt="A bride having bridal eye makeup applied, wearing kundan jewellery and a maang tikka.">
-      </picture>
-      <figcaption class="hero-visual-caption">"Ready by sunrise, radiant by the mandap."</figcaption>
-    </figure>
   </div>
 </section>
 
 <div class="strip">
   <div class="strip-inner">
-    <span>Bridal Makeup</span><span>Mehendi Styling</span><span>Hair &amp; Draping</span><span>Skin &amp; Spa</span><span>Trial Sessions</span>
-    <span>Bridal Makeup</span><span>Mehendi Styling</span><span>Hair &amp; Draping</span><span>Skin &amp; Spa</span><span>Trial Sessions</span>
+    <span>Bridal makeup</span><span>Mehendi styling</span><span>Hair &amp; draping</span><span>Skin &amp; spa</span><span>Trials</span>
+    <span>Bridal makeup</span><span>Mehendi styling</span><span>Hair &amp; draping</span><span>Skin &amp; spa</span><span>Trials</span>
   </div>
 </div>
 
-<section id="bridal-day">
+<section class="run" id="run">
   <div class="wrap">
     <div class="section-head" data-reveal>
-      <span class="eyebrow">How it works</span>
-      <h2>The Bridal Day, planned in advance</h2>
-      <p>We build your look backward from the wedding morning, so nothing is rushed and nothing is guessed at.</p>
+      <span class="eyebrow">The run-up</span>
+      <h2>Nothing is decided on the morning</h2>
+      <p class="lede">We build the look backward from the wedding day, so the morning itself is only assembly.</p>
     </div>
-    <div class="timeline">
-      <div class="tl-item" data-reveal><div class="tl-dot"></div><div class="tl-num">01</div><h3>Skin Prep</h3><p>2 weeks out — a facial and consultation to get skin camera-ready.</p></div>
-      <div class="tl-item" data-reveal><div class="tl-dot"></div><div class="tl-num">02</div><h3>Trial Look</h3><p>1 week out — full makeup &amp; hair trial, adjusted until it's exactly right.</p></div>
-      <div class="tl-item" data-reveal><div class="tl-dot"></div><div class="tl-num">03</div><h3>Mehendi Day</h3><p>A day before — light glam and mehendi-safe styling for the event.</p></div>
-      <div class="tl-item" data-reveal><div class="tl-dot"></div><div class="tl-num">04</div><h3>Wedding Morning</h3><p>On the day — full bridal team, on-site, from dawn until you're ready.</p></div>
+    <div class="run-grid">
+      <article class="run-step" data-reveal>
+        <div class="run-media ph" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABMNDhEODBMRDxEVFBMXHTAfHRoaHToqLCMwRT1JR0Q9Q0FMVm1dTFFoUkFDX4JgaHF1e3x7SlyGkIV3j214e3b/2wBDARQVFR0ZHTgfHzh2T0NPdnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnb/wAARCAASABIDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDMu7nypxHcxrJGDlR3AqtqF2LqRB92MYH0FOvbeW4upGUZ29qpGKQnbtPHrUo1ZdDRAABMgd6KFZQoBbBx6UUWJ5mXZOLq4x6mqn/LQ0UUkNlIk7jyaKKKsyP/2Q==)">
+          <picture>
+          <source type="image/webp" srcset="assets/img/st-base-360.webp 360w, assets/img/st-base-640.webp 640w" sizes="(max-width:900px) 58vw, 300px">
+          <img src="assets/img/st-base-640.jpg" srcset="assets/img/st-base-360.jpg 360w, assets/img/st-base-640.jpg 640w"
+               sizes="(max-width:900px) 58vw, 300px" width="1000" height="1000" loading="lazy" decoding="async" alt="A bride's jaw and neck, base matched at the jawline.">
+        </picture>
+        </div>
+        <p class="run-when">2 weeks</p>
+        <h3>Skin</h3>
+        <p class="run-body">A facial and a consultation, so skin is camera-ready before anything is painted on it.</p>
+      </article>
+      <article class="run-step" data-reveal>
+        <div class="run-media ph" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABMNDhEODBMRDxEVFBMXHTAfHRoaHToqLCMwRT1JR0Q9Q0FMVm1dTFFoUkFDX4JgaHF1e3x7SlyGkIV3j214e3b/2wBDARQVFR0ZHTgfHzh2T0NPdnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnb/wAARCAAUABQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDF8zY7HGacGJALcH0qc6ZcBs8MAMntVJ0uWBIXgHBx1FHJJFOcXsdFo1yWsznoHIH0opthAq2iA/J7UVqqMWrmTqyTsVHdsHDHvTrFFFnO2OSaKK6WYjoWaWMMzHPTiiiikB//2Q==)">
+          <picture>
+          <source type="image/webp" srcset="assets/img/g-palette-360.webp 360w, assets/img/g-palette-560.webp 560w, assets/img/g-palette-860.webp 860w" sizes="(max-width:900px) 58vw, 300px">
+          <img src="assets/img/g-palette-560.jpg" srcset="assets/img/g-palette-360.jpg 360w, assets/img/g-palette-560.jpg 560w, assets/img/g-palette-860.jpg 860w"
+               sizes="(max-width:900px) 58vw, 300px" width="1000" height="1000" loading="lazy" decoding="async" alt="A makeup artist holding an eyeshadow palette during a bridal trial.">
+        </picture>
+        </div>
+        <p class="run-when">1 week</p>
+        <h3>The trial</h3>
+        <p class="run-body">Full hair and makeup, adjusted until it is exactly right. Nothing is decided on the morning.</p>
+      </article>
+      <article class="run-step" data-reveal>
+        <div class="run-media ph" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABMNDhEODBMRDxEVFBMXHTAfHRoaHToqLCMwRT1JR0Q9Q0FMVm1dTFFoUkFDX4JgaHF1e3x7SlyGkIV3j214e3b/2wBDARQVFR0ZHTgfHzh2T0NPdnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnb/wAARCAAUABQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwBZJImt1Jd/MJH3hjFPju/NBErnbnA45xVS+kOY4+AABzSRyhVYgDkk5NefyKSTZ6CQt1cCOdlQvt7cUVlySu0jYJxk45orVRiluc7bvuat2N2nhz95W4NUZSVjBB+8uTRRWdHb5s6GQIoxRRRTZif/2Q==)">
+          <picture>
+          <source type="image/webp" srcset="assets/img/g-mehendi-360.webp 360w, assets/img/g-mehendi-560.webp 560w, assets/img/g-mehendi-860.webp 860w" sizes="(max-width:900px) 58vw, 300px">
+          <img src="assets/img/g-mehendi-560.jpg" srcset="assets/img/g-mehendi-360.jpg 360w, assets/img/g-mehendi-560.jpg 560w, assets/img/g-mehendi-860.jpg 860w"
+               sizes="(max-width:900px) 58vw, 300px" width="1000" height="1000" loading="lazy" decoding="async" alt="Both palms covered in intricate bridal mehendi with floral kalire.">
+        </picture>
+        </div>
+        <p class="run-when">Day before</p>
+        <h3>Mehendi</h3>
+        <p class="run-body">Light glam and mehendi-safe styling, so the hands are not disturbed after.</p>
+      </article>
+      <article class="run-step" data-reveal>
+        <div class="run-media ph" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABMNDhEODBMRDxEVFBMXHTAfHRoaHToqLCMwRT1JR0Q9Q0FMVm1dTFFoUkFDX4JgaHF1e3x7SlyGkIV3j214e3b/2wBDARQVFR0ZHTgfHzh2T0NPdnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnb/wAARCAASABIDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDnZoZnZptpKk9aZCrGVWI4963YLRpbQtHjGSOTiq0Fkbh2UuFA64FRc0aFW4G0dOlFO/syMcCfp7UVXMhcrJQzLesqsQpB4B4ptmT5UnJ60UU6nxBT+EsjpRRRUFH/2Q==)">
+          <picture>
+          <source type="image/webp" srcset="assets/img/st-jewellery-360.webp 360w, assets/img/st-jewellery-640.webp 640w" sizes="(max-width:900px) 58vw, 300px">
+          <img src="assets/img/st-jewellery-640.jpg" srcset="assets/img/st-jewellery-360.jpg 360w, assets/img/st-jewellery-640.jpg 640w"
+               sizes="(max-width:900px) 58vw, 300px" width="1000" height="1000" loading="lazy" decoding="async" alt="A bride wearing a finished kundan choker on the wedding morning.">
+        </picture>
+        </div>
+        <p class="run-when">The morning</p>
+        <h3>On the day</h3>
+        <p class="run-body">The team arrives at dawn and stays until you are ready to leave.</p>
+      </article>
     </div>
   </div>
 </section>
 
-<section id="services" style="background:var(--surface-warm);">
+<section class="prices" id="prices">
   <div class="wrap">
     <div class="section-head" data-reveal>
-      <span class="eyebrow">Packages</span>
-      <h2>Services &amp; Pricing</h2>
-      <p>Every package includes a pre-wedding consultation. Prices shown are starting rates.</p>
+      <span class="eyebrow">Prices</span>
+      <h2>What it costs</h2>
+      <p class="lede">Starting rates. Every package includes a consultation before you commit to anything.</p>
     </div>
-    <div class="services">
-      <div class="service-card" data-reveal><span class="eyebrow">Signature</span><h3>Bridal Package</h3><p>Trial + wedding-day hair, makeup, and draping. Our most-booked package.</p><div class="service-price">from Rs. 25,000</div></div>
-      <div class="service-card" data-reveal><span class="eyebrow">Popular</span><h3>Mehendi &amp; Pre-Wedding</h3><p>Light makeup and styling for haldi, mehendi, and sagun events.</p><div class="service-price">from Rs. 8,000</div></div>
-      <div class="service-card" data-reveal><span class="eyebrow">Add-on</span><h3>Spa &amp; Skin Prep</h3><p>Facials, threading, and skin treatments in the weeks before the big day.</p><div class="service-price">from Rs. 3,500</div></div>
+      <div class="price-row is-lead" data-reveal>
+        <div>
+          <h3>Bridal</h3>
+          <p>Trial, then wedding-day hair, makeup and draping. On site from dawn.</p>
+        </div>
+        <p class="price-fig"><span>from Rs.</span>25,000</p>
+      </div>
+      <div class="price-row" data-reveal>
+        <div>
+          <h3>Mehendi &amp; pre-wedding</h3>
+          <p>Haldi, mehendi and sagun. Lighter, and built to last the evening.</p>
+        </div>
+        <p class="price-fig"><span>from Rs.</span>8,000</p>
+      </div>
+      <div class="price-row" data-reveal>
+        <div>
+          <h3>Skin &amp; spa</h3>
+          <p>Facials, threading and treatments in the weeks before.</p>
+        </div>
+        <p class="price-fig"><span>from Rs.</span>3,500</p>
+      </div>
+  </div>
+</section>
+
+<section class="work" id="work">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow">Work</span>
+      <h2>Recent brides</h2>
+    </div>
+    <div class="frames">
+      <figure class="frame ph" data-reveal style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABMNDhEODBMRDxEVFBMXHTAfHRoaHToqLCMwRT1JR0Q9Q0FMVm1dTFFoUkFDX4JgaHF1e3x7SlyGkIV3j214e3b/2wBDARQVFR0ZHTgfHzh2T0NPdnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnb/wAARCAAUABQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwBJ76dk81fmO3nt+FRT+esCNOImRsEqnVakeONJJE3LsX5R71K0wllEW0hCAMFcACsb2Ox0lZFKZnmfcJU6Y+Y0VsR+HrCZQ6Ty4PuKKuxyamD5QlvXDE/e7GtLVB5aqq/wKCKKKyZ6Ed0UBqVzHlEkwqnAGKKKKZtGKstD/9k=)">
+        <picture>
+          <source type="image/webp" srcset="assets/img/g-bridal-look-360.webp 360w, assets/img/g-bridal-look-560.webp 560w, assets/img/g-bridal-look-860.webp 860w" sizes="(max-width:760px) 60vw, 32vw">
+          <img src="assets/img/g-bridal-look-560.jpg" srcset="assets/img/g-bridal-look-360.jpg 360w, assets/img/g-bridal-look-560.jpg 560w, assets/img/g-bridal-look-860.jpg 860w"
+               sizes="(max-width:760px) 60vw, 32vw" width="1000" height="1000" loading="lazy" decoding="async" alt="A bride in a red lehenga holding up hands covered in mehendi.">
+        </picture>
+        <figcaption>Newari wedding</figcaption>
+      </figure>
+      <figure class="frame ph" data-reveal style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABMNDhEODBMRDxEVFBMXHTAfHRoaHToqLCMwRT1JR0Q9Q0FMVm1dTFFoUkFDX4JgaHF1e3x7SlyGkIV3j214e3b/2wBDARQVFR0ZHTgfHzh2T0NPdnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnb/wAARCAAUABQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwCD7MsEZ+0Jl24UetYzRtb3MjIw2qa29X3XtpbvGQA3f6VibHSOQuC2f0qUaOxAx+Y/WimkMxJwTRVEHRhzFpELp96NMjNZ813KtkWG3LnniiirqJaE027MLCdvs/IU8miiiuKXxM7I7I//2Q==)">
+        <picture>
+          <source type="image/webp" srcset="assets/img/g-jewellery-360.webp 360w, assets/img/g-jewellery-560.webp 560w, assets/img/g-jewellery-860.webp 860w" sizes="(max-width:760px) 60vw, 32vw">
+          <img src="assets/img/g-jewellery-560.jpg" srcset="assets/img/g-jewellery-360.jpg 360w, assets/img/g-jewellery-560.jpg 560w, assets/img/g-jewellery-860.jpg 860w"
+               sizes="(max-width:760px) 60vw, 32vw" width="1000" height="1000" loading="lazy" decoding="async" alt="A bride in finished bridal makeup with a kundan choker.">
+        </picture>
+        <figcaption>Kundan, set last</figcaption>
+      </figure>
+      <figure class="frame ph" data-reveal style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABMNDhEODBMRDxEVFBMXHTAfHRoaHToqLCMwRT1JR0Q9Q0FMVm1dTFFoUkFDX4JgaHF1e3x7SlyGkIV3j214e3b/2wBDARQVFR0ZHTgfHzh2T0NPdnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnb/wAARCAAUABQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDnrW1E2fKimjYH5ueKlcDTZjLlX3r8vHWrHmXtzMHltdm7htp2596gvLE+Yzgu2OisOa5766nTF2Wm5UnnlMhPK+wopFhmA5gYn60VWhftZdzVkv5/MUbh+VUru+n8wjfRRWcdzNlU3U2fvUUUVrZEn//Z)">
+        <picture>
+          <source type="image/webp" srcset="assets/img/g-details-360.webp 360w, assets/img/g-details-560.webp 560w, assets/img/g-details-860.webp 860w" sizes="(max-width:760px) 60vw, 32vw">
+          <img src="assets/img/g-details-560.jpg" srcset="assets/img/g-details-360.jpg 360w, assets/img/g-details-560.jpg 560w, assets/img/g-details-860.jpg 860w"
+               sizes="(max-width:760px) 60vw, 32vw" width="1000" height="1000" loading="lazy" decoding="async" alt="Bridal feet with mehendi, a silver payal and gold sandals.">
+        </picture>
+        <figcaption>Before she stands</figcaption>
+      </figure>
+      <figure class="frame ph" data-reveal style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABMNDhEODBMRDxEVFBMXHTAfHRoaHToqLCMwRT1JR0Q9Q0FMVm1dTFFoUkFDX4JgaHF1e3x7SlyGkIV3j214e3b/2wBDARQVFR0ZHTgfHzh2T0NPdnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnb/wAARCAASABIDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwBbeNVszIXVVY4bA+bNZerwxzAtCCCnGDzV3UZTaoECZjIw+OOcmqEl3brZFLcMWfli3JqEa26GNRUvlE85HNFaGdjf8Qn92f8AerBT7poorNbGj3IqKKK0Mz//2Q==)">
+        <picture>
+          <source type="image/webp" srcset="assets/img/st-eyes-360.webp 360w, assets/img/st-eyes-640.webp 640w" sizes="(max-width:760px) 60vw, 32vw">
+          <img src="assets/img/st-eyes-640.jpg" srcset="assets/img/st-eyes-360.jpg 360w, assets/img/st-eyes-640.jpg 640w"
+               sizes="(max-width:760px) 60vw, 32vw" width="1000" height="1000" loading="lazy" decoding="async" alt="A bride's eye in finished bronze bridal makeup.">
+        </picture>
+        <figcaption>Built in daylight</figcaption>
+      </figure>
     </div>
   </div>
 </section>
 
-<section id="gallery">
-  <div class="wrap">
-    <div class="section-head" data-reveal>
-      <span class="eyebrow">Recent Work</span>
-      <h2>A Few Brides We've Dressed</h2>
-      <p>Recent work from the studio.</p>
-    </div>
-    <div class="gallery">
-      <figure class="g-block ph" data-reveal style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABMNDhEODBMRDxEVFBMXHTAfHRoaHToqLCMwRT1JR0Q9Q0FMVm1dTFFoUkFDX4JgaHF1e3x7SlyGkIV3j214e3b/2wBDARQVFR0ZHTgfHzh2T0NPdnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnb/wAARCAAUABQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwBJ76dk81fmO3nt+FRT+esCNOImRsEqnVakeONJJE3LsX5R71K0wllEW0hCAMFcACsb2Ox0lZFKZnmfcJU6Y+Y0VsR+HrCZQ6Ty4PuKKuxyamD5QlvXDE/e7GtLVB5aqq/wKCKKKyZ6Ed0UBqVzHlEkwqnAGKKKKZtGKstD/9k=)">
-        <picture>
-          <source type="image/webp" srcset="assets/img/g-bridal-look-400.webp 400w, assets/img/g-bridal-look-700.webp 700w, assets/img/g-bridal-look-1000.webp 1000w" sizes="(max-width:860px) 46vw, 260px">
-          <img src="assets/img/g-bridal-look-700.jpg" srcset="assets/img/g-bridal-look-400.jpg 400w, assets/img/g-bridal-look-700.jpg 700w, assets/img/g-bridal-look-1000.jpg 1000w"
-               sizes="(max-width:860px) 46vw, 260px" loading="lazy" decoding="async"
-               width="1000" height="1000" alt="A bride in a red lehenga holding up hands covered in mehendi.">
-        </picture>
-        <figcaption>Bridal look, Newari wedding</figcaption>
-      </figure>
-      <figure class="g-block ph" data-reveal style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABMNDhEODBMRDxEVFBMXHTAfHRoaHToqLCMwRT1JR0Q9Q0FMVm1dTFFoUkFDX4JgaHF1e3x7SlyGkIV3j214e3b/2wBDARQVFR0ZHTgfHzh2T0NPdnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnb/wAARCAAUABQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwBZJImt1Jd/MJH3hjFPju/NBErnbnA45xVS+kOY4+AABzSRyhVYgDkk5NefyKSTZ6CQt1cCOdlQvt7cUVlySu0jYJxk45orVRiluc7bvuat2N2nhz95W4NUZSVjBB+8uTRRWdHb5s6GQIoxRRRTZif/2Q==)">
-        <picture>
-          <source type="image/webp" srcset="assets/img/g-mehendi-400.webp 400w, assets/img/g-mehendi-700.webp 700w, assets/img/g-mehendi-1000.webp 1000w" sizes="(max-width:860px) 46vw, 260px">
-          <img src="assets/img/g-mehendi-700.jpg" srcset="assets/img/g-mehendi-400.jpg 400w, assets/img/g-mehendi-700.jpg 700w, assets/img/g-mehendi-1000.jpg 1000w"
-               sizes="(max-width:860px) 46vw, 260px" loading="lazy" decoding="async"
-               width="1000" height="1000" alt="Close view of both palms with intricate bridal mehendi and floral kalire.">
-        </picture>
-        <figcaption>Mehendi</figcaption>
-      </figure>
-      <figure class="g-block ph" data-reveal style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABMNDhEODBMRDxEVFBMXHTAfHRoaHToqLCMwRT1JR0Q9Q0FMVm1dTFFoUkFDX4JgaHF1e3x7SlyGkIV3j214e3b/2wBDARQVFR0ZHTgfHzh2T0NPdnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnb/wAARCAAUABQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwCD7MsEZ+0Jl24UetYzRtb3MjIw2qa29X3XtpbvGQA3f6VibHSOQuC2f0qUaOxAx+Y/WimkMxJwTRVEHRhzFpELp96NMjNZ813KtkWG3LnniiirqJaE027MLCdvs/IU8miiiuKXxM7I7I//2Q==)">
-        <picture>
-          <source type="image/webp" srcset="assets/img/g-jewellery-400.webp 400w, assets/img/g-jewellery-700.webp 700w, assets/img/g-jewellery-1000.webp 1000w" sizes="(max-width:860px) 46vw, 260px">
-          <img src="assets/img/g-jewellery-700.jpg" srcset="assets/img/g-jewellery-400.jpg 400w, assets/img/g-jewellery-700.jpg 700w, assets/img/g-jewellery-1000.jpg 1000w"
-               sizes="(max-width:860px) 46vw, 260px" loading="lazy" decoding="async"
-               width="1000" height="1000" alt="A bride in finished bridal makeup with a kundan choker and jhumka earrings.">
-        </picture>
-        <figcaption>Finished bridal makeup</figcaption>
-      </figure>
-      <figure class="g-block ph" data-reveal style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABMNDhEODBMRDxEVFBMXHTAfHRoaHToqLCMwRT1JR0Q9Q0FMVm1dTFFoUkFDX4JgaHF1e3x7SlyGkIV3j214e3b/2wBDARQVFR0ZHTgfHzh2T0NPdnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnb/wAARCAAUABQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDF8zY7HGacGJALcH0qc6ZcBs8MAMntVJ0uWBIXgHBx1FHJJFOcXsdFo1yWsznoHIH0opthAq2iA/J7UVqqMWrmTqyTsVHdsHDHvTrFFFnO2OSaKK6WYjoWaWMMzHPTiiiikB//2Q==)">
-        <picture>
-          <source type="image/webp" srcset="assets/img/g-palette-400.webp 400w, assets/img/g-palette-700.webp 700w, assets/img/g-palette-1000.webp 1000w" sizes="(max-width:860px) 46vw, 260px">
-          <img src="assets/img/g-palette-700.jpg" srcset="assets/img/g-palette-400.jpg 400w, assets/img/g-palette-700.jpg 700w, assets/img/g-palette-1000.jpg 1000w"
-               sizes="(max-width:860px) 46vw, 260px" loading="lazy" decoding="async"
-               width="1000" height="1000" alt="A makeup artist holding an eyeshadow palette during a bridal session.">
-        </picture>
-        <figcaption>The palette</figcaption>
-      </figure>
-      <figure class="g-block ph" data-reveal style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABMNDhEODBMRDxEVFBMXHTAfHRoaHToqLCMwRT1JR0Q9Q0FMVm1dTFFoUkFDX4JgaHF1e3x7SlyGkIV3j214e3b/2wBDARQVFR0ZHTgfHzh2T0NPdnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnb/wAARCAAUABQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDnrW1E2fKimjYH5ueKlcDTZjLlX3r8vHWrHmXtzMHltdm7htp2596gvLE+Yzgu2OisOa5766nTF2Wm5UnnlMhPK+wopFhmA5gYn60VWhftZdzVkv5/MUbh+VUru+n8wjfRRWcdzNlU3U2fvUUUVrZEn//Z)">
-        <picture>
-          <source type="image/webp" srcset="assets/img/g-details-400.webp 400w, assets/img/g-details-700.webp 700w, assets/img/g-details-1000.webp 1000w" sizes="(max-width:860px) 46vw, 260px">
-          <img src="assets/img/g-details-700.jpg" srcset="assets/img/g-details-400.jpg 400w, assets/img/g-details-700.jpg 700w, assets/img/g-details-1000.jpg 1000w"
-               sizes="(max-width:860px) 46vw, 260px" loading="lazy" decoding="async"
-               width="1000" height="1000" alt="Bridal feet with mehendi, a silver payal and gold sandals.">
-        </picture>
-        <figcaption>Getting ready</figcaption>
-      </figure>
-    </div>
+<section class="said">
+  <div class="wrap" data-reveal>
+    <blockquote>We were getting enquiries on WhatsApp inside the first week. Our Facebook page never did that.</blockquote>
+    <cite>A Websathi client, Kathmandu</cite>
   </div>
 </section>
 
-<div class="testimonial">
-  <div class="wrap">
-    <blockquote>Websathi got us online in a matter of days. We started getting inquiries through WhatsApp within the first week — something our old Facebook page never did.</blockquote>
-    <cite>— A Websathi Client, Kathmandu</cite>
-  </div>
-</div>
-
-<section id="contact">
-  <div class="wrap contact-grid">
-    <div class="contact-info" data-reveal>
-      <span class="eyebrow">Get in touch</span>
+<section class="book" id="book">
+  <div class="wrap book-grid">
+    <div data-reveal>
+      <span class="eyebrow">Book</span>
       <h2>Let's plan your day.</h2>
-      <p>Consultations are free and take about 20 minutes — in person or over a call.</p>
-      <div class="info-line"><span class="lbl">Location</span><span>Chaksibari Marg, Thamel, Kathmandu</span></div>
-      <div class="info-line"><span class="lbl">Hours</span><span>10 AM – 7 PM, Sun – Fri</span></div>
-      <div class="info-line"><span class="lbl">Phone</span><span>+977 98X-XXXXXXX</span></div>
+      <p class="lede">Consultations are free and take about twenty minutes, in the studio or over a call.</p>
+      <dl class="facts">
+        <div class="fact"><dt>Studio</dt><dd>Chaksibari Marg, Thamel, Kathmandu</dd></div>
+        <div class="fact"><dt>Hours</dt><dd>10 AM – 7 PM, Sunday to Friday</dd></div>
+        <div class="fact"><dt>Phone</dt><dd>+977 98X-XXXXXXX</dd></div>
+        <div class="fact"><dt>Booking</dt><dd>Wedding dates go three to four months ahead in season</dd></div>
+      </dl>
     </div>
-    <div class="contact-card" data-reveal>
-      <h3>Book a Free Consultation</h3>
-      <p>Message us on WhatsApp with your wedding date and package of interest — we'll reply within the day.</p>
+    <div class="book-cta" data-reveal>
+      <h3>Message us</h3>
+      <p>Send your wedding date and which package you're after. We reply the same day.</p>
       <a class="btn btn-wa" target="_blank" rel="noopener"
-         href="https://wa.me/9779863336100?text=Hi%20Websathi%20%E2%80%94%20I%20saw%20the%20bridal%20demo%20site%20and%20I%27d%20like%20one%20for%20my%20business.">Message on WhatsApp →</a>
+         href="https://wa.me/9779863336100?text=Hi%20Websathi%20%E2%80%94%20I%20saw%20the%20bridal%20demo%20site%20and%20I%27d%20like%20one%20for%20my%20business.">Message on WhatsApp</a>
     </div>
   </div>
 </section>
 
 <footer>
-  <div class="wrap"><strong>Websathi</strong> — Bridal &amp; Beauty, Kathmandu</div>
+  <div class="wrap foot">
+    <div><strong>Websathi</strong> — Bridal &amp; Beauty, Kathmandu</div>
+    <div><a href="showcase/">See a look, close up →</a></div>
+  </div>
 </footer>
 
 <div class="demo-banner">
