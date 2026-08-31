@@ -37,6 +37,15 @@
   --banner-bg:#060F10;               /* under --in-bg, as on the other sites */
   --banner-ink:#9FB3B3;              /* 8.83:1 */
   --banner-accent:#8FD3C9;           /* 11.38:1 */
+
+  /* Durations for this page's own motion. The shared sheet names the ones it
+     owns (--dur-press/hover/reveal); these are the four this page adds, kept as
+     names so a later edit can tell a deliberate value from a typed one. */
+  --dur-pin:160ms;        /* a pin answers hover and press */
+  --dur-pin-in:320ms;     /* a pin arrives with its section, once */
+  --dur-swap:240ms;       /* the readout note arriving */
+  --dur-swap-out:140ms;   /* and leaving, faster, so a sweep stays legible */
+  --dur-hint:260ms;       /* the scroll hint retiring */
 }
 body{background:var(--in-bg);color:var(--in-ink);font-family:'Outfit',sans-serif;}
 h1,h2,h3{font-family:'Outfit',sans-serif;font-weight:600;letter-spacing:-.02em;line-height:1.04;}
@@ -49,7 +58,7 @@ h1,h2,h3{font-family:'Outfit',sans-serif;font-weight:600;letter-spacing:-.02em;l
   display:grid;grid-template-rows:1fr auto;align-items:center;padding:96px 0 8vh;
   view-timeline:--room block;
 }
-.plane{position:absolute;inset:0;will-change:transform;}
+.plane{position:absolute;inset:0;}
 .plane img{width:100%;height:100%;object-fit:cover;}
 .plane-back{filter:blur(16px) saturate(.75);transform:scale(1.16);opacity:.45;}
 .plane-mid{display:grid;place-items:center;align-content:start;padding-top:5vh;}
@@ -72,6 +81,11 @@ h1,h2,h3{font-family:'Outfit',sans-serif;font-weight:600;letter-spacing:-.02em;l
 
 @supports (animation-timeline: --x){
   @media (prefers-reduced-motion: no-preference){
+    /* Promoted only where the scroll timeline actually drives them. Ungated,
+       two viewport-sized layers — one of them blurred at 16px — stayed in GPU
+       memory for every visitor whose browser cannot run this block, and for
+       everyone with reduced motion on, in exchange for no motion at all. */
+    .plane-back,.plane-mid,.depth-copy{will-change:transform;}
     .plane-back{animation:in-back linear both;animation-timeline:--room;animation-range:exit 0% exit 100%;}
     .plane-mid {animation:in-mid  linear both;animation-timeline:--room;animation-range:exit 0% exit 100%;}
     .depth-copy{animation:in-type linear both;animation-timeline:--room;animation-range:exit 0% exit 100%;}
@@ -80,16 +94,6 @@ h1,h2,h3{font-family:'Outfit',sans-serif;font-weight:600;letter-spacing:-.02em;l
 @keyframes in-back{to{transform:scale(1.16) translateY(6%);}}
 @keyframes in-mid {to{transform:translateY(-13%);}}
 @keyframes in-type{to{transform:translateY(-42%);opacity:.14;}}
-@media (prefers-reduced-motion:reduce){
-  .plane-back,.plane-mid,.depth-copy{animation:none;transform:none;}
-  .plane-back{transform:scale(1.16);}
-  /* The swap still happens — it answers a tap — but it fades without travel,
-     and the pins are simply present rather than arriving. */
-  .js-tray .readout-item{transition:opacity 160ms var(--ease-out);transform:none;}
-  .js-tray .pin::before{transition:background-color 160ms var(--ease-out);transform:scale(1);opacity:1;}
-  .js-tray .tray-stage.is-in .pin[aria-current="true"]::before,
-  .js-tray .wide-stage.is-in .pin[aria-current="true"]::before{transform:scale(1.42);}
-}
 
 /* ── the tray ─────────────────────────────────────────────────────────── */
 .tray{padding:clamp(72px,11vh,124px) 0;background:var(--in-bg-2);}
@@ -111,7 +115,7 @@ h1,h2,h3{font-family:'Outfit',sans-serif;font-weight:600;letter-spacing:-.02em;l
 .pin::before{
   content:'';width:13px;height:13px;border-radius:50%;
   background:var(--in-teal);box-shadow:0 0 0 3px rgba(10,21,23,.65);
-  transition:transform 160ms var(--ease-out),background-color 160ms var(--ease-out);
+  transition:transform var(--dur-pin) var(--ease-out),background-color var(--dur-pin) var(--ease-out);
 }
 .pin:focus-visible{outline:2px solid var(--in-teal-soft);outline-offset:2px;}
 @media (hover:hover) and (pointer:fine){ .pin:hover::before{transform:scale(1.32);} }
@@ -127,8 +131,8 @@ h1,h2,h3{font-family:'Outfit',sans-serif;font-weight:600;letter-spacing:-.02em;l
 .js-tray .tray-stage.is-in .pin[aria-current="true"]::before,
 .js-tray .wide-stage.is-in .pin[aria-current="true"]::before{transform:scale(1.42);}
 .js-tray .pin::before{
-  transition:transform 320ms var(--ease-out),opacity 320ms var(--ease-out),
-             background-color 160ms var(--ease-out);
+  transition:transform var(--dur-pin-in) var(--ease-out),opacity var(--dur-pin-in) var(--ease-out),
+             background-color var(--dur-pin) var(--ease-out);
   transition-delay:var(--pin-delay,0ms);
 }
 /* Only the arrival is staggered. Once a pin is in place its hover and press
@@ -136,6 +140,17 @@ h1,h2,h3{font-family:'Outfit',sans-serif;font-weight:600;letter-spacing:-.02em;l
 .js-tray .is-in .pin:hover::before,
 .js-tray .is-in .pin:active::before,
 .js-tray .is-in .pin[aria-current="true"]::before{transition-delay:0ms;}
+/* …and the states themselves have to be restated at that same weight. The
+   arrival rule above is (0,4,0) and matches every pin from the moment its
+   stage scrolls in, so the (0,2,0) :hover and :active rules further up were
+   being outranked and neither one has been answering a pointer since. The
+   delay-clearing block directly above was guarding transforms that could not
+   run. Press stays ahead of the selected state so the current pin answers too. */
+@media (hover:hover) and (pointer:fine){
+  .js-tray .is-in .pin:hover::before{transform:scale(1.32);}
+}
+.js-tray .is-in .pin:active::before{transform:scale(1.1);}
+.js-tray .is-in .pin[aria-current="true"]:active::before{transform:scale(1.1);}
 
 /* The readout never moves or resizes as you sweep the pins — a panel that
    jumps around while you explore is worse than no panel. */
@@ -152,12 +167,52 @@ h1,h2,h3{font-family:'Outfit',sans-serif;font-weight:600;letter-spacing:-.02em;l
   grid-area:1/1;margin:0;padding:0;border:0;
   opacity:0;transform:translateY(5px);
   pointer-events:none;
-  /* Crossfade, not a cut. Sweeping across pins previously teleported the
-     text; the sibling showcase already crossfaded, so this was the same
-     component behaving two different ways. */
-  transition:opacity 240ms var(--ease-out),transform 240ms var(--ease-out);
+  /* Crossfade, not a cut — but asymmetric. Sweeping the pins fires a swap per
+     pin, and at a symmetric 240ms several notes were part-way at once, sliding
+     opposite directions through each other in one grid cell. The outgoing note
+     now leaves in 140ms and never travels: its offset is reset at 0ms, delayed
+     until after it is invisible, so only the arriving note moves.
+     The sibling showcase masks the same overlap with blur, which is right for
+     photographs and wrong for body text. */
+  transition:opacity var(--dur-swap-out) var(--ease-out),transform 0ms linear var(--dur-swap-out);
 }
-.js-tray .readout-item.is-on{opacity:1;transform:none;pointer-events:auto;}
+.js-tray .readout-item.is-on{
+  opacity:1;transform:none;pointer-events:auto;
+  transition:opacity var(--dur-swap) var(--ease-out),transform var(--dur-swap) var(--ease-out);
+}
+
+/* ── reduced motion ─────────────────────────────────────────────────────
+   Placed last on purpose. These rules and the ones they override are the same
+   specificity, so at the top of the file — where this block used to sit — the
+   later rules simply won and reduced motion got the full-motion treatment:
+   the readout still travelled 5px on every swap and the pins still scaled in.
+   Same defect the shared sheet documents having fixed once already, arriving
+   the second time by source order rather than by !important.
+
+   Less movement, not a dead page: the swap still crossfades and a pin still
+   answers a press, at half amplitude, with nothing travelling. */
+@media (prefers-reduced-motion:reduce){
+  .plane-back,.plane-mid,.depth-copy{animation:none;transform:none;}
+  .plane-back{transform:scale(1.16);}
+
+  .js-tray .readout-item{transform:none;transition:opacity var(--dur-pin) var(--ease-out);}
+  .js-tray .readout-item.is-on{transform:none;}
+
+  .js-tray .pin::before,
+  .js-tray .tray-stage.is-in .pin::before,
+  .js-tray .wide-stage.is-in .pin::before{
+    transform:scale(1);opacity:1;
+    transition:transform var(--dur-press) var(--ease-out),background-color var(--dur-pin) var(--ease-out);
+    transition-delay:0ms;
+  }
+  .js-tray .tray-stage.is-in .pin[aria-current="true"]::before,
+  .js-tray .wide-stage.is-in .pin[aria-current="true"]::before{transform:scale(1.2);}
+  @media (hover:hover) and (pointer:fine){
+    .js-tray .is-in .pin:hover::before{transform:scale(1.14);}
+  }
+  .js-tray .is-in .pin:active::before,
+  .js-tray .is-in .pin[aria-current="true"]:active::before{transform:scale(1.06);}
+}
 .readout .kicker{font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;color:var(--in-teal-soft);font-weight:600;}
 .readout h3{font-size:1.42rem;margin:10px 0 12px;}
 .readout p{font-size:.94rem;color:var(--in-ink-soft);line-height:1.62;}
@@ -192,13 +247,17 @@ h1,h2,h3{font-family:'Outfit',sans-serif;font-weight:600;letter-spacing:-.02em;l
 .scroll-hint{
   margin-top:26px;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
   color:var(--in-ink-soft);
-  transition:opacity 260ms var(--ease-out),transform 260ms var(--ease-out);
+  transition:opacity var(--dur-hint) var(--ease-out),transform var(--dur-hint) var(--ease-out);
 }
 .scroll-hint::after{content:'';display:block;width:1px;height:24px;margin:10px auto 0;
   background:linear-gradient(to bottom,var(--in-teal),transparent);}
 .scroll-hint[data-done="true"]{opacity:0;transform:translateY(6px);}
 @media (prefers-reduced-motion: no-preference){
-  .scroll-hint{animation:hint-drift 2.4s var(--ease-in-out) infinite alternate;}
+  /* A gentle sine, not --ease-in-out. That token is cubic-bezier(0.77,0,0.175,1),
+     built for an element travelling from A to B; on a 2.4s alternating loop it
+     hangs at both ends and darts through the middle, which reads as a twitch
+     rather than breathing. */
+  .scroll-hint{animation:hint-drift 2.4s cubic-bezier(0.45,0,0.55,1) infinite alternate;}
   .scroll-hint[data-done="true"]{animation:none;}
 }
 @keyframes hint-drift{from{transform:translateY(0);}to{transform:translateY(6px);}}
