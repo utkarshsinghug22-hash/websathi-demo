@@ -45,6 +45,17 @@
     img.addEventListener('error', function () { img.classList.add('is-loaded'); }, { once: true });
   });
 
+  /* ---- marquee: run only while visible ------------------------------ */
+  var strips = document.querySelectorAll('.strip-inner');
+  if (strips.length && 'IntersectionObserver' in window) {
+    var stripIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        e.target.setAttribute('data-idle', e.isIntersecting ? 'false' : 'true');
+      });
+    });
+    strips.forEach(function (el) { stripIO.observe(el); });
+  }
+
   /* ---- scroll reveal ------------------------------------------------ */
   /* The hidden state is added here rather than in the stylesheet. If this
      script fails to parse, `js-reveal` is never set and every section stays

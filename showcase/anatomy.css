@@ -22,7 +22,15 @@ h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:600;line-height:1.05
    runs on a scroll timeline, which is composited off the main thread — the
    parallax keeps moving while the page is still fetching images. */
 .depth{
-  position:relative;min-height:100svh;overflow:hidden;
+  /* clip, not hidden. `overflow:hidden` makes this a scroll container, and
+     scroll()/view() resolve to the NEAREST scroller — so every plane below was
+     measuring against a box that never scrolls and sat frozen at progress 0.
+     `overflow:clip` crops identically without creating a scroll container. */
+  position:relative;min-height:100svh;overflow:clip;
+  /* One named timeline for the whole hero. Without it each plane measured its
+     own box: .depth-type is a small element near the foot of the hero, so its
+     exit range began far later than the hero's and it snapped 0 to 1. */
+  view-timeline:--hero block;
   display:grid;grid-template-rows:1fr auto;align-items:center;
   padding:96px 0 8vh;
 }
@@ -53,9 +61,9 @@ h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:600;line-height:1.05
 
 @supports (animation-timeline: scroll()){
   @media (prefers-reduced-motion: no-preference){
-    .plane-back{animation:drift-back linear both;animation-timeline:scroll();}
-    .plane-mid {animation:drift-mid  linear both;animation-timeline:scroll();}
-    .depth-type{animation:drift-type linear both;animation-timeline:scroll();}
+    .plane-back{animation:drift-back linear both;animation-timeline:--hero;animation-range:exit 0% exit 100%;}
+    .plane-mid {animation:drift-mid  linear both;animation-timeline:--hero;animation-range:exit 0% exit 100%;}
+    .depth-type{animation:drift-type linear both;animation-timeline:--hero;animation-range:exit 0% exit 100%;}
   }
 }
 /* Percentages so the travel scales with the element, not a guessed pixel value. */
@@ -266,7 +274,8 @@ h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:600;line-height:1.05
    is about the asset, not about bridal work. At this treatment it reads as
    draughting texture; at any opacity where that text is legible it would be
    telling a salon owner they are looking at a production sheet. */
-.explode{position:relative;isolation:isolate;overflow:hidden;}
+.explode{position:relative;isolation:isolate;overflow:clip;  /* see .depth */
+  view-timeline:--strata block;}
 .bp-plane{
   position:absolute;left:50%;top:50%;
   width:min(150%,1500px);margin-left:calc(min(150%,1500px) / -2);
@@ -296,7 +305,7 @@ h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:600;line-height:1.05
    you scroll — that difference is the depth. Off the main thread. */
 @supports (animation-timeline: view()){
   @media (prefers-reduced-motion: no-preference){
-    .bp-plane{animation:bp-drift linear both;animation-timeline:view();animation-range:entry 0% exit 100%;}
+    .bp-plane{animation:bp-drift linear both;animation-timeline:--strata;animation-range:entry 0% entry 100%;}
   }
 }
 @keyframes bp-drift{

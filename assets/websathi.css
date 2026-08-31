@@ -68,7 +68,6 @@ header{
              background-color var(--dur-hover) var(--ease-out),
              border-color var(--dur-hover) var(--ease-out),
              color var(--dur-hover) var(--ease-out);
-  will-change:transform;
 }
 /* Nothing here is optional. A button that does not answer a press reads as
    broken on a touch screen, where there is no hover state to fall back on. */
@@ -141,6 +140,9 @@ header{
   animation:strip-slide 30s linear infinite; /* constant motion → linear */
 }
 @keyframes strip-slide{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+/* Paused while off screen. A 30s loop that keeps compositing behind three
+   screens of content is battery the visitor did not agree to spend. */
+.strip-inner[data-idle="true"]{animation-play-state:paused;}
 
 /* --- scroll reveal ---------------------------------------------------- */
 /* A prospect sees this page once, so a restrained entrance is worth its
