@@ -111,7 +111,21 @@
 
   /* ── room: where a photograph of the clinic goes ─────────────────────── */
   .room{padding:clamp(72px,11vh,124px) 0;}
-  .room-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(28px,4vw,56px);align-items:end;}
+  .room-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:clamp(16px,2.2vw,26px);align-items:stretch;}
+  .room-stack{display:grid;grid-template-rows:1fr 1fr;gap:clamp(16px,2.2vw,26px);}
+  .shot-c{aspect-ratio:auto;}
+
+  /* A full-bleed band carrying the one claim the page is built on. */
+  .band{position:relative;overflow:clip;}
+  .band img{width:100%;height:clamp(260px,46vh,520px);object-fit:cover;object-position:50% 38%;display:block;}
+  .band-note{
+    position:absolute;left:0;right:0;bottom:0;padding:64px 0 26px;
+    background:linear-gradient(to top,rgba(6,24,25,.9),transparent);
+  }
+  .band-note span{
+    display:block;color:#fff;font-size:clamp(1rem,2.1vw,1.45rem);font-weight:500;
+    letter-spacing:-.01em;max-width:34ch;
+  }
   /* Deep teal, not pale grey. The caption sits on a scrim meant for a
      photograph, so the panel behind it has to be dark whether the photograph
      has arrived or not — on the light empty box the white text measured
@@ -157,7 +171,9 @@
   @media(max-width:900px){
     .stages{grid-template-columns:1fr 1fr;}
     .room-grid,.book-grid{grid-template-columns:1fr;}
+    .room-stack{grid-template-rows:auto auto;}
     .shot-b{aspect-ratio:16/10;}
+    .shot-c{aspect-ratio:16/10;}
   }
   @media(max-width:620px){
     .stages{grid-template-columns:1fr;}
@@ -212,6 +228,155 @@
     <span>Check-up</span><span>Scaling</span><span>Fillings</span><span>Root canal</span><span>Extraction</span><span>Crowns</span><span>Braces</span>
   </div>
 </div>
+
+<section class="band ph" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABMNDhEODBMRDxEVFBMXHTAfHRoaHToqLCMwRT1JR0Q9Q0FMVm1dTFFoUkFDX4JgaHF1e3x7SlyGkIV3j214e3b/2wBDARQVFR0ZHTgfHzh2T0NPdnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnb/wAARCAALABQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDXtrGDTpZJlJ3SHJyeDVhbkyvtfZsYYOM1heK2bES7jgKSAD3q/bXEp0WBy5LFRkmqS6CuUp9BLSk2s/lxn+GitOIkryaKkZ//2Q==)">
+  <picture>
+            <source type="image/webp" srcset="img/dc-wide-900.webp 900w, img/dc-wide-1400.webp 1400w, img/dc-wide-1800.webp 1800w" sizes="100vw">
+            <img src="img/dc-wide-1400.jpg" srcset="img/dc-wide-900.jpg 900w, img/dc-wide-1400.jpg 1400w, img/dc-wide-1800.jpg 1800w" sizes="100vw"
+                 width="1800" height="1013" alt="Two dentists showing a patient her panoramic X-ray on a monitor beside the chair.">
+          </picture>
+  <div class="band-note"><span class="wrap">You see the X-ray we see, and the price, before anything begins.</span></div>
+</section>
+
+<section class="prices" id="prices">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow">Prices</span>
+      <h2>Every treatment, every price</h2>
+      <p class="lede">Starting rates, published. You get the exact figure after the check-up, before any work begins.</p>
+    </div>
+        <div class="treat is-lead" data-reveal>
+          <div class="treat-name">
+            <h3>Check-up &amp; consultation</h3>
+            <p>Examination, X-ray if needed, and a written plan.</p>
+          </div>
+          <p class="treat-fig">Rs.&nbsp;500</p>
+        </div>
+        <div class="treat" data-reveal>
+          <div class="treat-name">
+            <h3>Scaling &amp; polishing</h3>
+            <p>Plaque and stain removal. Twice a year is usually enough.</p>
+          </div>
+          <p class="treat-fig"><span>from</span>Rs.&nbsp;1,500</p>
+        </div>
+        <div class="treat" data-reveal>
+          <div class="treat-name">
+            <h3>Filling</h3>
+            <p>Tooth-coloured composite, matched to your shade.</p>
+          </div>
+          <p class="treat-fig"><span>from</span>Rs.&nbsp;2,000</p>
+        </div>
+        <div class="treat" data-reveal>
+          <div class="treat-name">
+            <h3>Root canal</h3>
+            <p>Usually two sittings. Local anaesthetic throughout.</p>
+          </div>
+          <p class="treat-fig"><span>from</span>Rs.&nbsp;7,000</p>
+        </div>
+        <div class="treat" data-reveal>
+          <div class="treat-name">
+            <h3>Extraction</h3>
+            <p>Simple and surgical, including wisdom teeth.</p>
+          </div>
+          <p class="treat-fig"><span>from</span>Rs.&nbsp;1,200</p>
+        </div>
+        <div class="treat" data-reveal>
+          <div class="treat-name">
+            <h3>Crown</h3>
+            <p>Metal-ceramic or full ceramic. Fitted in two visits.</p>
+          </div>
+          <p class="treat-fig"><span>from</span>Rs.&nbsp;8,000</p>
+        </div>
+        <div class="treat" data-reveal>
+          <div class="treat-name">
+            <h3>Braces &amp; aligners</h3>
+            <p>Full plan and monthly adjustments.</p>
+          </div>
+          <p class="treat-fig"><em>on consultation</em></p>
+        </div>
+    <p class="price-note">Prices vary with how much work a tooth needs. If a filling turns out to need a root canal, we stop and tell you what changes before continuing.</p>
+  </div>
+</section>
+
+<section class="visit" id="visit">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow">Your first visit</span>
+      <h2>What actually happens</h2>
+      <p class="lede">About thirty minutes. Nothing is done to your teeth without telling you the cost first.</p>
+    </div>
+    <div class="stages">
+        <div class="stage" data-reveal>
+          <h3>You message us</h3>
+          <p>Send your name and a day that suits you. We confirm a slot the same day — no forms.</p>
+        </div>
+        <div class="stage" data-reveal>
+          <h3>We look</h3>
+          <p>A full check of teeth and gums, and an X-ray only if something needs a closer view.</p>
+        </div>
+        <div class="stage" data-reveal>
+          <h3>We tell you the cost</h3>
+          <p>What needs doing, what can wait, and the price of each part. In writing, before anything starts.</p>
+        </div>
+        <div class="stage" data-reveal>
+          <h3>You decide</h3>
+          <p>Treatment is booked when you're ready. Payment can be split across sittings.</p>
+        </div>
+    </div>
+  </div>
+</section>
+
+<section class="room">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow">The clinic</span>
+      <h2>Where you'll be sitting</h2>
+    </div>
+    <div class="room-grid">
+      <figure class="shot shot-a ph" data-reveal style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABMNDhEODBMRDxEVFBMXHTAfHRoaHToqLCMwRT1JR0Q9Q0FMVm1dTFFoUkFDX4JgaHF1e3x7SlyGkIV3j214e3b/2wBDARQVFR0ZHTgfHzh2T0NPdnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnb/wAARCAAPABQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwC3c3lvAiuP3nmHaDT7OaMiQyqUbt71hTSO9qqOQFHoKSz8mQhZHcMD1yaSGzsxqVuoAbg0VyNxBbGU5Eje+6imI//Z)">
+        <picture>
+            <source type="image/webp" srcset="img/dc-room-560.webp 560w, img/dc-room-900.webp 900w, img/dc-room-1400.webp 1400w" sizes="(max-width:900px) 92vw, 58vw">
+            <img src="img/dc-room-900.jpg" srcset="img/dc-room-560.jpg 560w, img/dc-room-900.jpg 900w, img/dc-room-1400.jpg 1400w" sizes="(max-width:900px) 92vw, 58vw"
+                 width="1400" height="1050" loading="lazy" decoding="async" alt="A dental treatment room with the chair, overhead light and a dentist at work.">
+          </picture>
+        <figcaption>Treatment room, Putalisadak</figcaption>
+      </figure>
+      <div class="room-stack">
+        <figure class="shot shot-b ph" data-reveal style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABMNDhEODBMRDxEVFBMXHTAfHRoaHToqLCMwRT1JR0Q9Q0FMVm1dTFFoUkFDX4JgaHF1e3x7SlyGkIV3j214e3b/2wBDARQVFR0ZHTgfHzh2T0NPdnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnb/wAARCAAbABQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDXtrhZpWjikWRk4OO1XNhVSXOABk1U8q000mUBIzIfvHuamSaRmBfcYyOfkwMUJCGw3tpPHvS4TGcctg0Vm3Oh21zMZFdowewFFAwvTa6nCxeNpNg+Tae/tS2dzJHp0MNyJInGFOT29c1m6T8rTbePmH8hWhfuy2L4NJPWwmacUGUzvzn1oriIdZ1BUAF0+B9KKYH/2Q==)">
+          <picture>
+            <source type="image/webp" srcset="img/dc-xray-420.webp 420w, img/dc-xray-640.webp 640w, img/dc-xray-900.webp 900w" sizes="(max-width:900px) 92vw, 30vw">
+            <img src="img/dc-xray-640.jpg" srcset="img/dc-xray-420.jpg 420w, img/dc-xray-640.jpg 640w, img/dc-xray-900.jpg 900w" sizes="(max-width:900px) 92vw, 30vw"
+                 width="900" height="1200" loading="lazy" decoding="async" alt="Two dentists reviewing a panoramic X-ray on a monitor.">
+          </picture>
+          <figcaption>Your X-ray, on the screen</figcaption>
+        </figure>
+        <figure class="shot shot-c ph" data-reveal style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABMNDhEODBMRDxEVFBMXHTAfHRoaHToqLCMwRT1JR0Q9Q0FMVm1dTFFoUkFDX4JgaHF1e3x7SlyGkIV3j214e3b/2wBDARQVFR0ZHTgfHzh2T0NPdnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnb/wAARCAAUABQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDoY1woU84pGBG8jkk8e1PVtrfTrSSuHPp2qjLoICijDMM0VErIBgxNn3GaKAJJOgFNXlRn0oopLdg9hVYkUUUVQj//2Q==)">
+          <picture>
+            <source type="image/webp" srcset="img/dc-tools-360.webp 360w, img/dc-tools-560.webp 560w, img/dc-tools-860.webp 860w" sizes="(max-width:900px) 92vw, 30vw">
+            <img src="img/dc-tools-560.jpg" srcset="img/dc-tools-360.jpg 360w, img/dc-tools-560.jpg 560w, img/dc-tools-860.jpg 860w" sizes="(max-width:900px) 92vw, 30vw"
+                 width="860" height="860" loading="lazy" decoding="async" alt="Sterilised dental instruments laid out on a clean tray.">
+          </picture>
+          <figcaption>Sterilised before every patient</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+<div class="strip">
+  <div class="strip-inner">
+    <span>Check-up</span><span>Scaling</span><span>Fillings</span><span>Root canal</span><span>Extraction</span><span>Crowns</span><span>Braces</span>
+    <span>Check-up</span><span>Scaling</span><span>Fillings</span><span>Root canal</span><span>Extraction</span><span>Crowns</span><span>Braces</span>
+  </div>
+</div>
+
+<section class="band ph" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABMNDhEODBMRDxEVFBMXHTAfHRoaHToqLCMwRT1JR0Q9Q0FMVm1dTFFoUkFDX4JgaHF1e3x7SlyGkIV3j214e3b/2wBDARQVFR0ZHTgfHzh2T0NPdnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnb/wAARCAALABQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDXtrGDTpZJlJ3SHJyeDVhbkyvtfZsYYOM1heK2bES7jgKSAD3q/bXEp0WBy5LFRkmqS6CuUp9BLSk2s/lxn+GitOIkryaKkZ//2Q==)">
+  <picture>
+            <source type="image/webp" srcset="img/dc-wide-900.webp 900w, img/dc-wide-1400.webp 1400w, img/dc-wide-1800.webp 1800w" sizes="100vw">
+            <img src="img/dc-wide-1400.jpg" srcset="img/dc-wide-900.jpg 900w, img/dc-wide-1400.jpg 1400w, img/dc-wide-1800.jpg 1800w" sizes="100vw"
+                 width="1800" height="1013" alt="Two dentists showing a patient her panoramic X-ray on a monitor beside the chair.">
+          </picture>
+  <div class="band-note"><span class="wrap">You see the X-ray we see, and the price, before anything begins.</span></div>
+</section>
 
 <section class="prices" id="prices">
   <div class="wrap">
