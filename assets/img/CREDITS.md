@@ -19,6 +19,15 @@ notes, the crop previews — is prose about the *file* ("1200 x 1200 px",
 sheet. It runs at 17% behind the exploded stack, where it is draughting
 texture rather than something to read.
 
+`st-*` are the four stage details, each cropped from the region of the shoot
+that stage actually produced, so every preview matches the others in light.
+
+There is no skin-prep photograph in this shoot. Four crops were tried and all
+were out of focus — in that frame the mehendi hands are the focal plane, not
+the face. The stage was cut rather than filled with a blurred face, which also
+made the section truer: skin prep happens two weeks before, and the heading
+says "what the morning is made of".
+
 ## Held back
 
 - `slot-07` — black and white. One monochrome tile among four warm ones reads

@@ -100,23 +100,78 @@
   </div>
   <div class="sc-wrap">
     <div class="explode-head">
-      <span class="sc-eyebrow">Exploded</span>
+      <span class="sc-eyebrow">Stage by stage</span>
       <h2>What the morning is made of</h2>
-      <p>Five stages, stacked. They arrive as one pile and separate as you reach them.</p>
+      <p>Four stages, stacked in the order they happen. Take one to see it up close.</p>
     </div>
-    <div class="stack">
-      <div class="layer"><b>Dupatta</b><span>Last. Pinned once.</span></div>
-      <div class="layer"><b>Jewellery</b><span>Choker, tikka, jhumka</span></div>
-      <div class="layer"><b>Eyes</b><span>Built in daylight</span></div>
-      <div class="layer"><b>Base</b><span>Matched at the jaw</span></div>
-      <div class="layer"><b>Skin prep</b><span>Two weeks before</span></div>
+    <div class="explode-grid">
+      <div class="stack">
+        <button class="layer" type="button" data-stage="dupatta" aria-controls="stage-view" aria-current="true">
+          <b>Dupatta</b><span>Last</span>
+        </button>
+        <button class="layer" type="button" data-stage="jewellery" aria-controls="stage-view">
+          <b>Jewellery</b><span>Choker, tikka, jhumka</span>
+        </button>
+        <button class="layer" type="button" data-stage="eyes" aria-controls="stage-view">
+          <b>Eyes</b><span>Built in daylight</span>
+        </button>
+        <button class="layer" type="button" data-stage="base" aria-controls="stage-view">
+          <b>Base</b><span>Matched at the jaw</span>
+        </button>
+      </div>
+      <div class="stage-view" id="stage-view" aria-live="polite">
+        <figure class="shot is-active" data-stage="dupatta" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABMNDhEODBMRDxEVFBMXHTAfHRoaHToqLCMwRT1JR0Q9Q0FMVm1dTFFoUkFDX4JgaHF1e3x7SlyGkIV3j214e3b/2wBDARQVFR0ZHTgfHzh2T0NPdnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnb/wAARCAASABIDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDm4vMhMTkYBOM+opJv9c/1NT3JJt48DCLwtVpOGBzncM0XGxOaKTmigC9IT/Z/4j+lUn+6n0P86KKQC0UUUAf/2Q==)">
+          <picture>
+            <source type="image/webp" srcset="../assets/img/st-dupatta-360.webp 360w, ../assets/img/st-dupatta-640.webp 640w" sizes="(max-width:860px) 92vw, 420px">
+            <img src="../assets/img/st-dupatta-640.jpg" srcset="../assets/img/st-dupatta-360.jpg 360w, ../assets/img/st-dupatta-640.jpg 640w"
+                 sizes="(max-width:860px) 92vw, 420px" loading="lazy" decoding="async"
+                 width="640" height="640" alt="Dupatta — Last. Pinned once, and nothing moves after.">
+          </picture>
+          <figcaption><b>Dupatta</b><span>Last. Pinned once, and nothing moves after.</span></figcaption>
+        </figure>
+        <figure class="shot" data-stage="jewellery" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABMNDhEODBMRDxEVFBMXHTAfHRoaHToqLCMwRT1JR0Q9Q0FMVm1dTFFoUkFDX4JgaHF1e3x7SlyGkIV3j214e3b/2wBDARQVFR0ZHTgfHzh2T0NPdnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnb/wAARCAASABIDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDnZoZnZptpKk9aZCrGVWI4963YLRpbQtHjGSOTiq0Fkbh2UuFA64FRc0aFW4G0dOlFO/syMcCfp7UVXMhcrJQzLesqsQpB4B4ptmT5UnJ60UU6nxBT+EsjpRRRUFH/2Q==)">
+          <picture>
+            <source type="image/webp" srcset="../assets/img/st-jewellery-360.webp 360w, ../assets/img/st-jewellery-640.webp 640w" sizes="(max-width:860px) 92vw, 420px">
+            <img src="../assets/img/st-jewellery-640.jpg" srcset="../assets/img/st-jewellery-360.jpg 360w, ../assets/img/st-jewellery-640.jpg 640w"
+                 sizes="(max-width:860px) 92vw, 420px" loading="lazy" decoding="async"
+                 width="640" height="640" alt="Jewellery — Choker, tikka, jhumka — weight checked before it goes on.">
+          </picture>
+          <figcaption><b>Jewellery</b><span>Choker, tikka, jhumka — weight checked before it goes on.</span></figcaption>
+        </figure>
+        <figure class="shot" data-stage="eyes" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABMNDhEODBMRDxEVFBMXHTAfHRoaHToqLCMwRT1JR0Q9Q0FMVm1dTFFoUkFDX4JgaHF1e3x7SlyGkIV3j214e3b/2wBDARQVFR0ZHTgfHzh2T0NPdnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnb/wAARCAASABIDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwBbeNVszIXVVY4bA+bNZerwxzAtCCCnGDzV3UZTaoECZjIw+OOcmqEl3brZFLcMWfli3JqEa26GNRUvlE85HNFaGdjf8Qn92f8AerBT7poorNbGj3IqKKK0Mz//2Q==)">
+          <picture>
+            <source type="image/webp" srcset="../assets/img/st-eyes-360.webp 360w, ../assets/img/st-eyes-640.webp 640w" sizes="(max-width:860px) 92vw, 420px">
+            <img src="../assets/img/st-eyes-640.jpg" srcset="../assets/img/st-eyes-360.jpg 360w, ../assets/img/st-eyes-640.jpg 640w"
+                 sizes="(max-width:860px) 92vw, 420px" loading="lazy" decoding="async"
+                 width="640" height="640" alt="Eyes — Built in daylight. It has to read at noon and under a mandap.">
+          </picture>
+          <figcaption><b>Eyes</b><span>Built in daylight. It has to read at noon and under a mandap.</span></figcaption>
+        </figure>
+        <figure class="shot" data-stage="base" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABMNDhEODBMRDxEVFBMXHTAfHRoaHToqLCMwRT1JR0Q9Q0FMVm1dTFFoUkFDX4JgaHF1e3x7SlyGkIV3j214e3b/2wBDARQVFR0ZHTgfHzh2T0NPdnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnb/wAARCAASABIDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDMu7nypxHcxrJGDlR3AqtqF2LqRB92MYH0FOvbeW4upGUZ29qpGKQnbtPHrUo1ZdDRAABMgd6KFZQoBbBx6UUWJ5mXZOLq4x6mqn/LQ0UUkNlIk7jyaKKKsyP/2Q==)">
+          <picture>
+            <source type="image/webp" srcset="../assets/img/st-base-360.webp 360w, ../assets/img/st-base-640.webp 640w" sizes="(max-width:860px) 92vw, 420px">
+            <img src="../assets/img/st-base-640.jpg" srcset="../assets/img/st-base-360.jpg 360w, ../assets/img/st-base-640.jpg 640w"
+                 sizes="(max-width:860px) 92vw, 420px" loading="lazy" decoding="async"
+                 width="640" height="640" alt="Base — Matched at the jaw, never on the back of the hand.">
+          </picture>
+          <figcaption><b>Base</b><span>Matched at the jaw, never on the back of the hand.</span></figcaption>
+        </figure>
+        <svg class="bp-frame" aria-hidden="true" viewBox="0 0 100 100" preserveAspectRatio="none">
+          <path d="M0 8 V0 H8"/><path d="M92 0 H100 V8"/>
+          <path d="M100 92 V100 H92"/><path d="M8 100 H0 V92"/>
+        </svg>
+        <svg class="bp-cross" aria-hidden="true" viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="13"/>
+          <path d="M50 34 V66 M34 50 H66"/>
+        </svg>
+      </div>
     </div>
   </div>
 </section>
 
 <div class="sc-foot">
   <div class="sc-wrap">
-    Built by <strong>Websathi</strong> — no images beyond the four already on the site.<br>
+    Built by <strong>Websathi</strong> — every photograph here is a crop of one shoot.<br>
     <a href="../">See the bridal studio demo →</a>
   </div>
 </div>

@@ -56,6 +56,35 @@
     });
   });
 
+  /* ---- stage viewer -------------------------------------------------- */
+  /* Hover on a pointer, click or tap everywhere else. The same handler serves
+     keyboard focus, so the pile is operable without a mouse at all. */
+  document.querySelectorAll('.explode-grid').forEach(function (grid) {
+    var layers = grid.querySelectorAll('.layer');
+    var shots  = grid.querySelectorAll('.shot');
+    if (!layers.length || !shots.length) return;
+
+    /* Collapse the grid into a single swapping panel only now that the code
+       driving it is definitely running. Reduced motion still gets the swap —
+       it is the answer to a tap, not decoration — just without the movement. */
+    document.documentElement.classList.add('js-stage');
+
+    var show = function (key) {
+      layers.forEach(function (l) {
+        if (l.dataset.stage === key) l.setAttribute('aria-current', 'true');
+        else l.removeAttribute('aria-current');
+      });
+      shots.forEach(function (s) { s.classList.toggle('is-active', s.dataset.stage === key); });
+    };
+
+    layers.forEach(function (l) {
+      var key = l.dataset.stage;
+      l.addEventListener('click', function () { show(key); });
+      l.addEventListener('focus', function () { show(key); });
+      if (fine) l.addEventListener('pointerenter', function () { show(key); });
+    });
+  });
+
   if (reduce || !fine) return;   /* everything below is pointer-only */
 
   /* ---- pointer tilt -------------------------------------------------- */
