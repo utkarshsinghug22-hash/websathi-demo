@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Websathi — Smile Dental Care, Kathmandu</title>
-<meta name="description" content="Check-ups, cleaning, fillings and root canal treatment in Kathmandu. Book an appointment on WhatsApp.">
+<meta name="description" content="A Kathmandu dental clinic that tells you the cost before it starts. Check-ups, cleaning, fillings and root canal treatment. Book on WhatsApp.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Smile Dental Care — Kathmandu">
-<meta property="og:description" content="Check-ups, cleaning, fillings and root canal treatment. Priced before you agree. Book on WhatsApp.">
+<meta property="og:description" content="You will know the full cost before anything starts. Check-ups, cleaning, fillings and root canal treatment.">
 <meta property="og:url" content="https://utkarshsinghug22-hash.github.io/websathi-demo/dental/">
 <meta property="og:image" content="https://utkarshsinghug22-hash.github.io/websathi-demo/dental/preview.png">
 <meta property="og:image:width" content="1200">
@@ -15,105 +15,155 @@
 <meta property="og:locale" content="en_NP">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Smile Dental Care — Kathmandu">
-<meta name="twitter:description" content="Check-ups, cleaning, fillings and root canal treatment. Priced before you agree.">
+<meta name="twitter:description" content="You will know the full cost before anything starts.">
 <meta name="twitter:image" content="https://utkarshsinghug22-hash.github.io/websathi-demo/dental/preview.png">
-<meta name="theme-color" content="#0F6E6E">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230F6E6E'/><text x='16' y='23' font-size='18' font-family='Helvetica,sans-serif' fill='%23DCF0EC' text-anchor='middle'>S</text></svg>">
+<meta name="theme-color" content="#0B4F4F">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230B4F4F'/><text x='16' y='23' font-size='18' font-family='Helvetica,sans-serif' fill='%23F6F9F9' text-anchor='middle'>S</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/websathi.css?v=8ab105ce">
 <style>
   :root{
-    --accent:#3E9BA8;
-    --accent-soft:#DCF0EC;
-    --accent-deep:#0F6E6E;
-    --accent-deepest:#084848;
-    --surface:#FBFDFC;
-    --surface-warm:#EEF8F6;
-    --surface-blur:rgba(251,253,252,.92);
-    --mint:#DCF0EC;
-    --ink:#16242A;
-    --ink-soft:#4A5D64;   /* darkened from #5A6D74 to clear 4.5:1 on paper */
-    --hairline:rgba(22,36,42,.1);
-    --hairline-strong:rgba(22,36,42,.32);
+    /* Cool paper, not cream. Every clinic reaches for the same pale blue, and
+       cream-plus-serif is the other default — this is neither. */
+    --surface:#F6F9F9;
+    --surface-warm:#EAF2F1;
+    --surface-blur:rgba(246,249,249,.9);
+    --accent:#0B4F4F;
+    --accent-soft:#17877F;
+    --accent-deep:#0B4F4F;
+    --accent-deepest:#083B3B;
+    /* One warm note against the clinical, used only where money is named. */
+    --clay:#B4553C;
+    --ink:#0E1B1D;
+    --ink-soft:#4C6165;        /* 6.9:1 on paper */
+    --hairline:rgba(14,27,29,.12);
+    --hairline-strong:rgba(14,27,29,.34);
   }
   body{background:var(--surface);color:var(--ink);font-family:'Outfit',sans-serif;}
-  h1,h2,h3{font-family:'Source Serif 4',serif;font-weight:600;line-height:1.18;}
-  .logo{font-family:'Source Serif 4',serif;font-size:1.32rem;font-weight:600;}
-  .logo span{color:var(--accent-deep);}
+  h1,h2,h3{font-family:'Outfit',sans-serif;font-weight:600;letter-spacing:-.018em;line-height:1.04;}
+  .logo{font-weight:600;font-size:1.24rem;letter-spacing:-.02em;}
+  .logo span{color:var(--accent);}
+  .lede{color:var(--ink-soft);}
+  /* Figures line up in a column only if the digits are fixed width. */
+  .tnum{font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1;}
 
-  .hero{padding:132px 0 84px;position:relative;overflow:hidden;}
-  .hero::before{content:"";position:absolute;top:-180px;left:-140px;width:560px;height:560px;
-    border-radius:50%;background:radial-gradient(circle,var(--mint) 0%,transparent 70%);opacity:.75;}
-  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center;position:relative;}
-  .hero h1{font-size:clamp(2.3rem,5.2vw,4rem);margin:18px 0 20px;}
-  .hero h1 em{font-style:italic;color:var(--accent-deep);}
-  .hero p{font-size:1.06rem;max-width:48ch;color:var(--ink-soft);margin-bottom:30px;}
-  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:36px;}
+  /* ── hero: the thesis is the price, not a stock smile ─────────────────── */
+  .hero{padding:clamp(120px,17vh,190px) 0 clamp(56px,8vh,90px);}
+  .hero h1{font-size:clamp(2.6rem,6.6vw,5.2rem);max-width:15ch;margin:18px 0 26px;}
+  .hero h1 em{font-style:normal;color:var(--accent);}
+  .hero .lede{font-size:1.1rem;max-width:46ch;margin-bottom:38px;}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:clamp(44px,7vh,72px);}
 
-  .trust{display:flex;gap:30px;flex-wrap:wrap;padding-top:26px;border-top:1px solid var(--hairline);}
-  .trust div{display:flex;flex-direction:column;font-size:.84rem;color:var(--ink-soft);}
-  .trust strong{font-family:'Source Serif 4',serif;font-size:1.22rem;color:var(--accent-deep);font-weight:600;}
-
-  .visual{aspect-ratio:4/5;border-radius:6px;display:grid;place-items:center;position:relative;
-    background:linear-gradient(165deg,var(--mint) 0%,var(--surface-warm) 60%,#CDE9F0 100%);
-    box-shadow:0 26px 60px rgba(15,110,110,.18);overflow:hidden;}
-  .visual::after{content:'';position:absolute;inset:12px;border:1px solid rgba(15,110,110,.22);border-radius:3px;}
-  .tooth{width:44%;height:auto;color:var(--accent-deep);opacity:.42;}
-  .visual span{position:absolute;bottom:26px;left:0;right:0;text-align:center;
-    font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-deepest);font-weight:600;}
-
-  .strip{background:var(--accent-deep);color:var(--surface);}
-
-  .sec-head{max-width:58ch;margin-bottom:48px;}
-  .sec-head h2{font-size:clamp(1.85rem,3.4vw,2.6rem);margin:12px 0 14px;}
-  .sec-head p{color:var(--ink-soft);}
-
-  .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-  .svc{background:var(--surface);border:1px solid var(--hairline);border-radius:6px;padding:28px;
-    transition:border-color var(--dur-hover) var(--ease-out),
-               box-shadow var(--dur-hover) var(--ease-out);}
-  @media (hover:hover) and (pointer:fine){
-    .svc:hover{border-color:var(--accent);box-shadow:0 12px 30px rgba(15,110,110,.1);}
+  /* The one number a patient actually wants, stated up front. */
+  .headline-price{
+    display:grid;grid-template-columns:auto 1fr;gap:0 22px;align-items:center;
+    padding:26px 0;border-top:2px solid var(--accent);border-bottom:1px solid var(--hairline);
+    max-width:620px;
   }
-  .svc h3{font-size:1.2rem;margin-bottom:10px;}
-  .svc p{font-size:.9rem;color:var(--ink-soft);margin-bottom:16px;}
-  .price{font-family:'Source Serif 4',serif;font-weight:600;color:var(--accent-deep);font-size:1.05rem;}
+  .headline-price b{
+    font-family:'Outfit',sans-serif;font-size:clamp(2.6rem,6vw,4rem);font-weight:600;
+    color:var(--clay);line-height:1;letter-spacing:-.03em;
+  }
+  .headline-price span{font-size:.94rem;color:var(--ink-soft);line-height:1.5;}
 
-  .steps{background:var(--surface-warm);}
-  .step-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;}
-  .step .num{font-family:'Source Serif 4',serif;font-size:.92rem;color:var(--accent-deep);font-style:italic;margin-bottom:8px;}
-  .step h3{font-size:1.14rem;margin-bottom:8px;}
-  .step p{font-size:.89rem;color:var(--ink-soft);}
+  .trust{display:flex;gap:clamp(26px,4vw,52px);flex-wrap:wrap;margin-top:30px;}
+  .trust div{display:flex;flex-direction:column;font-size:.82rem;color:var(--ink-soft);}
+  .trust b{font-size:1.08rem;color:var(--accent);font-weight:600;margin-bottom:2px;}
 
-  .quote{background:var(--accent-deep);color:var(--surface);text-align:center;}
-  .quote p{font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(1.25rem,2.8vw,1.85rem);
-    max-width:34ch;margin:0 auto 18px;line-height:1.4;}
-  .quote small{font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;opacity:.85;}
+  .strip{background:var(--accent);color:var(--surface);}
 
-  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;}
-  .info-row{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--hairline);}
-  .info-row strong{min-width:96px;font-size:.73rem;letter-spacing:.14em;text-transform:uppercase;
-    color:var(--ink-soft);padding-top:3px;}
-  .cta-card{background:var(--accent-deepest);color:var(--surface);padding:40px;border-radius:6px;}
-  .cta-card h3{font-size:1.55rem;margin-bottom:12px;}
-  .cta-card p{color:rgba(251,253,252,.82);font-size:.95rem;margin-bottom:26px;}
+  /* ── prices: the centrepiece ──────────────────────────────────────────── */
+  .prices{padding:clamp(72px,11vh,124px) 0;}
+  .treat{
+    display:grid;grid-template-columns:1fr auto;gap:20px 34px;align-items:baseline;
+    padding:24px 0;border-bottom:1px solid var(--hairline);
+  }
+  .treat:first-of-type{border-top:1px solid var(--hairline);}
+  .treat h3{font-size:1.3rem;margin-bottom:5px;}
+  .treat-name p{font-size:.92rem;color:var(--ink-soft);max-width:54ch;}
+  .treat-fig{
+    font-size:clamp(1.5rem,3.2vw,2.1rem);font-weight:600;color:var(--ink);
+    white-space:nowrap;letter-spacing:-.02em;
+    font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1;
+  }
+  .treat-fig span{
+    display:block;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--ink-soft);font-weight:500;margin-bottom:4px;
+  }
+  .treat-fig em{font-style:normal;font-size:.92rem;font-weight:400;color:var(--ink-soft);}
+  .is-lead{background:linear-gradient(90deg,rgba(11,79,79,.05),transparent 70%);}
+  .is-lead .treat-fig{color:var(--clay);}
+  .price-note{margin-top:26px;font-size:.88rem;color:var(--ink-soft);max-width:56ch;}
 
-  footer{background:var(--ink);color:rgba(251,253,252,.75);padding:34px 0;font-size:.86rem;}
+  /* ── first visit: stages, not numerals ───────────────────────────────── */
+  /* The steps are a real sequence, so they are numbered by the room they
+     happen in — 01/02/03/04 added a count nobody needed. */
+  .visit{background:var(--accent);color:var(--surface);padding:clamp(72px,11vh,124px) 0;}
+  .visit .eyebrow{color:#8FD3C9;}
+  .visit h2{color:var(--surface);}
+  .visit .lede{color:rgba(246,249,249,.8);}
+  .stages{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(246,249,249,.2);border:1px solid rgba(246,249,249,.2);}
+  .stage{background:var(--accent);padding:32px 26px;}
+  .stage h3{font-size:1.16rem;margin-bottom:10px;color:var(--surface);}
+  .stage p{font-size:.9rem;color:rgba(246,249,249,.78);line-height:1.6;}
+
+  /* ── room: where a photograph of the clinic goes ─────────────────────── */
+  .room{padding:clamp(72px,11vh,124px) 0;}
+  .room-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(28px,4vw,56px);align-items:end;}
+  /* Deep teal, not pale grey. The caption sits on a scrim meant for a
+     photograph, so the panel behind it has to be dark whether the photograph
+     has arrived or not — on the light empty box the white text measured
+     1.14:1. A faint rule grid keeps it reading as a considered panel. */
+  .shot{
+    position:relative;overflow:hidden;border-radius:3px;
+    background:var(--accent-deepest);
+    background-image:
+      linear-gradient(rgba(246,249,249,.05) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(246,249,249,.05) 1px,transparent 1px);
+    background-size:38px 38px;
+  }
+  .shot img{width:100%;height:100%;object-fit:cover;display:block;}
+  .shot-a{aspect-ratio:4/3;}
+  .shot-b{aspect-ratio:3/4;}
+  .shot figcaption{
+    position:absolute;left:0;right:0;bottom:0;padding:34px 18px 14px;color:#fff;font-size:.86rem;
+    background:linear-gradient(to top,rgba(6,24,25,.86),transparent);
+  }
+
+  .said{padding:clamp(60px,9vh,100px) 0;border-top:1px solid var(--hairline);}
+  .said blockquote{font-size:clamp(1.4rem,3.4vw,2.5rem);font-weight:500;line-height:1.24;max-width:24ch;letter-spacing:-.02em;}
+  .said cite{display:block;margin-top:22px;font-style:normal;font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft);}
+
+  .book{background:var(--surface-warm);padding:clamp(72px,11vh,124px) 0;}
+  .book-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(36px,6vw,80px);align-items:start;}
+  .book h2{font-size:clamp(2.1rem,4.6vw,3.4rem);margin-bottom:16px;}
+  .facts{border-top:1px solid var(--hairline);margin-top:30px;}
+  .fact{display:grid;grid-template-columns:92px 1fr;gap:18px;padding:15px 0;border-bottom:1px solid var(--hairline);font-size:.92rem;}
+  .fact dt{font-size:.63rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);padding-top:4px;}
+  .fact dd{margin:0;}
+  .book-cta{background:var(--surface);border:1px solid var(--hairline);border-radius:4px;padding:34px;}
+  .book-cta h3{font-size:1.5rem;margin-bottom:10px;}
+  .book-cta p{font-size:.92rem;color:var(--ink-soft);margin-bottom:24px;}
+
+  footer{padding:32px 0;border-top:1px solid var(--hairline);color:var(--ink-soft);font-size:.82rem;}
   .foot{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;}
 
-  @media(max-width:960px){.svc-grid{grid-template-columns:1fr 1fr;}.step-grid{grid-template-columns:1fr 1fr;row-gap:32px;}}
+  .section-head{max-width:34ch;margin-bottom:clamp(34px,5vw,56px);}
+  .section-head h2{font-size:clamp(2rem,4.4vw,3.2rem);margin:12px 0 14px;}
+  .section-head .lede{font-size:1rem;max-width:48ch;}
+
   @media(max-width:900px){
-    .hero{padding:104px 0 56px;}
-    .hero-grid{grid-template-columns:1fr;gap:36px;}
-    .visual{max-width:290px;}
+    .stages{grid-template-columns:1fr 1fr;}
+    .room-grid,.book-grid{grid-template-columns:1fr;}
+    .shot-b{aspect-ratio:16/10;}
   }
-  @media(max-width:720px){
-    .svc-grid{grid-template-columns:1fr;}
-    .step-grid{grid-template-columns:1fr;}
-    .contact-grid{grid-template-columns:1fr;gap:36px;}
-    .cta-card{padding:30px;}
+  @media(max-width:620px){
+    .stages{grid-template-columns:1fr;}
+    .treat{grid-template-columns:1fr;gap:10px;}
+    .treat-fig span{display:inline;margin-right:6px;}
+    .headline-price{grid-template-columns:1fr;gap:10px;}
   }
 </style>
 </head>
@@ -127,106 +177,172 @@
       <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
     </button>
     <nav class="nav-links" id="nav-links">
-      <a href="#services">Services</a>
-      <a href="#visit">First Visit</a>
-      <a href="#contact">Contact</a>
-      <a href="#contact" class="btn btn-solid">Book Appointment</a>
+      <a href="#prices">Prices</a>
+      <a href="#visit">First visit</a>
+      <a href="#book">Contact</a>
+      <a href="#book" class="btn btn-solid">Book a time</a>
     </nav>
   </div>
 </header>
 
-<div class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <div class="eyebrow">Dental Clinic — Kathmandu</div>
-      <h1>Dentistry that doesn't make you <em>dread</em> the chair.</h1>
-      <p>Check-ups, cleaning, fillings and root canal treatment — explained plainly before we start, priced before you agree.</p>
-      <div class="hero-cta">
-        <a href="#contact" class="btn btn-solid">Book an Appointment →</a>
-        <a href="#services" class="btn btn-ghost">See Treatments</a>
-      </div>
-      <div class="trust">
-        <div><strong>12 yrs</strong>in practice</div>
-        <div><strong>NMC</strong>registered dentist</div>
-        <div><strong>Sun–Fri</strong>10 AM – 6 PM</div>
-      </div>
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Dental clinic — Putalisadak, Kathmandu</span>
+    <h1>You'll know the cost <em>before</em> we start.</h1>
+    <p class="lede">Check-ups, cleaning, fillings and root canal treatment — explained in plain language, priced in writing, and never begun until you've agreed to it.</p>
+    <div class="hero-cta">
+      <a href="#book" class="btn btn-solid">Book a time</a>
+      <a href="#prices" class="btn btn-ghost">See every price</a>
     </div>
-    <div class="visual">
-      <svg class="tooth" viewBox="0 0 100 120" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
-        <path d="M50 12c14 0 22 6 26 12 5 8 4 20 1 32-3 13-5 26-8 38-2 9-5 14-9 14s-6-6-7-16l-3-24c0-4-6-4-6 0l-3 24c-1 10-3 16-7 16s-7-5-9-14c-3-12-5-25-8-38-3-12-4-24 1-32 4-6 12-12 26-12Z" stroke-linejoin="round"/>
-      </svg>
-      <span>Same-week appointments</span>
+    <div class="headline-price">
+      <b class="tnum">Rs.&nbsp;500</b>
+      <span>for a full check-up, an X-ray if it's needed, and a written treatment plan you can take away and think about.</span>
+    </div>
+    <div class="trust">
+      <div><b>12 years</b>in practice</div>
+      <div><b>NMC registered</b>dental surgeon</div>
+      <div><b>Sun – Fri</b>10 AM – 6 PM</div>
     </div>
   </div>
-</div>
+</section>
 
 <div class="strip">
   <div class="strip-inner">
-    <span>CHECK-UP</span><span>SCALING</span><span>FILLINGS</span><span>ROOT CANAL</span><span>EXTRACTION</span><span>BRACES</span>
-    <span>CHECK-UP</span><span>SCALING</span><span>FILLINGS</span><span>ROOT CANAL</span><span>EXTRACTION</span><span>BRACES</span>
+    <span>Check-up</span><span>Scaling</span><span>Fillings</span><span>Root canal</span><span>Extraction</span><span>Crowns</span><span>Braces</span>
+    <span>Check-up</span><span>Scaling</span><span>Fillings</span><span>Root canal</span><span>Extraction</span><span>Crowns</span><span>Braces</span>
   </div>
 </div>
 
-<section id="services">
+<section class="prices" id="prices">
   <div class="wrap">
-    <div class="sec-head" data-reveal>
-      <div class="eyebrow">Treatments</div>
-      <h2>What we do, and what it costs</h2>
-      <p>Prices are starting rates. You'll get the full figure after the check-up, before any work begins.</p>
+    <div class="section-head" data-reveal>
+      <span class="eyebrow">Prices</span>
+      <h2>Every treatment, every price</h2>
+      <p class="lede">Starting rates, published. You get the exact figure after the check-up, before any work begins.</p>
     </div>
-    <div class="svc-grid">
-      <div class="svc" data-reveal><h3>Check-up &amp; Consultation</h3><p>Full examination, X-ray if needed, and a written treatment plan.</p><div class="price">Rs. 500</div></div>
-      <div class="svc" data-reveal><h3>Scaling &amp; Polishing</h3><p>Cleaning for plaque and stain removal. Recommended twice a year.</p><div class="price">from Rs. 1,500</div></div>
-      <div class="svc" data-reveal><h3>Fillings</h3><p>Tooth-coloured composite fillings, matched to your natural shade.</p><div class="price">from Rs. 2,000</div></div>
-      <div class="svc" data-reveal><h3>Root Canal Treatment</h3><p>Usually two sittings. Local anaesthetic throughout.</p><div class="price">from Rs. 7,000</div></div>
-      <div class="svc" data-reveal><h3>Extraction</h3><p>Simple and surgical extractions, including wisdom teeth.</p><div class="price">from Rs. 1,200</div></div>
-      <div class="svc" data-reveal><h3>Braces &amp; Aligners</h3><p>Consultation, full plan and monthly adjustments.</p><div class="price">on consultation</div></div>
-    </div>
+        <div class="treat is-lead" data-reveal>
+          <div class="treat-name">
+            <h3>Check-up &amp; consultation</h3>
+            <p>Examination, X-ray if needed, and a written plan.</p>
+          </div>
+          <p class="treat-fig">Rs.&nbsp;500</p>
+        </div>
+        <div class="treat" data-reveal>
+          <div class="treat-name">
+            <h3>Scaling &amp; polishing</h3>
+            <p>Plaque and stain removal. Twice a year is usually enough.</p>
+          </div>
+          <p class="treat-fig"><span>from</span>Rs.&nbsp;1,500</p>
+        </div>
+        <div class="treat" data-reveal>
+          <div class="treat-name">
+            <h3>Filling</h3>
+            <p>Tooth-coloured composite, matched to your shade.</p>
+          </div>
+          <p class="treat-fig"><span>from</span>Rs.&nbsp;2,000</p>
+        </div>
+        <div class="treat" data-reveal>
+          <div class="treat-name">
+            <h3>Root canal</h3>
+            <p>Usually two sittings. Local anaesthetic throughout.</p>
+          </div>
+          <p class="treat-fig"><span>from</span>Rs.&nbsp;7,000</p>
+        </div>
+        <div class="treat" data-reveal>
+          <div class="treat-name">
+            <h3>Extraction</h3>
+            <p>Simple and surgical, including wisdom teeth.</p>
+          </div>
+          <p class="treat-fig"><span>from</span>Rs.&nbsp;1,200</p>
+        </div>
+        <div class="treat" data-reveal>
+          <div class="treat-name">
+            <h3>Crown</h3>
+            <p>Metal-ceramic or full ceramic. Fitted in two visits.</p>
+          </div>
+          <p class="treat-fig"><span>from</span>Rs.&nbsp;8,000</p>
+        </div>
+        <div class="treat" data-reveal>
+          <div class="treat-name">
+            <h3>Braces &amp; aligners</h3>
+            <p>Full plan and monthly adjustments.</p>
+          </div>
+          <p class="treat-fig"><em>on consultation</em></p>
+        </div>
+    <p class="price-note">Prices vary with how much work a tooth needs. If a filling turns out to need a root canal, we stop and tell you what changes before continuing.</p>
   </div>
 </section>
 
-<section class="steps" id="visit">
+<section class="visit" id="visit">
   <div class="wrap">
-    <div class="sec-head" data-reveal>
-      <div class="eyebrow">Your First Visit</div>
+    <div class="section-head" data-reveal>
+      <span class="eyebrow">Your first visit</span>
       <h2>What actually happens</h2>
-      <p>Most first visits take about 30 minutes. Nothing is done to your teeth without telling you the cost first.</p>
+      <p class="lede">About thirty minutes. Nothing is done to your teeth without telling you the cost first.</p>
     </div>
-    <div class="step-grid">
-      <div class="step" data-reveal><div class="num">01</div><h3>Message us</h3><p>Send your name and preferred day on WhatsApp. We confirm a slot the same day.</p></div>
-      <div class="step" data-reveal><div class="num">02</div><h3>Examination</h3><p>A full look at teeth and gums, plus an X-ray if something needs a closer view.</p></div>
-      <div class="step" data-reveal><div class="num">03</div><h3>Plan &amp; price</h3><p>We explain what needs doing, what can wait, and what each part costs.</p></div>
-      <div class="step" data-reveal><div class="num">04</div><h3>Treatment</h3><p>Booked at your convenience. Payment can be split across sittings.</p></div>
+    <div class="stages">
+        <div class="stage" data-reveal>
+          <h3>You message us</h3>
+          <p>Send your name and a day that suits you. We confirm a slot the same day — no forms.</p>
+        </div>
+        <div class="stage" data-reveal>
+          <h3>We look</h3>
+          <p>A full check of teeth and gums, and an X-ray only if something needs a closer view.</p>
+        </div>
+        <div class="stage" data-reveal>
+          <h3>We tell you the cost</h3>
+          <p>What needs doing, what can wait, and the price of each part. In writing, before anything starts.</p>
+        </div>
+        <div class="stage" data-reveal>
+          <h3>You decide</h3>
+          <p>Treatment is booked when you're ready. Payment can be split across sittings.</p>
+        </div>
     </div>
   </div>
 </section>
 
-<section class="quote">
+<section class="room">
   <div class="wrap">
-    <p>"First dentist who told me what it would cost before picking up the drill."</p>
-    <small>— A patient, Kathmandu</small>
+    <div class="section-head" data-reveal>
+      <span class="eyebrow">The clinic</span>
+      <h2>Where you'll be sitting</h2>
+    </div>
+    <div class="room-grid">
+      <figure class="shot shot-a" data-reveal>
+        <figcaption>Treatment room, Putalisadak</figcaption>
+      </figure>
+      <figure class="shot shot-b" data-reveal>
+        <figcaption>Reception</figcaption>
+      </figure>
+    </div>
   </div>
 </section>
 
-<section id="contact">
-  <div class="wrap">
-    <div class="sec-head" data-reveal>
-      <div class="eyebrow">Get In Touch</div>
-      <h2>Book a time that suits you.</h2>
+<section class="said">
+  <div class="wrap" data-reveal>
+    <blockquote>First dentist who told me what it would cost before picking up the drill.</blockquote>
+    <cite>A patient, Kathmandu</cite>
+  </div>
+</section>
+
+<section class="book" id="book">
+  <div class="wrap book-grid">
+    <div data-reveal>
+      <span class="eyebrow">Book</span>
+      <h2>Come in when it suits you.</h2>
+      <p class="lede">Message us with a day and we'll confirm a slot the same day. Urgent pain gets seen first.</p>
+      <dl class="facts">
+        <div class="fact"><dt>Clinic</dt><dd>Putalisadak, opposite the city campus, Kathmandu 44600</dd></div>
+        <div class="fact"><dt>Hours</dt><dd>Sunday to Friday, 10 AM – 6 PM. Saturday closed.</dd></div>
+        <div class="fact"><dt>Phone</dt><dd>+977 98X-XXXXXXX</dd></div>
+        <div class="fact"><dt>Urgent</dt><dd>Message any time — we answer for pain</dd></div>
+      </dl>
     </div>
-    <div class="contact-grid">
-      <div data-reveal>
-        <div class="info-row"><strong>Address</strong><div>Putalisadak, opposite the city campus<br>Kathmandu 44600</div></div>
-        <div class="info-row"><strong>Hours</strong><div>Sun – Fri, 10 AM – 6 PM<br>Saturday closed</div></div>
-        <div class="info-row"><strong>Phone</strong><div>+977 98X-XXXXXXX</div></div>
-        <div class="info-row"><strong>Emergency</strong><div>Message any time — we reply for urgent pain</div></div>
-      </div>
-      <div class="cta-card" data-reveal>
-        <h3>Book on WhatsApp</h3>
-        <p>Send your name and the day you'd like to come. We'll confirm a slot and tell you roughly how long to allow.</p>
-        <a class="btn btn-wa" target="_blank" rel="noopener"
-           href="https://wa.me/9779863336100?text=Hi%20Websathi%20%E2%80%94%20I%20saw%20the%20dental%20demo%20site%20and%20I%27d%20like%20one%20for%20my%20clinic.">Message on WhatsApp →</a>
-      </div>
+    <div class="book-cta" data-reveal>
+      <h3>Message us</h3>
+      <p>Send your name and the day you'd like to come. We'll confirm a slot and tell you roughly how long to allow.</p>
+      <a class="btn btn-wa" target="_blank" rel="noopener"
+         href="https://wa.me/9779863336100?text=Hi%20Websathi%20%E2%80%94%20I%20saw%20the%20dental%20demo%20site%20and%20I%27d%20like%20one%20for%20my%20clinic.">Message on WhatsApp</a>
     </div>
   </div>
 </section>
