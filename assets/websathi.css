@@ -1,0 +1,181 @@
+/* ============================================================================
+   Websathi — shared foundation for every demo site.
+
+   Each site supplies its own palette and type via the tokens in the
+   :root block of its own <style>. Everything structural and every piece of
+   motion lives here, once, so a craft fix lands on all sites at the same time.
+
+   Motion rules encoded here:
+   - enter/exit easing is ease-out; nothing uses ease-in
+   - every pressable element answers a press within 130ms
+   - hover is gated behind a real pointer, so a tap on a phone does not
+     leave an element stuck in its hover state
+   - reduced motion removes movement, not meaning
+   ========================================================================= */
+
+:root{
+  /* Stronger than the built-in curves, which are too weak to read as
+     intentional. Source: easing.dev */
+  --ease-out:cubic-bezier(0.23,1,0.32,1);
+  --ease-in-out:cubic-bezier(0.77,0,0.175,1);
+
+  --dur-press:130ms;   /* button press — must feel instant */
+  --dur-hover:200ms;   /* colour and border shifts */
+  --dur-reveal:420ms;  /* on-scroll entrance, seen once per visit */
+
+  --wa-green:#25D366;
+  --wa-ink:#06331A;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;}
+:focus-visible{outline:2px solid currentColor;outline-offset:3px;border-radius:2px;}
+
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+section{padding:96px 0;}
+@media(max-width:720px){section{padding:64px 0;}}
+
+.eyebrow{
+  font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;
+  font-weight:600;
+  /* The deep accent, not the bright one. At 12px uppercase the bright accent
+     measured 2.4:1 on cream — the label above every section heading on every
+     site, failing AA together. */
+  color:var(--accent-deep);
+}
+
+/* --- header ---------------------------------------------------------- */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  background:var(--surface-blur);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--hairline);
+}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px;}
+.nav-links{display:flex;gap:30px;align-items:center;font-size:.9rem;font-weight:500;}
+
+/* --- buttons ---------------------------------------------------------- */
+/* Only transform and opacity are animated; both skip layout and paint. */
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:14px 26px;border-radius:3px;
+  font-weight:600;font-size:.9rem;letter-spacing:.02em;
+  transition:transform var(--dur-press) var(--ease-out),
+             background-color var(--dur-hover) var(--ease-out),
+             border-color var(--dur-hover) var(--ease-out),
+             color var(--dur-hover) var(--ease-out);
+  will-change:transform;
+}
+/* Nothing here is optional. A button that does not answer a press reads as
+   broken on a touch screen, where there is no hover state to fall back on. */
+.btn:active{transform:scale(.97);}
+
+.btn-solid{background:var(--accent-deep);color:var(--surface);}
+.btn-ghost{border:1.5px solid var(--hairline-strong);color:var(--ink);}
+.btn-wa{background:var(--wa-green);color:var(--wa-ink);}
+
+/* Hover only where a real pointer exists. On a phone, :hover fires on tap
+   and then sticks until the next tap somewhere else. */
+@media (hover:hover) and (pointer:fine){
+  .btn-solid:hover{background:var(--accent-deepest);}
+  .btn-ghost:hover{background:var(--ink);color:var(--surface);border-color:var(--ink);}
+  .btn-wa:hover{background:#1FBE5A;}
+  .nav-links a:not(.btn):hover{color:var(--accent-deep);}
+}
+
+.nav-links a:not(.btn){
+  color:var(--ink-soft);
+  transition:color var(--dur-hover) var(--ease-out);
+}
+
+/* --- mobile navigation ------------------------------------------------ */
+/* Previously a hamburger that was wired to nothing: on a phone the links
+   were display:none and the button did no work, so there was no navigation
+   at all. This is the surface most visitors actually use — every one of
+   these links is opened from a WhatsApp message on a handset. */
+.nav-toggle{display:none;width:44px;height:44px;align-items:center;justify-content:center;
+  margin-right:-10px;color:var(--accent-deep);
+  transition:transform var(--dur-press) var(--ease-out);}
+.nav-toggle:active{transform:scale(.92);}
+.nav-toggle svg{width:22px;height:22px;}
+.nav-toggle .icon-close{display:none;}
+.nav-toggle[aria-expanded="true"] .icon-open{display:none;}
+.nav-toggle[aria-expanded="true"] .icon-close{display:block;}
+
+@media(max-width:820px){
+  .nav-toggle{display:flex;}
+  .nav-links{
+    position:absolute;top:68px;left:0;right:0;
+    flex-direction:column;align-items:stretch;gap:0;
+    background:var(--surface);
+    border-bottom:1px solid var(--hairline);
+    padding:8px 24px 20px;
+    /* clip-path reveals the panel by uncovering it rather than sliding a
+       box over the page — no layout shift, and it is interruptible. */
+    clip-path:inset(0 0 100% 0);
+    opacity:0;visibility:hidden;
+    transition:clip-path 240ms var(--ease-out),
+               opacity 180ms var(--ease-out),
+               visibility 0s linear 240ms;
+  }
+  .nav-links[data-open="true"]{
+    clip-path:inset(0 0 0 0);
+    opacity:1;visibility:visible;
+    transition:clip-path 260ms var(--ease-out),
+               opacity 160ms var(--ease-out),
+               visibility 0s;
+  }
+  .nav-links a{padding:14px 0;border-bottom:1px solid var(--hairline);}
+  .nav-links a.btn{margin-top:14px;justify-content:center;border-bottom:none;}
+}
+
+/* --- marquee ---------------------------------------------------------- */
+.strip{padding:15px 0;overflow:hidden;white-space:nowrap;}
+.strip-inner{
+  display:inline-flex;gap:46px;
+  font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;
+  animation:strip-slide 30s linear infinite; /* constant motion → linear */
+}
+@keyframes strip-slide{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* --- scroll reveal ---------------------------------------------------- */
+/* A prospect sees this page once, so a restrained entrance is worth its
+   cost. The hidden state is applied by JS (html.js-reveal) and never by
+   CSS alone — if the script fails, everything is simply visible. */
+.js-reveal [data-reveal]{
+  opacity:0;
+  transform:translateY(10px);
+  transition:opacity var(--dur-reveal) var(--ease-out),
+             transform var(--dur-reveal) var(--ease-out);
+}
+.js-reveal [data-reveal].is-in{opacity:1;transform:none;}
+
+/* --- demo banner ------------------------------------------------------ */
+.demo-banner{
+  position:fixed;bottom:0;left:0;right:0;z-index:60;
+  background:var(--ink);color:var(--surface);
+  padding:11px 20px;text-align:center;
+  font-size:.78rem;line-height:1.45;
+}
+.demo-banner strong{color:var(--accent-soft);}
+body{padding-bottom:52px;} /* keep the banner off the footer */
+@media(max-width:520px){body{padding-bottom:66px;}}
+
+/* --- accessibility ---------------------------------------------------- */
+/* Reduced motion means less movement, not a dead page. Opacity and colour
+   transitions stay because they carry meaning; travel and looping motion go.
+   Critically, revealed content is forced visible — a blanket
+   `animation:none` would strand anything that starts at opacity:0. */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  .strip-inner{animation:none;}
+  .js-reveal [data-reveal]{opacity:1;transform:none;transition:opacity 200ms ease;}
+  .btn:active{transform:none;}
+  .nav-links{transition:opacity 150ms ease,visibility 0s;}
+  *{transition-duration:.01ms !important;animation-duration:.01ms !important;}
+  .btn,.nav-links a:not(.btn){transition-duration:150ms !important;}
+}
