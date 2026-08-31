@@ -34,16 +34,33 @@
     show(pins[0].dataset[key]);
   });
 
+  /* Announce the pins once, as their stage arrives. 60ms apart reads as a
+     cascade; past ~80ms it starts to feel like the page is lagging. */
+  if ('IntersectionObserver' in window && !reduce) {
+    var stages = document.querySelectorAll('.tray-stage, .wide-stage');
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        e.target.querySelectorAll('.pin').forEach(function (pin, i) {
+          /* The transition is declared on ::before, which no script can reach.
+             The delay rides across on a custom property instead. */
+          pin.style.setProperty('--pin-delay', Math.min(i, 8) * 60 + 'ms');
+        });
+        e.target.classList.add('is-in');
+        io.unobserve(e.target);
+      });
+    }, { threshold: 0.3 });
+    stages.forEach(function (el) { io.observe(el); });
+  } else {
+    document.querySelectorAll('.tray-stage, .wide-stage').forEach(function (el) { el.classList.add('is-in'); });
+  }
+
   /* The hint's job ends the moment it is understood. */
   var hint = document.getElementById('scroll-hint');
   if (hint) window.addEventListener('scroll', function () {
     hint.setAttribute('data-done', 'true');
   }, { once: true, passive: true });
 
-  if (reduce) return;
-  document.querySelectorAll('.ph img').forEach(function (img) {
-    if (img.complete && img.naturalWidth) { img.classList.add('is-loaded'); return; }
-    img.addEventListener('load',  function () { img.classList.add('is-loaded'); }, { once: true });
-    img.addEventListener('error', function () { img.classList.add('is-loaded'); }, { once: true });
-  });
+  /* Blur-up is not repeated here: this page loads assets/websathi.js, which
+     already attaches to every .ph img. Two listeners doing one job. */
 })();

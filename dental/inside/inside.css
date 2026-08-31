@@ -55,6 +55,12 @@ h1,h2,h3{font-family:'Outfit',sans-serif;font-weight:600;letter-spacing:-.02em;l
 @media (prefers-reduced-motion:reduce){
   .plane-back,.plane-mid,.depth-copy{animation:none;transform:none;}
   .plane-back{transform:scale(1.16);}
+  /* The swap still happens — it answers a tap — but it fades without travel,
+     and the pins are simply present rather than arriving. */
+  .js-tray .readout-item{transition:opacity 160ms var(--ease-out);transform:none;}
+  .js-tray .pin::before{transition:background-color 160ms var(--ease-out);transform:scale(1);opacity:1;}
+  .js-tray .tray-stage.is-in .pin[aria-current="true"]::before,
+  .js-tray .wide-stage.is-in .pin[aria-current="true"]::before{transform:scale(1.42);}
 }
 
 /* ── the tray ─────────────────────────────────────────────────────────── */
@@ -84,6 +90,25 @@ h1,h2,h3{font-family:'Outfit',sans-serif;font-weight:600;letter-spacing:-.02em;l
 .pin[aria-current="true"]::before{background:var(--in-clay);transform:scale(1.42);}
 .pin:active::before{transform:scale(1.1);}
 
+/* The pins are the whole interaction and nothing said so — on a phone there
+   is no hover to discover them with. They arrive with the section, once,
+   staggered, then never move again. */
+.js-tray .pin::before{transform:scale(.55);opacity:0;}
+.js-tray .tray-stage.is-in .pin::before,
+.js-tray .wide-stage.is-in .pin::before{transform:scale(1);opacity:1;}
+.js-tray .tray-stage.is-in .pin[aria-current="true"]::before,
+.js-tray .wide-stage.is-in .pin[aria-current="true"]::before{transform:scale(1.42);}
+.js-tray .pin::before{
+  transition:transform 320ms var(--ease-out),opacity 320ms var(--ease-out),
+             background-color 160ms var(--ease-out);
+  transition-delay:var(--pin-delay,0ms);
+}
+/* Only the arrival is staggered. Once a pin is in place its hover and press
+   must answer immediately, so the delay is cleared. */
+.js-tray .is-in .pin:hover::before,
+.js-tray .is-in .pin:active::before,
+.js-tray .is-in .pin[aria-current="true"]::before{transition-delay:0ms;}
+
 /* The readout never moves or resizes as you sweep the pins — a panel that
    jumps around while you explore is worse than no panel. */
 .readout{
@@ -94,9 +119,17 @@ h1,h2,h3{font-family:'Outfit',sans-serif;font-weight:600;letter-spacing:-.02em;l
 /* Without the script every note is simply a list. The single swapping panel
    is the enhanced state, applied only once inside.js is running. */
 .readout-item + .readout-item{margin-top:24px;padding-top:24px;border-top:1px solid rgba(238,246,245,.12);}
-.js-tray .readout-item{display:none;}
-.js-tray .readout-item + .readout-item{margin:0;padding:0;border:0;}
-.js-tray .readout-item.is-on{display:block;}
+.js-tray .readout{display:grid;}
+.js-tray .readout-item{
+  grid-area:1/1;margin:0;padding:0;border:0;
+  opacity:0;transform:translateY(5px);
+  pointer-events:none;
+  /* Crossfade, not a cut. Sweeping across pins previously teleported the
+     text; the sibling showcase already crossfaded, so this was the same
+     component behaving two different ways. */
+  transition:opacity 240ms var(--ease-out),transform 240ms var(--ease-out);
+}
+.js-tray .readout-item.is-on{opacity:1;transform:none;pointer-events:auto;}
 .readout .kicker{font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;color:var(--in-teal-soft);font-weight:600;}
 .readout h3{font-size:1.42rem;margin:10px 0 12px;}
 .readout p{font-size:.94rem;color:var(--in-ink-soft);line-height:1.62;}
