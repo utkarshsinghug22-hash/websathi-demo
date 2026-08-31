@@ -1,0 +1,118 @@
+/* Websathi — inside the room.
+   Extends ../../assets/websathi.css; adds nothing that competes with it. */
+
+:root{
+  --in-bg:#0A1517;
+  --in-bg-2:#122224;
+  --in-ink:#EEF6F5;
+  --in-ink-soft:#9FB3B3;   /* 7.2:1 on --in-bg */
+  --in-teal:#2FA396;
+  --in-teal-soft:#8FD3C9;
+  --in-clay:#D3765A;
+}
+body{background:var(--in-bg);color:var(--in-ink);font-family:'Outfit',sans-serif;}
+h1,h2,h3{font-family:'Outfit',sans-serif;font-weight:600;letter-spacing:-.02em;line-height:1.04;}
+.in-wrap{max-width:1140px;margin:0 auto;padding:0 24px;}
+.in-eyebrow{font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;color:var(--in-teal-soft);font-weight:600;}
+
+/* ── depth hero ───────────────────────────────────────────────────────── */
+.depth{
+  position:relative;min-height:100svh;overflow:clip;
+  display:grid;grid-template-rows:1fr auto;align-items:center;padding:96px 0 8vh;
+  view-timeline:--room block;
+}
+.plane{position:absolute;inset:0;will-change:transform;}
+.plane img{width:100%;height:100%;object-fit:cover;}
+.plane-back{filter:blur(16px) saturate(.75);transform:scale(1.16);opacity:.45;}
+.plane-mid{display:grid;place-items:center;align-content:start;padding-top:8vh;}
+.plane-mid .frame{
+  width:min(52vw,520px);aspect-ratio:16/9;border-radius:3px;overflow:hidden;
+  box-shadow:0 48px 88px -30px rgba(0,0,0,.85);
+  outline:1px solid rgba(47,163,150,.42);outline-offset:-12px;
+}
+.depth::after{
+  content:'';position:absolute;inset:0;z-index:3;pointer-events:none;
+  background:
+    linear-gradient(to top,var(--in-bg) 5%,rgba(10,21,23,.72) 28%,transparent 56%),
+    radial-gradient(ellipse 74% 58% at 50% 34%,transparent 34%,rgba(10,21,23,.62) 100%);
+}
+.depth-copy{position:relative;z-index:4;grid-row:2;text-align:center;padding:0 24px;}
+.depth-copy h1{font-size:clamp(2.4rem,6.4vw,4.8rem);max-width:18ch;margin:16px auto 18px;}
+.depth-copy p{color:var(--in-ink-soft);max-width:52ch;margin:0 auto;}
+
+@supports (animation-timeline: --x){
+  @media (prefers-reduced-motion: no-preference){
+    .plane-back{animation:in-back linear both;animation-timeline:--room;animation-range:exit 0% exit 100%;}
+    .plane-mid {animation:in-mid  linear both;animation-timeline:--room;animation-range:exit 0% exit 100%;}
+    .depth-copy{animation:in-type linear both;animation-timeline:--room;animation-range:exit 0% exit 100%;}
+  }
+}
+@keyframes in-back{to{transform:scale(1.16) translateY(6%);}}
+@keyframes in-mid {to{transform:translateY(-13%);}}
+@keyframes in-type{to{transform:translateY(-42%);opacity:.14;}}
+@media (prefers-reduced-motion:reduce){
+  .plane-back,.plane-mid,.depth-copy{animation:none;transform:none;}
+  .plane-back{transform:scale(1.16);}
+}
+
+/* ── the tray ─────────────────────────────────────────────────────────── */
+.tray{padding:clamp(72px,11vh,124px) 0;background:var(--in-bg-2);}
+.tray-head{max-width:52ch;margin:0 auto clamp(38px,5vw,60px);text-align:center;}
+.tray-head h2{font-size:clamp(1.9rem,4.2vw,3rem);margin:12px 0 14px;}
+.tray-head p{color:var(--in-ink-soft);}
+
+.tray-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:clamp(24px,3.4vw,48px);align-items:start;max-width:1000px;margin:0 auto;}
+.tray-stage{position:relative;aspect-ratio:1;border-radius:3px;overflow:hidden;}
+.tray-stage img{width:100%;height:100%;object-fit:cover;display:block;}
+
+/* A hotspot is a button, so it works from the keyboard and on a phone. */
+.pin{display:none;}
+.js-tray .pin{
+  display:grid;position:absolute;width:30px;height:30px;margin:-15px 0 0 -15px;
+  border-radius:50%;border:0;padding:0;cursor:pointer;background:transparent;
+  place-items:center;
+}
+.pin::before{
+  content:'';width:13px;height:13px;border-radius:50%;
+  background:var(--in-teal);box-shadow:0 0 0 3px rgba(10,21,23,.65);
+  transition:transform 160ms var(--ease-out),background-color 160ms var(--ease-out);
+}
+.pin:focus-visible{outline:2px solid var(--in-teal-soft);outline-offset:2px;}
+@media (hover:hover) and (pointer:fine){ .pin:hover::before{transform:scale(1.32);} }
+.pin[aria-current="true"]::before{background:var(--in-clay);transform:scale(1.42);}
+.pin:active::before{transform:scale(1.1);}
+
+/* The readout never moves or resizes as you sweep the pins — a panel that
+   jumps around while you explore is worse than no panel. */
+.readout{
+  position:sticky;top:92px;
+  background:var(--in-bg);border:1px solid rgba(238,246,245,.13);border-radius:3px;
+  padding:26px;min-height:250px;
+}
+/* Without the script every note is simply a list. The single swapping panel
+   is the enhanced state, applied only once inside.js is running. */
+.readout-item + .readout-item{margin-top:24px;padding-top:24px;border-top:1px solid rgba(238,246,245,.12);}
+.js-tray .readout-item{display:none;}
+.js-tray .readout-item + .readout-item{margin:0;padding:0;border:0;}
+.js-tray .readout-item.is-on{display:block;}
+.readout .kicker{font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;color:var(--in-teal-soft);font-weight:600;}
+.readout h3{font-size:1.42rem;margin:10px 0 12px;}
+.readout p{font-size:.94rem;color:var(--in-ink-soft);line-height:1.62;}
+.readout .used{
+  display:inline-block;margin-top:18px;padding:5px 11px;border-radius:2px;
+  font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;
+}
+.used-yes{background:rgba(47,163,150,.17);color:var(--in-teal-soft);}
+.used-no{background:rgba(211,118,90,.15);color:var(--in-clay);}
+
+.tray-foot{max-width:56ch;margin:clamp(34px,5vw,54px) auto 0;text-align:center;color:var(--in-ink-soft);font-size:.96rem;}
+.tray-foot b{color:var(--in-ink);font-weight:600;}
+
+.in-foot{padding:56px 0 74px;text-align:center;color:var(--in-ink-soft);font-size:.86rem;}
+.in-foot a{color:var(--in-teal-soft);border-bottom:1px solid rgba(143,211,201,.4);}
+
+@media(max-width:860px){
+  .tray-grid{grid-template-columns:1fr;}
+  .readout{position:static;min-height:0;}
+  .plane-mid .frame{width:86vw;}
+}
