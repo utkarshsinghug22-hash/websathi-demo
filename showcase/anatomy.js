@@ -14,6 +14,16 @@
     document.documentElement.classList.add('js-motion');
   }
 
+  /* ---- scroll hint --------------------------------------------------- */
+  /* Retire it on the first scroll of any size. Passive + once, so it costs
+     nothing on a phone and never fires again. */
+  var hint = document.getElementById('scroll-hint');
+  if (hint) {
+    window.addEventListener('scroll', function () {
+      hint.setAttribute('data-done', 'true');
+    }, { once: true, passive: true });
+  }
+
   /* ---- connector geometry ------------------------------------------- */
   /* Each line's length is measured from the DOM and written back as --len,
      so stroke-dasharray matches the real diagonal at any viewport width.

@@ -311,3 +311,27 @@ h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:600;line-height:1.05
   .bp-plane{opacity:.13;width:min(230%,1100px);margin-left:calc(min(230%,1100px) / -2);}
   .explode::before{background-size:44px 44px;}
 }
+
+/* ── scroll hint ────────────────────────────────────────────────────────
+   A Float on an Alternate loop. The page's whole premise is that it answers
+   scrolling, and nothing said so.
+
+   It retires itself on the first scroll: once the user has understood it, a
+   perpetual nudge is just motion in the corner of the eye. Exit is faster
+   than the idle — the system responding should always outpace the hint. */
+.scroll-hint{
+  position:relative;display:inline-block;
+  color:var(--sc-ink-soft);font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;
+  transition:opacity 260ms var(--ease-out),transform 260ms var(--ease-out);
+}
+.scroll-hint::after{
+  content:'';display:block;width:1px;height:26px;margin:12px auto 0;
+  background:linear-gradient(to bottom,var(--sc-gold),transparent);
+}
+.scroll-hint[data-done="true"]{opacity:0;transform:translateY(6px);pointer-events:none;}
+
+@media (prefers-reduced-motion: no-preference){
+  .scroll-hint{animation:hint-float 2.4s var(--ease-in-out) infinite alternate;}
+  .scroll-hint[data-done="true"]{animation:none;}
+}
+@keyframes hint-float{from{transform:translateY(0);}to{transform:translateY(6px);}}
