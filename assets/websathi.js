@@ -34,6 +34,17 @@
     });
   }
 
+
+  /* ---- image blur-up ------------------------------------------------ */
+  /* Cached images can finish before this runs and never fire `load`, so
+     complete images are marked immediately rather than waiting for an event
+     that already happened. */
+  document.querySelectorAll('.ph img').forEach(function (img) {
+    if (img.complete && img.naturalWidth) { img.classList.add('is-loaded'); return; }
+    img.addEventListener('load', function () { img.classList.add('is-loaded'); }, { once: true });
+    img.addEventListener('error', function () { img.classList.add('is-loaded'); }, { once: true });
+  });
+
   /* ---- scroll reveal ------------------------------------------------ */
   /* The hidden state is added here rather than in the stylesheet. If this
      script fails to parse, `js-reveal` is never set and every section stays

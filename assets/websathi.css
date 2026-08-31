@@ -179,3 +179,26 @@ body{padding-bottom:52px;} /* keep the banner off the footer */
   *{transition-duration:.01ms !important;animation-duration:.01ms !important;}
   .btn,.nav-links a:not(.btn){transition-duration:150ms !important;}
 }
+
+/* --- photography ------------------------------------------------------ */
+/* Every photo sits in a wrapper carrying its own blurred 20px placeholder as
+   a background. The slot is therefore never empty and never collapses, so
+   nothing below it shifts when the real file arrives — which on Nepali mobile
+   data can be several seconds after first paint. */
+.ph{
+  position:relative;overflow:hidden;
+  background-size:cover;background-position:center;
+  background-color:var(--surface-warm);
+}
+.ph img{
+  width:100%;height:100%;object-fit:cover;display:block;
+  opacity:0;
+  transition:opacity 500ms var(--ease-out);
+}
+.ph img.is-loaded{opacity:1;}
+/* Without JS the image simply shows; the blur-up is an enhancement, not a gate. */
+.no-js .ph img{opacity:1;}
+
+@media (prefers-reduced-motion:reduce){
+  .ph img{transition:opacity 200ms ease;}
+}
