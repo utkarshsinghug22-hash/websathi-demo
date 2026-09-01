@@ -199,6 +199,26 @@ document.querySelectorAll('.ph img').forEach(function(i){i.classList.add('is-loa
   }
   @media (hover:hover) and (pointer:fine){ .fact-link:hover{border-bottom-color:var(--accent);} }
   .fact dd .fact-link{display:inline-block;margin-top:6px;font-size:.86rem;}
+
+  /* The banner was the only thing on the page addressed to the clinic owner and
+     it was a label with nowhere to go. It is the one line every visiting owner
+     reads, so it is the right place to put the door. */
+  .banner-link{
+    color:var(--banner-accent);border-bottom:1px solid currentColor;
+    margin-left:6px;white-space:nowrap;
+  }
+  /* 16px of text is not a tap target, and on this page it is the one link an
+     owner is meant to press. The hit area grows to 40px — the height of the
+     bar itself, so it cannot spill upward and swallow taps on the page. */
+  /* The shared sheet clears 66px under the banner. This page's bar carries a
+     link as well as a sentence, so it wraps taller than the others on a phone
+     and was sitting over the footer. */
+  @media(max-width:560px){ body{padding-bottom:86px;} }
+  .banner-link{position:relative;}
+  .banner-link::after{
+    content:'';position:absolute;left:-6px;right:-6px;top:50%;
+    transform:translateY(-50%);height:40px;
+  }
   .book-cta{background:var(--surface);border:1px solid var(--hairline);border-radius:4px;padding:34px;}
   .book-cta h3{font-size:1.5rem;margin-bottom:10px;}
   .book-cta p{font-size:.92rem;color:var(--ink-soft);margin-bottom:24px;}
@@ -530,7 +550,7 @@ document.querySelectorAll('.ph img').forEach(function(i){i.classList.add('is-loa
       <h3>Message us</h3>
       <p>Send your name and the day you'd like to come. We'll confirm a slot and tell you roughly how long to allow.</p>
       <a class="btn btn-wa" target="_blank" rel="noopener"
-         href="https://wa.me/9779863336100?text=Hi%20Websathi%20%E2%80%94%20I%20saw%20the%20dental%20demo%20site%20and%20I%27d%20like%20one%20for%20my%20clinic.">Message on WhatsApp</a>
+         href="https://wa.me/9779863336100?text=Namaste%20%E2%80%94%20I%27d%20like%20to%20book%20a%20check-up%20at%20Smile%20Dental%20Care.%20Which%20day%20is%20free%3F">Message on WhatsApp</a>
     </div>
   </div>
 </section>
@@ -543,7 +563,8 @@ document.querySelectorAll('.ph img').forEach(function(i){i.classList.add('is-loa
 </footer>
 
 <div class="demo-banner">
-  <strong>This is a demo.</strong> Your site would carry your own name, treatments and prices.
+  <strong>This is a demo.</strong> Yours would carry your own name and treatments.
+  <a class="banner-link" href="for-clinics/">See what it costs →</a>
 </div>
 
 <script src="../assets/websathi.js?v=8cb24769" defer></script>

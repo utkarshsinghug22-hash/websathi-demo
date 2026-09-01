@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<script>/* Photographs must not depend on a script. Two ways they can:
+   JS off entirely — the class below stays and the stylesheet shows them;
+   or websathi.js alone fails to run, which the class cannot see, so the
+   load handler reveals anything it never got round to marking. */
+document.documentElement.classList.remove('no-js');
+addEventListener('load',function(){if(window.__wsReady)return;
+document.querySelectorAll('.ph img').forEach(function(i){i.classList.add('is-loaded')})});</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Websathi — A website for your clinic</title>
+<meta name="description" content="What a Websathi site costs, what we need from you, and why the .com.np domain is free forever. For Kathmandu dental clinics.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="A website for your clinic — Websathi">
+<meta property="og:description" content="You will know the cost before we start. The domain is free forever. About a week from your photos to a live site.">
+<meta property="og:url" content="https://utkarshsinghug22-hash.github.io/websathi-demo/dental/for-clinics/">
+<meta property="og:image" content="https://utkarshsinghug22-hash.github.io/websathi-demo/dental/preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_NP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://utkarshsinghug22-hash.github.io/websathi-demo/dental/preview.png">
+<meta name="theme-color" content="#0E1B1D">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230E1B1D'/><text x='16' y='23' font-size='19' font-family='Helvetica,sans-serif' fill='%2317877F' text-anchor='middle'>W</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/websathi.css?v=b79a6d49">
+<style>
+  :root{
+    /* The demo is cool paper because a clinic should be. This page is
+       Websathi talking, not the clinic, so it inverts to the demo's own ink —
+       the same move the banner at the foot of every demo makes. */
+    --surface:#0E1B1D;
+    --surface-warm:#16292B;
+    --surface-blur:rgba(14,27,29,.9);
+    --accent:#2FA396;
+    --accent-soft:#8FD3C9;
+    --accent-deep:#2FA396;      /* 6.0:1 on --surface */
+    --accent-deepest:#2B968B;   /* 5.15:1 — hover darkens and still holds AA */
+    --clay:#E08D70;             /* the demo's warm note, lifted for dark ground */
+    --ink:#F6F9F9;
+    --ink-soft:#A7BCBC;         /* 9.4:1 on --surface */
+    --hairline:rgba(246,249,249,.13);
+    --hairline-strong:rgba(246,249,249,.4);
+    --banner-bg:#060F10;
+    --banner-ink:#A7BCBC;
+    --banner-accent:#8FD3C9;
+  }
+  body{background:var(--surface);color:var(--ink);font-family:'Outfit',sans-serif;}
+  h1,h2,h3{font-family:'Outfit',sans-serif;font-weight:600;letter-spacing:-.02em;line-height:1.06;}
+  .logo{font-weight:600;font-size:1.2rem;letter-spacing:-.02em;}
+  .logo span{color:var(--accent-soft);}
+  .lede{color:var(--ink-soft);}
+  .tnum{font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1;}
+
+  /* ── hero ──────────────────────────────────────────────────────────── */
+  .top{padding:clamp(112px,16vh,168px) 0 clamp(48px,7vh,76px);}
+  .top h1{font-size:clamp(2.3rem,5.8vw,4.2rem);max-width:19ch;margin:16px 0 22px;}
+  .top h1 em{font-style:normal;color:var(--accent-soft);}
+  .top .lede{font-size:1.08rem;max-width:52ch;}
+  .backlink{
+    display:inline-flex;align-items:center;gap:8px;margin-top:30px;
+    font-size:.9rem;color:var(--accent-soft);
+    border-bottom:1px solid rgba(143,211,201,.35);padding-bottom:2px;
+    transition:border-color var(--dur-hover) var(--ease-out);
+  }
+  @media (hover:hover) and (pointer:fine){ .backlink:hover{border-bottom-color:var(--accent-soft);} }
+
+  /* ── the price of the thing, stated the way the demo states its own ── */
+  .cost{background:var(--surface-warm);padding:clamp(64px,9vh,104px) 0;}
+  .cost-lead{
+    display:grid;grid-template-columns:auto 1fr;gap:0 26px;align-items:center;
+    padding:26px 0;border-top:2px solid var(--accent);border-bottom:1px solid var(--hairline);
+    max-width:640px;
+  }
+  .cost-lead b{font-size:clamp(2.4rem,5.4vw,3.6rem);font-weight:600;color:var(--clay);line-height:1;letter-spacing:-.03em;}
+  .cost-lead span{font-size:.95rem;color:var(--ink-soft);line-height:1.55;}
+  .cost-note{margin-top:26px;font-size:.94rem;color:var(--ink-soft);max-width:58ch;}
+  .cost-note b{color:var(--ink);font-weight:600;}
+
+  /* ── the running-cost answer, which is the objection that kills these ── */
+  .domain{padding:clamp(64px,9vh,104px) 0;}
+  .domain-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,70px);align-items:start;}
+  .domain h2{font-size:clamp(1.9rem,4.2vw,3rem);margin:12px 0 16px;}
+  .free-list{border-top:1px solid var(--hairline);}
+  .free{display:grid;grid-template-columns:1fr auto;gap:20px;align-items:baseline;
+    padding:16px 0;border-bottom:1px solid var(--hairline);font-size:.95rem;}
+  .free dt{color:var(--ink-soft);}
+  .free dd{margin:0;font-weight:600;color:var(--accent-soft);white-space:nowrap;}
+  .free.is-total dd{color:var(--clay);font-size:1.15rem;}
+
+  /* ── what we need ─────────────────────────────────────────────────── */
+  .need{background:var(--surface-warm);padding:clamp(64px,9vh,104px) 0;}
+  .need-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+    background:var(--hairline);border:1px solid var(--hairline);margin-top:clamp(30px,4vw,46px);}
+  .need-cell{background:var(--surface-warm);padding:28px 24px;}
+  .need-cell .n{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:600;}
+  .need-cell h3{font-size:1.08rem;margin:12px 0 9px;}
+  .need-cell p{font-size:.9rem;color:var(--ink-soft);line-height:1.6;}
+
+  /* ── objections ───────────────────────────────────────────────────── */
+  .asked{padding:clamp(64px,9vh,104px) 0;}
+  .qa{border-top:1px solid var(--hairline);max-width:74ch;}
+  .qa > div{padding:24px 0;border-bottom:1px solid var(--hairline);}
+  .qa h3{font-size:1.12rem;margin-bottom:9px;color:var(--accent-soft);}
+  .qa p{font-size:.95rem;color:var(--ink-soft);line-height:1.68;}
+  .qa p + p{margin-top:10px;}
+
+  /* ── close ────────────────────────────────────────────────────────── */
+  .start{background:var(--surface-warm);padding:clamp(64px,9vh,110px) 0;}
+  .start-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(34px,5vw,72px);align-items:center;}
+  .start h2{font-size:clamp(1.9rem,4.4vw,3rem);margin-bottom:16px;}
+  .start p{color:var(--ink-soft);max-width:46ch;}
+  .start-card{background:var(--surface);border:1px solid var(--hairline);border-radius:4px;padding:clamp(28px,3.4vw,40px);}
+  .start-card h3{font-size:1.5rem;margin-bottom:12px;}
+  .start-card p{font-size:.94rem;margin-bottom:24px;}
+  .start-card .btn{width:100%;justify-content:center;}
+  .whoami{margin-top:18px;font-size:.82rem;color:var(--ink-soft);line-height:1.6;}
+
+  footer{padding:40px 0 64px;border-top:1px solid var(--hairline);font-size:.86rem;color:var(--ink-soft);}
+  .foot{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;}
+  footer a{color:var(--accent-soft);}
+
+  @media(max-width:900px){
+    .domain-grid,.start-grid{grid-template-columns:1fr;}
+    .need-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media(max-width:560px){
+    .need-grid{grid-template-columns:1fr;}
+    .cost-lead{grid-template-columns:1fr;gap:12px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="../">Web<span>sathi</span></a>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
+      <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <nav class="nav-links" id="nav-links">
+      <a href="#cost">What it costs</a>
+      <a href="#need">What we need</a>
+      <a href="#asked">Questions</a>
+      <a href="#start" class="btn btn-solid">Start</a>
+    </nav>
+  </div>
+</header>
+
+<section class="top">
+  <div class="wrap">
+    <span class="eyebrow">Websathi — for Kathmandu clinics</span>
+    <h1>You'll know the cost <em>before</em> we start.</h1>
+    <p class="lede">That is the promise the demo you just read makes to patients. It is
+      the same one we make to you. Here is what a site costs, what we need from you,
+      and what you keep at the end.</p>
+    <a class="backlink" href="../">← Back to the demo clinic</a>
+  </div>
+</section>
+
+<section class="cost" id="cost">
+  <div class="wrap">
+    <span class="eyebrow">The cost</span>
+    <div class="cost-lead" data-reveal>
+      <b class="tnum">Rs. 0</b>
+      <span>for the first few clinics in Kathmandu, in exchange for permission to show
+        the finished site as an example of our work.</span>
+    </div>
+    <p class="cost-note" data-reveal>We are early, and a portfolio is worth more to us right now
+      than a fee. <b>You get a real website; we get something to show the next clinic.</b>
+      Once those places are taken we will quote before any work begins — the figure agreed
+      in writing first, exactly the way the demo says a filling should be.</p>
+  </div>
+</section>
+
+<section class="domain">
+  <div class="wrap domain-grid">
+    <div data-reveal>
+      <span class="eyebrow">The part nobody mentions</span>
+      <h2>There is no yearly bill.</h2>
+      <p class="lede">The reason most clinics never get a site is not the build. It is the
+        fear of a renewal notice every year for something they cannot edit. A
+        <strong>.com.np</strong> domain is free for registered Nepali businesses, and it renews
+        free, indefinitely. We host on infrastructure that costs nothing to serve a site
+        this size. So there is nothing to cancel and nothing to forget to pay.</p>
+    </div>
+    <div data-reveal>
+      <dl class="free-list">
+        <div class="free"><dt>.com.np domain</dt><dd>Free, forever</dd></div>
+        <div class="free"><dt>Hosting</dt><dd>Free</dd></div>
+        <div class="free"><dt>SSL certificate</dt><dd>Free</dd></div>
+        <div class="free"><dt>Renewal, per year</dt><dd>Rs. 0</dd></div>
+        <div class="free is-total"><dt>What it costs you to keep it online</dt><dd>Nothing</dd></div>
+      </dl>
+      <p class="cost-note">Registration needs your business registration and PAN, or a
+        citizenship certificate. Approval takes one to three working days. We do the
+        submission; the domain is registered in your name, not ours.</p>
+    </div>
+  </div>
+</section>
+
+<section class="need" id="need">
+  <div class="wrap">
+    <span class="eyebrow">What we need</span>
+    <h2 style="font-size:clamp(1.9rem,4.2vw,3rem);margin:12px 0 14px;">About thirty minutes of your time.</h2>
+    <p class="lede" style="max-width:54ch;">Sent on WhatsApp, in whatever order suits you. Nothing
+      needs to be typed up or made neat — photographs of a handwritten price list are fine.</p>
+    <div class="need-grid">
+      <div class="need-cell" data-reveal>
+        <div class="n">01</div>
+        <h3>Your treatments</h3>
+        <p>What you do, in your words. With prices if you want them shown, and without if you don't.</p>
+      </div>
+      <div class="need-cell" data-reveal>
+        <div class="n">02</div>
+        <h3>Photographs</h3>
+        <p>Your room, your chair, your team. Taken on your phone in daylight is genuinely enough.</p>
+      </div>
+      <div class="need-cell" data-reveal>
+        <div class="n">03</div>
+        <h3>The practical facts</h3>
+        <p>Hours, address, phone, how people pay, and who to call when something hurts at 9pm.</p>
+      </div>
+      <div class="need-cell" data-reveal>
+        <div class="n">04</div>
+        <h3>One read-through</h3>
+        <p>We write the words, you correct the dentistry. Nothing goes live until you have said yes.</p>
+      </div>
+    </div>
+    <p class="cost-note" data-reveal>From the day the photographs arrive, about a week.</p>
+  </div>
+</section>
+
+<section class="asked" id="asked">
+  <div class="wrap">
+    <span class="eyebrow">Asked so far</span>
+    <h2 style="font-size:clamp(1.9rem,4.2vw,3rem);margin:12px 0 30px;">The four that come up every time.</h2>
+    <div class="qa">
+      <div data-reveal>
+        <h3>I don't want my prices on the internet.</h3>
+        <p>Then they won't be. The demo leads with prices because it is the question
+          patients ask most and almost nobody answers — it is one opinion, argued
+          properly, to show you what having an opinion looks like. It is not the
+          template. Your site can lead with your name and your years instead, or with
+          emergency hours, or with the one treatment you want more of. We will suggest
+          the angle. You decide it.</p>
+      </div>
+      <div data-reveal>
+        <h3>Who owns it? Am I tied to you?</h3>
+        <p>You do, and no. The domain is registered in your name. The site is a handful
+          of files and you get all of them. If you want to move it somewhere else, or
+          hand it to your nephew who does computers, you take it and go — there is
+          nothing to unlock and no account of ours in the middle.</p>
+      </div>
+      <div data-reveal>
+        <h3>What happens when my prices change?</h3>
+        <p>Message us and we change them. Small edits — a price, an hour, a new
+          treatment, a photograph — are part of the deal for the first year and we do
+          not bill for them. We would rather your site be right than be finished.</p>
+      </div>
+      <div data-reveal>
+        <h3>Will this actually bring patients?</h3>
+        <p>Honestly: on its own, slowly. What it does immediately is give the Google
+          Maps listing you already have somewhere to point, so that the people already
+          searching your name find your hours and your treatments instead of nothing.
+          We set up the part that connects the two. The rest is your reviews, which we
+          cannot write and would not.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="start" id="start">
+  <div class="wrap start-grid">
+    <div data-reveal>
+      <span class="eyebrow">Start</span>
+      <h2>Send one message and we'll take it from there.</h2>
+      <p>Tell us your clinic's name and where you are. We will reply with what we would
+        build and what it would say — before anything is agreed, and at no cost either way.</p>
+    </div>
+    <div class="start-card" data-reveal>
+      <h3>Message Websathi</h3>
+      <p>Straight to WhatsApp. No form, no account, no call unless you ask for one.</p>
+      <a class="btn btn-wa" target="_blank" rel="noopener"
+         href="https://wa.me/9779863336100?text=Namaste%20Websathi%20%E2%80%94%20I%20run%20a%20dental%20clinic%20in%20Kathmandu%20and%20I%20saw%20the%20demo%20site.%20I%27d%20like%20to%20know%20what%20you%27d%20build%20for%20us.">Message on WhatsApp</a>
+      <p class="whoami">You will be messaging a person, not a queue. We take on a few
+        clinics at a time so that each one is actually looked after.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <div>Websathi — websites for Kathmandu businesses</div>
+    <div><a href="../">See the demo clinic again →</a></div>
+  </div>
+</footer>
+
+<script src="../../assets/websathi.js?v=8cb24769" defer></script>
+</body>
+</html>

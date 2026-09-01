@@ -48,6 +48,19 @@
   --dur-hint:260ms;       /* the scroll hint retiring */
 }
 body{background:var(--in-bg);color:var(--in-ink);font-family:'Outfit',sans-serif;}
+/* The banner is the only line on this page aimed at the clinic owner rather
+   than the patient, so it carries the way through to what a build costs. */
+.banner-link{color:var(--banner-accent);border-bottom:1px solid currentColor;
+  margin-left:6px;white-space:nowrap;}
+/* 16px of text is not a tap target, and on this page it is the one link an
+   owner is meant to press. The hit area grows to 40px — the height of the
+   bar itself, so it cannot spill upward and swallow taps on the page. */
+@media(max-width:560px){ body{padding-bottom:86px;} }
+.banner-link{position:relative;}
+.banner-link::after{
+  content:'';position:absolute;left:-6px;right:-6px;top:50%;
+  transform:translateY(-50%);height:40px;
+}
 h1,h2,h3{font-family:'Outfit',sans-serif;font-weight:600;letter-spacing:-.02em;line-height:1.04;}
 .in-wrap{max-width:1140px;margin:0 auto;padding:0 24px;}
 .in-eyebrow{font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;color:var(--in-teal-soft);font-weight:600;}
