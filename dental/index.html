@@ -259,6 +259,16 @@ document.querySelectorAll('.ph img').forEach(function(i){i.classList.add('is-loa
   .dds-facts dt{font-size:.63rem;letter-spacing:.2em;text-transform:uppercase;
     color:var(--ink-soft);padding-top:4px;}
   .dds-facts dd{margin:0;}
+  /* The name below it is fictional and reads as completely ordinary, which is
+     exactly the problem: a plausible Nepali name attached to an invented
+     registration and twelve invented years is a professional record in
+     somebody's likely name. The banner says the clinic is a demo; the claim is
+     made here, so the correction belongs here too — and it doubles as the
+     sentence that shows an owner where their own name goes. */
+  .dds-demo{
+    font-size:.84rem;color:var(--ink-soft);line-height:1.6;max-width:46ch;
+    border-left:2px solid var(--clay);padding:2px 0 2px 14px;margin-bottom:22px;
+  }
 
   .dds-kit{
     display:grid;grid-template-columns:360px 1fr;gap:clamp(28px,4vw,56px);
@@ -380,7 +390,7 @@ document.querySelectorAll('.ph img').forEach(function(i){i.classList.add('is-loa
   },
   "employee": {
     "@type": "Person",
-    "name": "Dr. Sujan Maharjan",
+    "name": "Dr. Swornim Bajracharya",
     "jobTitle": "Dental Surgeon",
     "hasCredential": "BDS",
     "worksFor": {
@@ -391,7 +401,8 @@ document.querySelectorAll('.ph img').forEach(function(i){i.classList.add('is-loa
       "ne",
       "en",
       "new"
-    ]
+    ],
+    "description": "Invented for a demonstration site. Dr. Swornim Bajracharya is not a real person and no real dental surgeon is described by this record."
   }
 }
 </script>
@@ -602,12 +613,15 @@ document.querySelectorAll('.ph img').forEach(function(i){i.classList.add('is-loa
           <source type="image/webp" srcset="img/dc-dds-420.webp 420w, img/dc-dds-640.webp 640w, img/dc-dds-900.webp 900w" sizes="(max-width:900px) 92vw, 420px">
           <img src="img/dc-dds-640.jpg" srcset="img/dc-dds-420.jpg 420w, img/dc-dds-640.jpg 640w, img/dc-dds-900.jpg 900w" sizes="(max-width:900px) 92vw, 420px"
                width="900" height="1125" loading="lazy" decoding="async"
-               alt="Dr. Sujan Maharjan at the chair in a face shield and mask, working with a mirror and light.">
+               alt="A dentist at the chair in a face shield and mask, working with a mirror and light.">
         </picture>
       </figure>
       <div class="dds-copy" data-reveal>
-        <h3>Dr. Sujan Maharjan</h3>
+        <h3>Dr. Swornim Bajracharya</h3>
         <p class="dds-cred">BDS &middot; Nepal Medical Council registered &middot; 12 years in practice</p>
+        <p class="dds-demo">An invented dentist, for a demo clinic. On your site this is
+          your name, your registration number and your years — which is the whole
+          reason this block exists.</p>
         <p>Twelve years at the same chair in Putalisadak — mostly fillings, root canals,
           and the scaling people put off for far too long. He will also tell you when
           something can wait. A tooth that needs watching is not a tooth that needs
