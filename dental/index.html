@@ -236,6 +236,45 @@ document.querySelectorAll('.ph img').forEach(function(i){i.classList.add('is-loa
   footer{padding:32px 0;border-top:1px solid var(--hairline);color:var(--ink-soft);font-size:.82rem;}
   .foot{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;}
 
+  /* ── who treats you ────────────────────────────────────────────────────
+     People here choose a dentist, not a surgery — they come because a cousin
+     said someone was gentle. The page described a clinic in full and never
+     showed the person holding the drill, which for this vertical is the
+     largest thing that can be missing. */
+  .dds{padding:clamp(72px,11vh,124px) 0;background:var(--surface-warm);}
+  .dds-grid{display:grid;grid-template-columns:420px 1fr;gap:clamp(32px,5vw,68px);align-items:start;}
+  .dds-shot{margin:0;border-radius:3px;overflow:hidden;aspect-ratio:4/5;}
+  .dds-shot img{width:100%;height:100%;object-fit:cover;display:block;}
+  .dds-copy h3{font-size:clamp(1.7rem,3.4vw,2.4rem);margin-bottom:10px;}
+  .dds-cred{
+    font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;
+    color:var(--accent);margin-bottom:22px;
+  }
+  .dds-copy > p{font-size:1rem;color:var(--ink-soft);line-height:1.7;max-width:52ch;}
+  .dds-facts{margin-top:30px;border-top:1px solid var(--hairline);}
+  .dds-facts > div{
+    display:grid;grid-template-columns:118px 1fr;gap:18px;padding:13px 0;
+    border-bottom:1px solid var(--hairline);font-size:.92rem;
+  }
+  .dds-facts dt{font-size:.63rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--ink-soft);padding-top:4px;}
+  .dds-facts dd{margin:0;}
+
+  .dds-kit{
+    display:grid;grid-template-columns:360px 1fr;gap:clamp(28px,4vw,56px);
+    align-items:center;margin-top:clamp(40px,6vw,72px);
+    padding-top:clamp(40px,6vw,72px);border-top:1px solid var(--hairline);
+  }
+  .kit-shot{margin:0;border-radius:3px;overflow:hidden;aspect-ratio:4/5;}
+  .kit-shot img{width:100%;height:100%;object-fit:cover;display:block;}
+  .dds-kit h3{font-size:clamp(1.4rem,2.8vw,1.9rem);margin-bottom:12px;}
+  .dds-kit p{font-size:.98rem;color:var(--ink-soft);line-height:1.7;max-width:46ch;}
+
+  @media(max-width:900px){
+    .dds-grid,.dds-kit{grid-template-columns:1fr;}
+    .dds-shot,.kit-shot{max-width:420px;}
+  }
+
   .section-head{max-width:46ch;margin-bottom:clamp(34px,5vw,56px);}
   .section-head h2{font-size:clamp(2rem,4.4vw,3.2rem);margin:12px 0 14px;}
   .section-head .lede{font-size:1rem;max-width:48ch;}
@@ -338,6 +377,21 @@ document.querySelectorAll('.ph img').forEach(function(i){i.classList.add('is-loa
     "@type": "WebSite",
     "name": "Websathi demo sites",
     "url": "https://utkarshsinghug22-hash.github.io/websathi-demo/"
+  },
+  "employee": {
+    "@type": "Person",
+    "name": "Dr. Sujan Maharjan",
+    "jobTitle": "Dental Surgeon",
+    "hasCredential": "BDS",
+    "worksFor": {
+      "@type": "Dentist",
+      "name": "Smile Dental Care"
+    },
+    "knowsLanguage": [
+      "ne",
+      "en",
+      "new"
+    ]
   }
 }
 </script>
@@ -354,6 +408,7 @@ document.querySelectorAll('.ph img').forEach(function(i){i.classList.add('is-loa
     <nav class="nav-links" id="nav-links">
       <a href="#prices">Prices</a>
       <a href="#visit">First visit</a>
+      <a href="#dentist">Your dentist</a>
       <a href="#book">Contact</a>
       <a href="#book" class="btn btn-solid">Book a time</a>
     </nav>
@@ -532,6 +587,56 @@ document.querySelectorAll('.ph img').forEach(function(i){i.classList.add('is-loa
   </div>
 </section>
 
+
+<section class="dds" id="dentist">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow">Who will be treating you</span>
+      <h2>The same dentist, every visit.</h2>
+      <p class="lede">You will not be handed to whoever is free. The person who examines
+        you is the person who does the work and the person who explains the bill.</p>
+    </div>
+    <div class="dds-grid">
+      <figure class="dds-shot ph" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAZABQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDR01B/Znm+aqM0KpnbwhAx/WsyWa50ZFiCmVWy292LZx1Pt1p1zbX99DFlo4Y41GEEpfd9TWfqOoTwxtbKNpYEHDbgFPoev50AdJaSpeWsVwgwJFzj0orI0HUTBpwi8vdtY4OfxopiJ0SOBLgpK+6Us2DnAJ9B2rH0+0gu2T7Q7/OrZJbHORgj8M1un/j0H41i2X/Hin4/zoA6G0sba2iMcDyFM55YHFFQWP8Aq3/3v6CikM//2Q==)">
+        <picture>
+          <source type="image/webp" srcset="img/dc-dds-420.webp 420w, img/dc-dds-640.webp 640w, img/dc-dds-900.webp 900w" sizes="(max-width:900px) 92vw, 420px">
+          <img src="img/dc-dds-640.jpg" srcset="img/dc-dds-420.jpg 420w, img/dc-dds-640.jpg 640w, img/dc-dds-900.jpg 900w" sizes="(max-width:900px) 92vw, 420px"
+               width="900" height="1125" loading="lazy" decoding="async"
+               alt="Dr. Sujan Maharjan at the chair in a face shield and mask, working with a mirror and light.">
+        </picture>
+      </figure>
+      <div class="dds-copy" data-reveal>
+        <h3>Dr. Sujan Maharjan</h3>
+        <p class="dds-cred">BDS &middot; Nepal Medical Council registered &middot; 12 years in practice</p>
+        <p>Twelve years at the same chair in Putalisadak — mostly fillings, root canals,
+          and the scaling people put off for far too long. He will also tell you when
+          something can wait. A tooth that needs watching is not a tooth that needs
+          drilling today, and you should hear that from the person holding the drill.</p>
+        <dl class="dds-facts">
+          <div><dt>Trained</dt><dd>BDS, Tribhuvan University</dd></div>
+          <div><dt>Speaks</dt><dd>Nepali, English and Newari</dd></div>
+          <div><dt>In the chair</dt><dd>Sunday to Friday, every week</dd></div>
+        </dl>
+      </div>
+    </div>
+    <div class="dds-kit">
+      <figure class="kit-shot ph" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAZABQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDOub2drmGMqzKCGb5T+XFX777LeqPLTym4UsoycDsaumJHBwN/GRmomtyASqnB6Z/lRoGpzjTXUeEc3Hy8Db6UVsOkW478A0U7CuXobiMKru5TaeAR1FRyXkL7lWCaQHg/LgfmaVetRz/d/GnYVyCe4geTL2xBxjqaKeaKLAf/2Q==)">
+        <picture>
+          <source type="image/webp" srcset="img/dc-burs-420.webp 420w, img/dc-burs-640.webp 640w, img/dc-burs-900.webp 900w" sizes="(max-width:900px) 92vw, 360px">
+          <img src="img/dc-burs-640.jpg" srcset="img/dc-burs-420.jpg 420w, img/dc-burs-640.jpg 640w, img/dc-burs-900.jpg 900w" sizes="(max-width:900px) 92vw, 360px"
+               width="900" height="1125" loading="lazy" decoding="async"
+               alt="A colour-coded bur kit laid out on a sterile drape beside the chair.">
+        </picture>
+      </figure>
+      <div data-reveal>
+        <h3>Opened in front of you.</h3>
+        <p>Every instrument that touches you comes out of the autoclave and is unwrapped
+          at the chair, where you can see it. If you ever want to watch that happen, ask —
+          nobody has ever been told no.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section class="said">
   <div class="wrap" data-reveal>
