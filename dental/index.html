@@ -182,6 +182,23 @@ document.querySelectorAll('.ph img').forEach(function(i){i.classList.add('is-loa
   .fact{display:grid;grid-template-columns:92px 1fr;gap:18px;padding:15px 0;border-bottom:1px solid var(--hairline);font-size:.92rem;}
   .fact dt{font-size:.63rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);padding-top:4px;}
   .fact dd{margin:0;}
+  /* The address and phone are the two rows a patient acts on, so both are
+     tappable. Underlined on the accent rather than coloured alone — colour
+     by itself is not a link affordance. */
+  .fact-link{
+    position:relative;
+    color:var(--accent);border-bottom:1px solid rgba(11,79,79,.35);
+    transition:border-color var(--dur-hover) var(--ease-out);
+  }
+  /* The text is ~23px tall, well under the 44px a thumb needs, and these are
+     the two rows a patient actually taps. The hit area is grown with a
+     pseudo-element so the row's rhythm is untouched. */
+  .fact-link::after{
+    content:'';position:absolute;left:0;right:0;top:50%;
+    transform:translateY(-50%);height:44px;
+  }
+  @media (hover:hover) and (pointer:fine){ .fact-link:hover{border-bottom-color:var(--accent);} }
+  .fact dd .fact-link{display:inline-block;margin-top:6px;font-size:.86rem;}
   .book-cta{background:var(--surface);border:1px solid var(--hairline);border-radius:4px;padding:34px;}
   .book-cta h3{font-size:1.5rem;margin-bottom:10px;}
   .book-cta p{font-size:.92rem;color:var(--ink-soft);margin-bottom:24px;}
@@ -217,6 +234,83 @@ document.querySelectorAll('.ph img').forEach(function(i){i.classList.add('is-loa
     .headline-price{grid-template-columns:1fr;gap:10px;}
   }
 </style>
+<!-- Structured data. A clinic's whole discovery problem is Google connecting a
+     Maps listing to a website, and nothing on the page did that. The demo status
+     is stated in the markup itself, not only in the banner, so a machine reading
+     this cannot mistake it for a working surgery. A real build swaps every field
+     for the client's own and adds geo coordinates from their Maps pin. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dentist",
+  "name": "Smile Dental Care",
+  "description": "DEMONSTRATION SITE — Smile Dental Care is not a real clinic. This page is a sample build by Websathi (https://utkarshsinghug22-hash.github.io/websathi-demo/) showing a Kathmandu dental practice what its own site could look like. The telephone number reaches Websathi, not a dental surgery.",
+  "disambiguatingDescription": "DEMONSTRATION SITE — Smile Dental Care is not a real clinic. This page is a sample build by Websathi (https://utkarshsinghug22-hash.github.io/websathi-demo/) showing a Kathmandu dental practice what its own site could look like. The telephone number reaches Websathi, not a dental surgery.",
+  "url": "https://utkarshsinghug22-hash.github.io/websathi-demo/dental/",
+  "image": "https://utkarshsinghug22-hash.github.io/websathi-demo/dental/preview.png",
+  "telephone": "+977-986-333-6100",
+  "priceRange": "Rs. 500–8,000",
+  "currenciesAccepted": "NPR",
+  "paymentAccepted": "Cash, eSewa, Khalti",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Putalisadak, opposite the city campus",
+    "addressLocality": "Kathmandu",
+    "postalCode": "44600",
+    "addressCountry": "NP"
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ],
+      "opens": "10:00",
+      "closes": "18:00"
+    }
+  ],
+  "availableService": [
+    {
+      "@type": "MedicalProcedure",
+      "name": "Check-up & consultation"
+    },
+    {
+      "@type": "MedicalProcedure",
+      "name": "Scaling & polishing"
+    },
+    {
+      "@type": "MedicalProcedure",
+      "name": "Filling"
+    },
+    {
+      "@type": "MedicalProcedure",
+      "name": "Root canal treatment"
+    },
+    {
+      "@type": "MedicalProcedure",
+      "name": "Extraction"
+    },
+    {
+      "@type": "MedicalProcedure",
+      "name": "Crown"
+    },
+    {
+      "@type": "MedicalProcedure",
+      "name": "Braces & aligners"
+    }
+  ],
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Websathi demo sites",
+    "url": "https://utkarshsinghug22-hash.github.io/websathi-demo/"
+  }
+}
+</script>
 </head>
 <body>
 
@@ -423,9 +517,12 @@ document.querySelectorAll('.ph img').forEach(function(i){i.classList.add('is-loa
       <h2>Come in when it suits you.</h2>
       <p class="lede">Message us with a day and we'll confirm a slot the same day. Urgent pain gets seen first.</p>
       <dl class="facts">
-        <div class="fact"><dt>Clinic</dt><dd>Putalisadak, opposite the city campus, Kathmandu 44600</dd></div>
+        <div class="fact"><dt>Clinic</dt><dd>Putalisadak, opposite the city campus, Kathmandu 44600<br>
+          <a class="fact-link" href="https://www.google.com/maps/search/?api=1&amp;query=Putalisadak%2C%20Kathmandu%2044600"
+             target="_blank" rel="noopener">Open in Google Maps →</a></dd></div>
         <div class="fact"><dt>Hours</dt><dd>Sunday to Friday, 10 AM – 6 PM. Saturday closed.</dd></div>
-        <div class="fact"><dt>Phone</dt><dd>+977 98X-XXXXXXX</dd></div>
+        <div class="fact"><dt>Phone</dt><dd><a class="fact-link" href="tel:+9779863336100">+977 986-333-6100</a></dd></div>
+        <div class="fact"><dt>Payment</dt><dd>Cash, eSewa and Khalti. Longer treatments can be split across sittings.</dd></div>
         <div class="fact"><dt>Urgent</dt><dd>Message any time — we answer for pain</dd></div>
       </dl>
     </div>
