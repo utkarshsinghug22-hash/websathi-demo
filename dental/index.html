@@ -200,24 +200,34 @@ document.querySelectorAll('.ph img').forEach(function(i){i.classList.add('is-loa
   @media (hover:hover) and (pointer:fine){ .fact-link:hover{border-bottom-color:var(--accent);} }
   .fact dd .fact-link{display:inline-block;margin-top:6px;font-size:.86rem;}
 
-  /* The banner was the only thing on the page addressed to the clinic owner and
-     it was a label with nowhere to go. It is the one line every visiting owner
-     reads, so it is the right place to put the door. */
-  .banner-link{
-    color:var(--banner-accent);border-bottom:1px solid currentColor;
-    margin-left:6px;white-space:nowrap;
-  }
-  /* 16px of text is not a tap target, and on this page it is the one link an
-     owner is meant to press. The hit area grows to 40px — the height of the
-     bar itself, so it cannot spill upward and swallow taps on the page. */
-  /* The shared sheet clears 66px under the banner. This page's bar carries a
-     link as well as a sentence, so it wraps taller than the others on a phone
-     and was sitting over the footer. */
-  @media(max-width:560px){ body{padding-bottom:86px;} }
-  .banner-link{position:relative;}
-  .banner-link::after{
-    content:'';position:absolute;left:-6px;right:-6px;top:50%;
-    transform:translateY(-50%);height:40px;
+  /* ── the pitch ─────────────────────────────────────────────────────────
+     Everyone who opens this page was sent the link because they run a clinic.
+     A thin bar at the foot was the whole of the offer, and a link to a separate
+     page assumes a patience that nobody scrolling a WhatsApp link for twenty
+     seconds has. The demo ends, then Websathi speaks — in its own colours, so
+     there is no chance of reading it as more of the clinic. */
+  .pitch{background:var(--ink);color:var(--surface);padding:clamp(52px,7vh,82px) 0;}
+  .pitch-tag{font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;
+    font-weight:600;color:#8FD3C9;}
+  .pitch h2{font-size:clamp(1.7rem,3.8vw,2.6rem);color:var(--surface);
+    margin:12px 0 34px;max-width:20ch;}
+  .pitch-facts{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+    background:rgba(246,249,249,.16);border:1px solid rgba(246,249,249,.16);
+    margin-bottom:34px;}
+  .pitch-facts > div{background:var(--ink);padding:22px 22px 24px;}
+  .pitch-facts b{display:block;font-size:1.5rem;font-weight:600;color:#8FD3C9;
+    letter-spacing:-.02em;margin-bottom:7px;}
+  .pitch-facts span{font-size:.87rem;color:rgba(246,249,249,.72);line-height:1.55;}
+  .pitch-cta{display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
+  .pitch-more{font-size:.9rem;color:#8FD3C9;padding:10px 0;
+    border-bottom:1px solid rgba(143,211,201,.4);
+    transition:border-color var(--dur-hover) var(--ease-out);}
+  @media (hover:hover) and (pointer:fine){ .pitch-more:hover{border-bottom-color:#8FD3C9;} }
+  @media(max-width:720px){
+    .pitch-facts{grid-template-columns:1fr;}
+    .pitch-cta{flex-direction:column;align-items:stretch;}
+    .pitch-cta .btn{justify-content:center;}
+    .pitch-more{text-align:center;}
   }
   .book-cta{background:var(--surface);border:1px solid var(--hairline);border-radius:4px;padding:34px;}
   .book-cta h3{font-size:1.5rem;margin-bottom:10px;}
@@ -550,7 +560,7 @@ document.querySelectorAll('.ph img').forEach(function(i){i.classList.add('is-loa
       <h3>Message us</h3>
       <p>Send your name and the day you'd like to come. We'll confirm a slot and tell you roughly how long to allow.</p>
       <a class="btn btn-wa" target="_blank" rel="noopener"
-         href="https://wa.me/9779863336100?text=Namaste%20%E2%80%94%20I%27d%20like%20to%20book%20a%20check-up%20at%20Smile%20Dental%20Care.%20Which%20day%20is%20free%3F">Message on WhatsApp</a>
+         href="https://wa.me/9779863336100?text=Hi%20Websathi%20%E2%80%94%20I%20saw%20the%20dental%20demo%20and%20I%27d%20like%20one%20for%20my%20clinic.">Message on WhatsApp</a>
     </div>
   </div>
 </section>
@@ -562,9 +572,28 @@ document.querySelectorAll('.ph img').forEach(function(i){i.classList.add('is-loa
   </div>
 </footer>
 
+<!-- Websathi's own voice, after the demo has ended. Every visitor here is a
+     clinic owner who was sent the link, and this is where a fast scroll stops —
+     so the offer belongs in the page, not one click away from it. -->
+<section class="pitch">
+  <div class="wrap">
+    <span class="pitch-tag">This is a demo</span>
+    <h2>Yours would take about a week.</h2>
+    <div class="pitch-facts">
+      <div><b class="tnum">Rs. 0</b><span>for the first few clinics, in exchange for showing the work</span></div>
+      <div><b>Free forever</b><span>a .com.np domain and hosting, with no yearly renewal</span></div>
+      <div><b>~7 days</b><span>from your photographs to a site that is live</span></div>
+    </div>
+    <div class="pitch-cta">
+      <a class="btn btn-wa" target="_blank" rel="noopener"
+         href="https://wa.me/9779863336100?text=Hi%20Websathi%20%E2%80%94%20I%20run%20a%20dental%20clinic%20and%20I%20saw%20your%20demo.%20What%20would%20you%20build%20for%20us%3F">Ask what yours would look like</a>
+      <a class="pitch-more" href="for-clinics/">What's involved, and what it costs →</a>
+    </div>
+  </div>
+</section>
+
 <div class="demo-banner">
-  <strong>This is a demo.</strong> Yours would carry your own name and treatments.
-  <a class="banner-link" href="for-clinics/">See what it costs →</a>
+  <strong>This is a demo.</strong> Smile Dental Care is not a real clinic.
 </div>
 
 <script src="../assets/websathi.js?v=8cb24769" defer></script>
