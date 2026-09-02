@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<script>document.documentElement.classList.remove('no-js');
+addEventListener('load',function(){if(window.__vellumReady)return;
+document.querySelectorAll('img[data-blur]').forEach(function(i){i.classList.add('on')})});</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VELLUM — Tattoo Atelier · Website Concept</title>
+<meta name="description" content="A website concept for a modern tattoo studio: custom black-and-grey, blackwork and fine line work, presented as a cinematic single-page experience. Demonstration site — not a real studio.">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="VELLUM — Tattoo Atelier · Website Concept">
+<meta property="og:description" content="A concept website for a modern tattoo studio. Demonstration piece — VELLUM is not a real business.">
+<meta property="og:image" content="https://utkarshsinghug22-hash.github.io/websathi-demo/tattoo/img/wings-1400.jpg">
+<meta property="og:locale" content="en">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="VELLUM — Tattoo Atelier · Website Concept">
+<meta name="twitter:image" content="https://utkarshsinghug22-hash.github.io/websathi-demo/tattoo/img/wings-1400.jpg">
+<meta name="theme-color" content="#0B0A0A">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%230B0A0A'/><text x='16' y='23' font-size='19' font-family='Georgia,serif' fill='%23C4703F' text-anchor='middle'>V</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="vellum.css?v=51154ac8">
+<!-- Structured data. Typed as a CreativeWork, deliberately NOT a LocalBusiness:
+     VELLUM does not exist, and describing an invented studio in the one format a
+     crawler takes at face value is how a demo ends up in somebody's search results
+     as a real place. The demo status is stated in the markup, not only in the
+     footer, because a crawler never reads the footer. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "VELLUM — Tattoo Atelier (website concept)",
+  "description": "DEMONSTRATION SITE — VELLUM is not a real tattoo studio. This page is a design concept built by Websathi (https://utkarshsinghug22-hash.github.io/websathi-demo/) to show a Kathmandu tattoo studio what its own website could look like. The studio, its location and its contact details are invented placeholders, and no booking is taken.",
+  "disambiguatingDescription": "DEMONSTRATION SITE — VELLUM is not a real tattoo studio. This page is a design concept built by Websathi (https://utkarshsinghug22-hash.github.io/websathi-demo/) to show a Kathmandu tattoo studio what its own website could look like. The studio, its location and its contact details are invented placeholders, and no booking is taken.",
+  "url": "https://utkarshsinghug22-hash.github.io/websathi-demo/tattoo/",
+  "image": "https://utkarshsinghug22-hash.github.io/websathi-demo/tattoo/img/wings-1400.jpg",
+  "genre": "Website design concept",
+  "about": {
+    "@type": "Thing",
+    "name": "Tattoo studio website design"
+  },
+  "creator": {
+    "@type": "Organization",
+    "name": "Websathi",
+    "url": "https://utkarshsinghug22-hash.github.io/websathi-demo/",
+    "areaServed": "Kathmandu, Nepal"
+  },
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Websathi demo sites",
+    "url": "https://utkarshsinghug22-hash.github.io/websathi-demo/"
+  }
+}
+</script>
+</head>
+<body>
+
+<div class="progress" aria-hidden="true"></div>
+<div class="cur" aria-hidden="true"></div>
+
+<header class="hdr">
+  <div class="wrap">
+    <a class="mark" href="#top" aria-label="VELLUM — back to top">
+      <b>VELLUM</b><span>Website Concept</span>
+    </a>
+    <button class="burger" aria-label="Menu" aria-expanded="false" aria-controls="nav"><i></i></button>
+    <nav class="nav" id="nav" aria-label="Primary">
+      <a href="#work"    style="--i:0">Work</a>
+      <a href="#styles"  style="--i:1">Styles</a>
+      <a href="#studio"  style="--i:2">Studio</a>
+      <a href="#process" style="--i:3">Process</a>
+      <a href="#contact" style="--i:4">Contact</a>
+      <button class="btn btn-solid" data-consult>Book a Consultation</button>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero" aria-labelledby="h1">
+    <canvas id="gl" aria-hidden="true"></canvas>
+    <div class="hero-still" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABUOEBIQDRUSERIYFhUZHzQiHx0dH0AuMCY0TENQT0tDSUhUXnlmVFlyWkhJaY9qcnyAh4iHUWWUn5ODnXmEh4L/2wBDARYYGB8cHz4iIj6CVklWgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoL/wAARCAAdABYDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwCGLQvtFj9r81Yp2UFUJ+U+hJPSsvW9KTTlt3SVmEoOUcYZSOvTjFWTqM8EJtod0sG3ajMAfwOeopmneTLdedqzlo4lyiM27PtjvSHYzLayurvP2e3klA6lVyKK7pb+3EKbh5WeRGCMqO2cdPpRRcRwYd4+Ow7VJbSgNhxnJz1p867ZinX5sVFPEIn4OeaANRLGO6QGNjGepIYYb8KKSC6e2i8xQGzxg0UtStD/2Q==)">
+      <picture>
+          <source type="image/webp" srcset="img/session-720.webp 720w, img/session-1080.webp 1080w, img/session-1600.webp 1600w" sizes="100vw">
+          <img data-blur src="img/session-1080.jpg" srcset="img/session-720.jpg 720w, img/session-1080.jpg 1080w, img/session-1600.jpg 1600w" sizes="100vw"
+               width="1600" height="2133" fetchpriority="high" class="" alt="Gloved hands working an ornamental blackwork sleeve under warm low light.">
+        </picture>
+    </div>
+    <div class="wrap">
+      <div class="hero-in">
+        <span class="eyebrow" data-rev>Tattoo Atelier · Concept</span>
+        <h1 class="display" id="h1" data-rev>Permanent <em>by design.</em></h1>
+        <div class="hero-foot">
+          <p class="lede" data-rev>Custom work, drawn to the body it will live on. One artist, one
+            piece at a time, and nothing touched until the drawing is right.</p>
+          <div class="hero-cta" data-rev>
+            <button class="btn btn-solid" data-consult>Book a Consultation</button>
+            <a class="btn btn-ghost" href="#work">See the Work</a>
+          </div>
+        </div>
+        <div class="scroll-cue" aria-hidden="true"><i></i> Scroll</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="intro">
+    <div class="wrap">
+      <p class="display" data-rev>Custom work. Intentional design. <span>Art made permanent.</span></p>
+      <p class="lede" data-rev>A tattoo outlasts nearly every other decision you will make this year.
+        It deserves more than a flash sheet and an afternoon.</p>
+    </div>
+  </section>
+
+  <section id="work" aria-labelledby="work-h">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow" data-rev>Selected Work</span>
+        <h2 class="display" id="work-h" data-rev-line>Pieces, not products.</h2>
+        <p class="lede" data-rev>Five studies in weight, contrast and placement.</p>
+      </div>
+      <div class="work-grid">
+        <figure class="piece p-wings" data-rev data-title="Fallen" data-meta="Black &amp; Grey Realism"
+                 style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABUOEBIQDRUSERIYFhUZHzQiHx0dH0AuMCY0TENQT0tDSUhUXnlmVFlyWkhJaY9qcnyAh4iHUWWUn5ODnXmEh4L/2wBDARYYGB8cHz4iIj6CVklWgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoL/wAARCAAhABYDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDjqszWNxBCs0kZETfcfs/Pb1q5omjNqZaR38uFGCkgZJJ7Cuu1XSbW50qKz+aNYAfLcc4IHf1zSGeeUVYv7SSxvJbaXG+M4JHQ+hopiOi8PyCHRI84Blv9qk/7lbOpyi2sJpY2iLnBKiTJHAHr6Y6e9cKl7Kll9lXGzzRKDjkMBioxcSA5UqD6hAP6UrDuaHihy+v3OcfKVXjpwoFFZ08z3E7zSnLuxZj7mimIjooooAKKKKAP/9k=);background-size:cover">
+          <picture>
+          <source type="image/webp" srcset="img/wings-640.webp 640w, img/wings-960.webp 960w, img/wings-1400.webp 1400w" sizes="(max-width:600px) 92vw, (max-width:900px) 56vw, 40vw">
+          <img data-blur src="img/wings-960.jpg" srcset="img/wings-640.jpg 640w, img/wings-960.jpg 960w, img/wings-1400.jpg 1400w" sizes="(max-width:600px) 92vw, (max-width:900px) 56vw, 40vw"
+               width="1400" height="2100" loading="lazy" decoding="async" class="" alt="A large black-and-grey realism piece across a back: two folded wings enclosing a seated figure.">
+        </picture>
+          <figcaption><b>Fallen</b><i>Black &amp; Grey Realism</i></figcaption>
+        </figure>
+<figure class="piece p-eyes" data-rev data-title="Watchers" data-meta="Blackwork"
+                 style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABUOEBIQDRUSERIYFhUZHzQiHx0dH0AuMCY0TENQT0tDSUhUXnlmVFlyWkhJaY9qcnyAh4iHUWWUn5ODnXmEh4L/2wBDARYYGB8cHz4iIj6CVklWgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoL/wAARCAAdABYDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDn7QCW+hiLbVkcITjOMmrev2EWnXyQxytISmW3LgA+1ZUchSVJP7rBvyNdL42jy1tdKPlbIDeuQD/jSA5k8MaKHYH5h3AooAjrrNS/07wla3LDcYhhj6c7axdF0xdTvVgaUxgjJIGa7m302FdEk04E+V86ZPXqefrQBx1l4bu7i2W4d1ijf7gbqfeiuy1ACC3hiX7qYUfgKKxcnc0SVj//2Q==);background-size:cover">
+          <picture>
+          <source type="image/webp" srcset="img/eyes-560.webp 560w, img/eyes-860.webp 860w, img/eyes-1200.webp 1200w" sizes="(max-width:600px) 92vw, (max-width:900px) 40vw, 32vw">
+          <img data-blur src="img/eyes-860.jpg" srcset="img/eyes-560.jpg 560w, img/eyes-860.jpg 860w, img/eyes-1200.jpg 1200w" sizes="(max-width:600px) 92vw, (max-width:900px) 40vw, 32vw"
+               width="1200" height="1600" loading="lazy" decoding="async" class="" alt="A forearm covered in overlapping sketched eyes with heavy lashes, worked in black ink.">
+        </picture>
+          <figcaption><b>Watchers</b><i>Blackwork</i></figcaption>
+        </figure>
+<figure class="piece p-runes" data-rev data-title="Wayfinder" data-meta="Fine Line"
+                 style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABUOEBIQDRUSERIYFhUZHzQiHx0dH0AuMCY0TENQT0tDSUhUXnlmVFlyWkhJaY9qcnyAh4iHUWWUn5ODnXmEh4L/2wBDARYYGB8cHz4iIj6CVklWgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoL/wAARCAAdABYDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwCrPt2AL0FUWx6VenG1Cep9Kz3IyTn3pDHPZLcQxndtbnoO1FaFuoWBPXHNFMQTDKH0rMxvmCY74rTuPuVRtxm8B9xSA0CccCindaKAP//Z);background-size:cover">
+          <picture>
+          <source type="image/webp" srcset="img/runes-560.webp 560w, img/runes-860.webp 860w, img/runes-1200.webp 1200w" sizes="(max-width:600px) 92vw, (max-width:900px) 40vw, 24vw">
+          <img data-blur src="img/runes-860.jpg" srcset="img/runes-560.jpg 560w, img/runes-860.jpg 860w, img/runes-1200.jpg 1200w" sizes="(max-width:600px) 92vw, (max-width:900px) 40vw, 24vw"
+               width="1200" height="1600" loading="lazy" decoding="async" class="" alt="A calf tattoo of a Norse vegvisir compass ringed with runes above a stylised tree.">
+        </picture>
+          <figcaption><b>Wayfinder</b><i>Fine Line</i></figcaption>
+        </figure>
+<figure class="piece p-line" data-rev data-title="Outline, Session Two" data-meta="Japanese Linework"
+                 style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABUOEBIQDRUSERIYFhUZHzQiHx0dH0AuMCY0TENQT0tDSUhUXnlmVFlyWkhJaY9qcnyAh4iHUWWUn5ODnXmEh4L/2wBDARYYGB8cHz4iIj6CVklWgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoL/wAARCAAMABYDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDMl3S27SQQlXPLMz4B/OnWVv8Abo2a5zGU5QrjqevHpWS0jlipYkAcA9quxTvBGpQ8sAxJ70Aa7Rm3jQK+7jqDzRWPd3Ewkx5rYwDRQM//2Q==);background-size:cover">
+          <picture>
+          <source type="image/webp" srcset="img/linework-900.webp 900w, img/linework-1400.webp 1400w, img/linework-1900.webp 1900w" sizes="(max-width:600px) 92vw, 64vw">
+          <img data-blur src="img/linework-1400.jpg" srcset="img/linework-900.jpg 900w, img/linework-1400.jpg 1400w, img/linework-1900.jpg 1900w" sizes="(max-width:600px) 92vw, 64vw"
+               width="1900" height="1068" loading="lazy" decoding="async" class="" alt="Gloved hands steadying a tattoo machine while outlining a large Japanese-style piece.">
+        </picture>
+          <figcaption><b>Outline, Session Two</b><i>Japanese Linework</i></figcaption>
+        </figure>
+<figure class="piece p-sess" data-rev data-title="Ornamental, In Progress" data-meta="Blackwork"
+                 style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABUOEBIQDRUSERIYFhUZHzQiHx0dH0AuMCY0TENQT0tDSUhUXnlmVFlyWkhJaY9qcnyAh4iHUWWUn5ODnXmEh4L/2wBDARYYGB8cHz4iIj6CVklWgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoL/wAARCAAdABYDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwCGLQvtFj9r81Yp2UFUJ+U+hJPSsvW9KTTlt3SVmEoOUcYZSOvTjFWTqM8EJtod0sG3ajMAfwOeopmneTLdedqzlo4lyiM27PtjvSHYzLayurvP2e3klA6lVyKK7pb+3EKbh5WeRGCMqO2cdPpRRcRwYd4+Ow7VJbSgNhxnJz1p867ZinX5sVFPEIn4OeaANRLGO6QGNjGepIYYb8KKSC6e2i8xQGzxg0UtStD/2Q==);background-size:cover">
+          <picture>
+          <source type="image/webp" srcset="img/session-720.webp 720w, img/session-1080.webp 1080w, img/session-1600.webp 1600w" sizes="(max-width:600px) 92vw, (max-width:900px) 56vw, 32vw">
+          <img data-blur src="img/session-1080.jpg" srcset="img/session-720.jpg 720w, img/session-1080.jpg 1080w, img/session-1600.jpg 1600w" sizes="(max-width:600px) 92vw, (max-width:900px) 56vw, 32vw"
+               width="1600" height="2133" loading="lazy" decoding="async" class="" alt="Gloved hands working an ornamental blackwork sleeve under warm low light.">
+        </picture>
+          <figcaption><b>Ornamental, In Progress</b><i>Blackwork</i></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="styles" aria-labelledby="styles-h">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow" data-rev>Disciplines</span>
+        <h2 class="display" id="styles-h" data-rev-line>Four ways of working.</h2>
+        <p class="lede" data-rev>Shown through the work above rather than claimed in a list.</p>
+      </div>
+      <div class="styles-grid">
+        <figure class="style" data-rev>
+          <div class="ph" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABUOEBIQDRUSERIYFhUZHzQiHx0dH0AuMCY0TENQT0tDSUhUXnlmVFlyWkhJaY9qcnyAh4iHUWWUn5ODnXmEh4L/2wBDARYYGB8cHz4iIj6CVklWgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoL/wAARCAAWABYDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDkERpHCopZj0AGa2b/AEaaDTILgQ5dwTJtOT69O1SaGkUemPcsBvNysZPfG0nArY1C62QM7FQBkKwbPUc/rn8qQ0cRRV/XY4o9XuFgKlMg/L0yQCcfjRTEOt7nytLVBn5boOfQ/KRUt3qstxCYZdpQ/dATG30xzRRSHcoXspnvJZD1ZjRRRTEz/9k=);background-size:cover">
+            <picture>
+          <source type="image/webp" srcset="img/wings_sq-420.webp 420w, img/wings_sq-700.webp 700w" sizes="(max-width:480px) 92vw, (max-width:900px) 44vw, 22vw">
+          <img data-blur src="img/wings_sq-700.jpg" srcset="img/wings_sq-420.jpg 420w, img/wings_sq-700.jpg 700w" sizes="(max-width:480px) 92vw, (max-width:900px) 44vw, 22vw"
+               width="700" height="700" loading="lazy" decoding="async" class="" alt="A back piece in black-and-grey realism, wings enclosing a seated figure.">
+        </picture>
+          </div>
+          <figcaption><h3>Black &amp; Grey Realism</h3><p>Depth built in shadow alone. Long sittings, and a design that has to read from across a room.</p></figcaption>
+        </figure>
+<figure class="style" data-rev>
+          <div class="ph" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABUOEBIQDRUSERIYFhUZHzQiHx0dH0AuMCY0TENQT0tDSUhUXnlmVFlyWkhJaY9qcnyAh4iHUWWUn5ODnXmEh4L/2wBDARYYGB8cHz4iIj6CVklWgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoL/wAARCAAWABYDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDAs5gmo27kAgSrkHoRmtnxnuTUbclQI9hVcDGP88VzIYhgR1HSus8Yr9p06zu0BYtySORgikBy7jDn6UUwvuHvxRQIZXY7Tc+BlkY/NEpwfo2KKKBl7TfD+nwWMUksKzSyKCzN7joKKKKwm9TSK0P/2Q==);background-size:cover">
+            <picture>
+          <source type="image/webp" srcset="img/eyes_sq-420.webp 420w, img/eyes_sq-700.webp 700w" sizes="(max-width:480px) 92vw, (max-width:900px) 44vw, 22vw">
+          <img data-blur src="img/eyes_sq-700.jpg" srcset="img/eyes_sq-420.jpg 420w, img/eyes_sq-700.jpg 700w" sizes="(max-width:480px) 92vw, (max-width:900px) 44vw, 22vw"
+               width="700" height="700" loading="lazy" decoding="async" class="" alt="Overlapping sketched eyes worked in dense black ink on a forearm.">
+        </picture>
+          </div>
+          <figcaption><h3>Blackwork</h3><p>Solid black and dense linework. Bold at any size, and the style that ages most gracefully.</p></figcaption>
+        </figure>
+<figure class="style" data-rev>
+          <div class="ph" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABUOEBIQDRUSERIYFhUZHzQiHx0dH0AuMCY0TENQT0tDSUhUXnlmVFlyWkhJaY9qcnyAh4iHUWWUn5ODnXmEh4L/2wBDARYYGB8cHz4iIj6CVklWgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoL/wAARCAAWABYDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwCrM24H2qgx5xWhcf6s44rNcnPTk9KQF2GISQJlBjryKKnjGyJU9BiigBJeEzWci7roLnjcKKKANNhknnvRRRQB/9k=);background-size:cover">
+            <picture>
+          <source type="image/webp" srcset="img/runes_sq-420.webp 420w, img/runes_sq-700.webp 700w" sizes="(max-width:480px) 92vw, (max-width:900px) 44vw, 22vw">
+          <img data-blur src="img/runes_sq-700.jpg" srcset="img/runes_sq-420.jpg 420w, img/runes_sq-700.jpg 700w" sizes="(max-width:480px) 92vw, (max-width:900px) 44vw, 22vw"
+               width="700" height="700" loading="lazy" decoding="async" class="" alt="Fine black linework: a runic compass above a stylised tree.">
+        </picture>
+          </div>
+          <figcaption><h3>Fine Line</h3><p>Single-needle weight. Restrained, symbolic, and placed where it can breathe.</p></figcaption>
+        </figure>
+<figure class="style" data-rev>
+          <div class="ph" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABUOEBIQDRUSERIYFhUZHzQiHx0dH0AuMCY0TENQT0tDSUhUXnlmVFlyWkhJaY9qcnyAh4iHUWWUn5ODnXmEh4L/2wBDARYYGB8cHz4iIj6CVklWgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoL/wAARCAAWABYDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDLmmSCUwykBdh5BBy2OPwps8T3a7oBueLkhe68c/maZdxWUjDyZJmlP8RIxWhojRW/mtGzGQjBJPBouFhunedEDxs7fNxRWqkqAkyKGz3IzRRcLHHwZmljjJxuIXOM1eWR0QJGAFycE9T9aKKALcMUtyhczFHBwcDqKKKKkZ//2Q==);background-size:cover">
+            <picture>
+          <source type="image/webp" srcset="img/line_sq-420.webp 420w, img/line_sq-700.webp 700w" sizes="(max-width:480px) 92vw, (max-width:900px) 44vw, 22vw">
+          <img data-blur src="img/line_sq-700.jpg" srcset="img/line_sq-420.jpg 420w, img/line_sq-700.jpg 700w" sizes="(max-width:480px) 92vw, (max-width:900px) 44vw, 22vw"
+               width="700" height="700" loading="lazy" decoding="async" class="" alt="A large Japanese-style outline being worked on a leg.">
+        </picture>
+          </div>
+          <figcaption><h3>Japanese Linework</h3><p>Traditional structure — flow, wind and water — laid out to follow the body.</p></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="craft" id="studio" aria-labelledby="craft-h">
+    <div class="craft-bg" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABUOEBIQDRUSERIYFhUZHzQiHx0dH0AuMCY0TENQT0tDSUhUXnlmVFlyWkhJaY9qcnyAh4iHUWWUn5ODnXmEh4L/2wBDARYYGB8cHz4iIj6CVklWgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoL/wAARCAAMABYDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDMl3S27SQQlXPLMz4B/OnWVv8Abo2a5zGU5QrjqevHpWS0jlipYkAcA9quxTvBGpQ8sAxJ70Aa7Rm3jQK+7jqDzRWPd3Ewkx5rYwDRQM//2Q==);background-size:cover">
+      <picture>
+          <source type="image/webp" srcset="img/linework-900.webp 900w, img/linework-1400.webp 1400w, img/linework-1900.webp 1900w" sizes="100vw">
+          <img data-blur src="img/linework-1400.jpg" srcset="img/linework-900.jpg 900w, img/linework-1400.jpg 1400w, img/linework-1900.jpg 1900w" sizes="100vw"
+               width="1900" height="1068" loading="lazy" decoding="async" class="" alt="Gloved hands steadying a tattoo machine while outlining a large piece.">
+        </picture>
+    </div>
+    <div class="wrap">
+      <div class="craft-in">
+        <span class="eyebrow" data-rev>The Craft</span>
+        <h2 class="display" id="craft-h" data-rev-line>Every piece begins with an idea.</h2>
+        <p class="lede" data-rev>Most of the work happens before the machine is switched on — in the
+          conversation, the drawing, and the four versions nobody else ever sees.</p>
+        <div class="craft-list" data-rev>
+          <div><b>Consult</b><span>An hour, unpaid, before anything is agreed.</span></div>
+          <div><b>Drawing</b><span>Custom artwork every time. No repeated designs.</span></div>
+          <div><b>Placement</b><span>Composed for the body, not for a flat page.</span></div>
+          <div><b>Sterile</b><span>Sealed needles opened in front of you, every session.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="process" aria-labelledby="proc-h">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow" data-rev>Process</span>
+        <h2 class="display" id="proc-h" data-rev-line>Five stages, no surprises.</h2>
+      </div>
+      <div class="steps">
+        <div class="step" data-rev>
+          <div class="n">01</div><h3>Discover</h3><p>A conversation before a drawing. What it is for, where it sits, how much room it needs, and whether the idea survives being said out loud.</p>
+        </div>
+<div class="step" data-rev>
+          <div class="n">02</div><h3>Design</h3><p>Custom artwork, drawn to your body rather than to a page. You see it before anything is permanent.</p>
+        </div>
+<div class="step" data-rev>
+          <div class="n">03</div><h3>Refine</h3><p>Composition, weight and placement. This is where most of the work happens, and where most of it is thrown away.</p>
+        </div>
+<div class="step" data-rev>
+          <div class="n">04</div><h3>Ink</h3><p>A sealed station, a fresh needle out of the pack in front of you, and as many sittings as the piece honestly needs.</p>
+        </div>
+<div class="step" data-rev>
+          <div class="n">05</div><h3>Aftercare</h3><p>Written guidance and a check-in. A tattoo is finished when it has healed, not when the machine stops.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="book" aria-labelledby="book-h">
+    <div class="wrap">
+      <span class="eyebrow" data-rev>Booking</span>
+      <h2 class="display" id="book-h" data-rev-line>Ready to make it permanent?</h2>
+      <p class="lede" data-rev>Tell us the idea, the placement and roughly the size. We will come back
+        with whether it works, what it needs, and what it would cost.</p>
+      <div data-rev><button class="btn btn-solid" data-consult>Book a Consultation</button></div>
+    </div>
+  </section>
+
+  <!-- Websathi's own voice, after the concept ends. Everyone who opens this link
+       was sent it because they run a studio, and the end of the scroll is where a
+       fast read stops — so the offer belongs in the page, not behind a click. -->
+  <section class="pitch" aria-labelledby="pitch-h">
+    <div class="wrap">
+      <span class="pitch-tag" data-rev>Built by Websathi</span>
+      <h2 class="display" id="pitch-h" data-rev-line>Yours would take about a week.</h2>
+      <p class="lede" data-rev>VELLUM is a concept — the studio is invented, the photography is
+        licensed. The site itself is real, and we would build one like it around your work.</p>
+      <div class="pitch-facts" data-rev>
+        <div><b class="tnum">Rs. 0</b><span>for the first few studios, in exchange for showing the work</span></div>
+        <div><b>Free forever</b><span>a .com.np domain and hosting, with no yearly renewal</span></div>
+        <div><b>~7 days</b><span>from your photographs to a site that is live</span></div>
+      </div>
+      <div class="pitch-cta" data-rev>
+        <a class="btn btn-solid" href="https://wa.me/9779863336100?text=Hi%20Websathi%20%E2%80%94%20I%20run%20a%20tattoo%20studio%20and%20I%20saw%20your%20VELLUM%20concept.%20What%20would%20you%20build%20for%20us%3F" target="_blank" rel="noopener">Ask what yours would look like</a>
+        <span class="pitch-note">Instagram shows the work. This is what shows up on Google.</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <a class="mark" href="#top" aria-label="VELLUM"><b>VELLUM</b></a>
+        <p style="margin-top:16px;max-width:34ch">A tattoo atelier concept — dark, editorial, and built
+          around the photographs.</p>
+      </div>
+      <div>
+        <h3>Studio</h3>
+        <p>Kathmandu, Nepal<br><span style="color:var(--paper-quiet)">Demo location — replace on deployment</span></p>
+      </div>
+      <div>
+        <h3>Enquiries</h3>
+        <p><a href="mailto:hello@example.com">hello@example.com</a><br>
+           <span style="color:var(--paper-quiet)">Placeholder address — replace on deployment</span></p>
+      </div>
+    </div>
+    <div class="f-note">
+      <p>Concept website — crafted as a digital experience for a modern tattoo studio.
+         VELLUM is a fictional studio created for this demonstration. Names, locations and contact
+         details are placeholders, and no booking is taken.</p>
+      <p>Photography licensed via Unsplash.</p>
+    </div>
+  </div>
+</footer>
+
+<dialog id="lightbox" aria-label="Selected work">
+  <div class="lb">
+    <button class="lb-x" aria-label="Close">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <button class="lb-nav lb-prev" aria-label="Previous piece">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 5l-7 7 7 7"/></svg>
+    </button>
+    <button class="lb-nav lb-next" aria-label="Next piece">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5l7 7-7 7"/></svg>
+    </button>
+    <figure class="lb-fig">
+      <img id="lb-img" alt="">
+      <figcaption class="lb-cap"><b id="lb-title"></b><span id="lb-meta"></span></figcaption>
+    </figure>
+  </div>
+</dialog>
+
+<dialog id="consult" aria-labelledby="consult-h">
+  <div class="mdl-wrap">
+    <div class="mdl">
+      <button class="mdl-x" data-close aria-label="Close">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+
+      <div id="consult-body">
+        <span class="eyebrow">Consultation</span>
+        <h2 id="consult-h">Tell us the idea.</h2>
+        <p class="lede">No deposit at this stage. We reply with whether it works, what it needs and
+          what it would cost.</p>
+        <form novalidate>
+          <div class="field">
+            <label for="c-name">Your name</label>
+            <input id="c-name" name="name" type="text" required autocomplete="name">
+            <span class="err" data-msg="Please tell us what to call you."></span>
+          </div>
+          <div class="field">
+            <label for="c-email">Email</label>
+            <input id="c-email" name="email" type="email" required autocomplete="email"
+                   placeholder="you@example.com">
+            <span class="err" data-msg="A valid email, so we can reply."></span>
+          </div>
+          <div class="field">
+            <label for="c-style">Style</label>
+            <select id="c-style" name="style">
+              <option>Black &amp; Grey Realism</option>
+              <option>Blackwork</option>
+              <option>Fine Line</option>
+              <option>Japanese Linework</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="c-idea">The idea, the placement, roughly the size</label>
+            <textarea id="c-idea" name="idea" required></textarea>
+            <span class="err" data-msg="A sentence or two is plenty."></span>
+          </div>
+          <div class="mdl-actions">
+            <button class="btn btn-solid" type="submit">Send Enquiry</button>
+            <button class="btn btn-ghost" type="button" data-close>Cancel</button>
+          </div>
+        </form>
+      </div>
+
+      <div id="consult-done" class="done" hidden>
+        <div class="tick" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 13l4 4L19 7"/></svg>
+        </div>
+        <h2 tabindex="-1">Demo enquiry received.</h2>
+        <p class="lede" style="margin-inline:auto;text-align:center">Nothing was sent. In a real
+          deployment this form would reach the studio's inbox or booking system.</p>
+        <small>This is a concept website. No data left your browser and no consultation has been booked.</small>
+        <div class="mdl-actions" style="justify-content:center">
+          <a class="btn btn-solid" href="https://wa.me/9779863336100?text=Hi%20Websathi%20%E2%80%94%20I%20run%20a%20tattoo%20studio%20and%20I%20saw%20your%20VELLUM%20concept.%20What%20would%20you%20build%20for%20us%3F" target="_blank" rel="noopener">Get one for your studio</a>
+          <button class="btn btn-ghost" data-close type="button">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</dialog>
+
+<script type="module" src="vellum.js?v=5338e05c"></script>
+</body>
+</html>
